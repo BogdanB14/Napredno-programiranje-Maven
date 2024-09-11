@@ -15,6 +15,14 @@ import java.util.Objects;
  *
  * @author Bogdan Blagojevic
  */
+
+/**
+ * Klasa koja predstavlja člana u sistemu.
+ * Ova klasa implementira {@link ApstraktniDomenskiObjekat} i pruža 
+ * metode za rad sa članovima u bazi podataka.
+ * 
+ * @author Bogdan Blagojevic
+ */
 public class Clan implements ApstraktniDomenskiObjekat{
     private String jmbg;
     private String imeClana;
@@ -24,9 +32,23 @@ public class Clan implements ApstraktniDomenskiObjekat{
     private String telefon;
     private Mesto mesto;
     
+        /**
+     * Podrazumevani (default) konstruktor.
+     */
     public Clan() {
     }
 
+        /**
+     * Konstruktor sa svim atributima.
+     * 
+     * @param jmbg JMBG člana.
+     * @param imeClana Ime člana.
+     * @param prezimeClana Prezime člana.
+     * @param datumRodjenja Datum rođenja člana.
+     * @param pol Pol člana.
+     * @param telefon Telefon člana.
+     * @param mesto Mesto prebivališta člana.
+     */
     public Clan(String jmbg, String imeClana, String prezimeClana, Date datumRodjenja, Pol pol, String telefon, Mesto mesto) {
         this.jmbg = jmbg;
         this.imeClana = imeClana;
@@ -37,58 +59,134 @@ public class Clan implements ApstraktniDomenskiObjekat{
         this.mesto = mesto;
     }
 
+    
+        /**
+     * Get metoda - Vraća JMBG člana.
+     * 
+     * @return JMBG člana.
+     */
     public String getJmbg() {
         return jmbg;
     }
 
+    
+        /**
+     * Set metoda - Postavlja JMBG člana.
+     * 
+     * @param jmbg JMBG člana.
+     */
     public void setJmbg(String jmbg) {
         this.jmbg = jmbg;
     }
 
+    
+        /**
+     * Get metoda - Vraća ime člana.
+     * 
+     * @return Ime člana.
+     */
     public String getImeClana() {
         return imeClana;
     }
 
+        /**
+     * Set metoda - Postavlja ime člana.
+     * 
+     * @param imeClana Ime člana.
+     */
     public void setImeClana(String imeClana) {
         this.imeClana = imeClana;
     }
 
+            /**
+     * Get metoda - Vraća prezime člana.
+     * 
+     * @return Prezime člana.
+     */
     public String getPrezimeClana() {
         return prezimeClana;
     }
 
+
+        /**
+     * Set metoda - Postavlja prezime člana.
+     * 
+     * @param prezimeClana Prezime člana.
+     */
     public void setPrezimeClana(String prezimeClana) {
         this.prezimeClana = prezimeClana;
     }
 
+        /**
+     * Get metoda - Vraća datum rođenja člana.
+     * 
+     * @return Datum rođenja člana.
+     */
     public Date getDatumRodjenja() {
         return datumRodjenja;
     }
 
+        /**
+     * Set metoda - Postavlja datum rođenja člana.
+     * 
+     * @param datumRodjenja Datum rođenja člana.
+     */
     public void setDatumRodjenja(Date datumRodjenja) {
         this.datumRodjenja = datumRodjenja;
     }
 
+    
+    /**
+     * Get metoda - Vraća pol člana.Pol je enum
+     * 
+     * @return Pol člana.
+     */
     public Pol getPol() {
         return pol;
     }
 
+        /**
+     * Set metoda - Postavlja pol člana.
+     * 
+     * @param pol Pol člana.
+     */
     public void setPol(Pol pol) {
         this.pol = pol;
     }
 
+        /**
+     * Get metoda - Vraća telefon člana.
+     * 
+     * @return Telefon člana.
+     */
     public String getTelefon() {
         return telefon;
     }
 
+        /**
+     * Set metoda - Postavlja telefon člana.
+     * 
+     * @param telefon Telefon člana.
+     */
     public void setTelefon(String telefon) {
         this.telefon = telefon;
     }
 
+        /**
+     * Get metoda - Vraća mesto rodjenja člana (Grad)
+     * 
+     * @return Mesto (grad) člana.
+     */
     public Mesto getMesto() {
         return mesto;
     }
-
+    
+    
+    /**
+     * Set metoda - Postavlja mesto rodjenja člana (Grad)
+     * 
+     * @param mesto Mesto (grad) člana.
+     */
     public void setMesto(Mesto mesto) {
         this.mesto = mesto;
     }
@@ -107,6 +205,13 @@ public class Clan implements ApstraktniDomenskiObjekat{
         return hash;
     }
 
+    /**
+     * Override-ovana equals metoda za klasu Clan. Proverava da li su 2 objekta klase clan jednaka
+     * 
+     * @param obj
+     * @return true ako se porede dva objekta s iste memorijske lokacije ili ako su jednaki po jmbg-u
+     * u suprotnom uvek vraca false
+     */
     @Override
     public boolean equals(Object obj) {
         if (this == obj) {
@@ -122,11 +227,25 @@ public class Clan implements ApstraktniDomenskiObjekat{
         return Objects.equals(this.jmbg, other.jmbg);
     }
 
+        /**
+     * {@inheritDoc}
+     * Vraća naziv tabele u bazi podataka za klasu Clan.
+     * 
+     * @return naziv tabele
+     */
     @Override
     public String vratiNazivTabele() {
         return "clan";
     }
 
+        /**
+     * {@inheritDoc}
+     * Vraća listu objekata {@link Clan} iz rezultata upita.
+     * 
+     * @param rs {@code ResultSet} koji sadrži rezultate upita
+     * @return lista objekata {@link ApstraktniDomenskiObjekat}
+     * @throws Exception Ako dođe do greške tokom obrade {@code ResultSet}-a
+     */
     @Override
     public List<ApstraktniDomenskiObjekat> vratiListu(ResultSet rs) throws Exception {
         List<ApstraktniDomenskiObjekat> lista = new ArrayList<>();
@@ -147,27 +266,60 @@ public class Clan implements ApstraktniDomenskiObjekat{
         return lista;
     }
 
+        /**
+     * {@inheritDoc}
+     * Vraća imena kolona koje se koriste za ubacivanje podataka u bazu u tabelu Clan.
+     * 
+     * @return imena kolona
+     */
     @Override
     public String vratiKoloneZaUbacivanje() {
         return "jmbg,imeClana,prezimeClana,datumRodjenja,pol,telefon,mesto";
     }
 
+        /**
+     * {@inheritDoc}
+     * Vraća vrednosti za ubacivanje u bazu u tabelu Clan
+     * 
+     * @return vrednosti za ubacivanje
+     */
     @Override
     public String vratiVrednostiZaUbacivanje() {
         java.sql.Date datum = new java.sql.Date(datumRodjenja.getTime());
         return "'"+jmbg+"','"+imeClana+"','"+prezimeClana+"','"+datum+"','"+pol+"','"+telefon+"',"+mesto.getMestoID();
     }
 
+        /**
+     * {@inheritDoc}
+     * Vraća primarni ključ za identifikaciju člana.
+     * 
+     * @return primarni ključ
+     */
     @Override
     public String vratiPrimarniKljuc() {
         return "clan.jmbg='"+jmbg+"'";
     }
 
+        /**
+     * {@inheritDoc}
+     * Ova metoda trenutno nije podržana.
+     * 
+     * @param rs {@code ResultSet} koji sadrži podatke za kreiranje objekta
+     * @return instanca objekta klase {@link ApstraktniDomenskiObjekat}
+     * @throws Exception Ako dođe do greške tokom obrade {@code ResultSet}-a
+     */
     @Override
     public ApstraktniDomenskiObjekat vratiObjekatIzRS(ResultSet rs) throws Exception {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
+    
+        /**
+     * {@inheritDoc}
+     * Vraća SQL izraz za ažuriranje podataka u bazi za klasu Clan.
+     * 
+     * @return SQL izraz za ažuriranje
+     */
     @Override
     public String vratiVrednostiZaIzmenu() {
         //"jmbg,imeClana,prezimeClana,datumRodjenja,pol,telefon,mesto";
