@@ -175,6 +175,14 @@ public class Administrator implements ApstraktniDomenskiObjekat{
         return Objects.equals(this.sifra, other.sifra);
     }
 
+            /**
+     * Vraća string prezentaciju objekta {@code Administrator}.
+     * <p>
+     * U ovom slučaju, vraća  korisnicko ime Administratora.
+     * </p>
+     *
+     * @return Korisnicko ime
+     */
     @Override
     public String toString() {
         return korisnickoIme;

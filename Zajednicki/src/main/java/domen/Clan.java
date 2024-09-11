@@ -191,6 +191,14 @@ public class Clan implements ApstraktniDomenskiObjekat{
         this.mesto = mesto;
     }
 
+            /**
+     * Vraća string prezentaciju objekta {@code Clan}.
+     * <p>
+     * U ovom slučaju, vraća izgled celog objekta.
+     * </p>
+     *
+     * @return sve atribute.
+     */
     @Override
     public String toString() {
         return "Clan{" + "jmbg=" + jmbg + ", imeClana=" + imeClana + ", prezimeClana=" + prezimeClana + ", datumRodjenja=" + datumRodjenja + ", pol=" + pol + ", telefon=" + telefon + ", mesto=" + mesto + '}';
