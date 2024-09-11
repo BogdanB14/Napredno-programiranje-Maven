@@ -233,7 +233,7 @@ public class Administrator implements ApstraktniDomenskiObjekat{
         /**
      * {@inheritDoc}
      * Metoda predifinisana za potrebe klase Administrator
-     * @return vrednosti za umetanje
+     * @return vrednosti za ubacivanje.
      */
     @Override
     public String vratiVrednostiZaUbacivanje() {

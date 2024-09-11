@@ -12,7 +12,12 @@ import java.util.List;
 import java.util.Objects;
 
 /**
- *
+ * Klasa koja predstavlja entitet treninga u sistemu.
+ * <p>
+ * Ova klasa implementira interfejs {@link ApstraktniDomenskiObjekat} i pruža osnovne informacije o treningu,
+ * uključujući identifikator, datum, tip treninga, salu, trenera i grupu.
+ * </p>
+ * 
  * @author Bogdan Blagojevic
  */
 public class Trening implements ApstraktniDomenskiObjekat{
@@ -23,9 +28,22 @@ public class Trening implements ApstraktniDomenskiObjekat{
     private Trener trener;
     private Grupa grupa;
 
+        /**
+     * Podrazumevani konstruktor koji inicijalizuje novi objekat {@code Trening}.
+     */
     public Trening() {
     }
 
+        /**
+     * Parametarski konstruktor koji inicijalizuje objekat {@code Trening}.
+     *
+     * @param rbTreninga Redni broj treninga.
+     * @param datumTreninga Datum održavanja treninga.
+     * @param tipTreninga Tip treninga.
+     * @param sala Sala u kojoj se održava trening.
+     * @param trener Trener koji vodi trening.
+     * @param grupa Grupa koja prisustvuje treningu.
+     */
     public Trening(int rbTreninga, Date datumTreninga, TipTreninga tipTreninga, Sala sala, Trener trener, Grupa grupa) {
         this.rbTreninga = rbTreninga;
         this.datumTreninga = datumTreninga;
@@ -35,55 +53,123 @@ public class Trening implements ApstraktniDomenskiObjekat{
         this.grupa = grupa;
     }
 
+        /**
+     * Get metoda - Vraća redni broj treninga.
+     *
+     * @return Redni broj treninga.
+     */
     public int getRbTreninga() {
         return rbTreninga;
     }
 
+        /**
+     * Set metoda - Postavlja redni broj treninga.
+     *
+     * @param rbTreninga Redni broj treninga.
+     */
     public void setRbTreninga(int rbTreninga) {
         this.rbTreninga = rbTreninga;
     }
 
+        /**
+     * Get metoda - Vraća datum održavanja treninga.
+     *
+     * @return Datum održavanja treninga.
+     */
     public Date getDatumTreninga() {
         return datumTreninga;
     }
 
+        /**
+     * Set metoda - Postavlja datum održavanja treninga.
+     *
+     * @param datumTreninga Datum održavanja treninga.
+     */
     public void setDatumTreninga(Date datumTreninga) {
         this.datumTreninga = datumTreninga;
     }
 
+        /**
+     * Get metoda - Vraća tip treninga.
+     *
+     * @return Tip treninga.
+     */
     public TipTreninga getTipTreninga() {
         return tipTreninga;
     }
 
+        /**
+     * Set metoda - Postavlja tip treninga.
+     *
+     * @param tipTreninga Tip treninga.
+     */
     public void setTipTreninga(TipTreninga tipTreninga) {
         this.tipTreninga = tipTreninga;
     }
 
     
+        /**
+     * Get metoda - Vraća salu u kojoj se održava trening.
+     *
+     * @return Sala u kojoj se održava trening.
+     */
     public Sala getSala() {
         return sala;
     }
 
+        /**
+     * Set metoda - Postavlja salu u kojoj se održava trening.
+     *
+     * @param sala Sala u kojoj se održava trening.
+     */
     public void setSala(Sala sala) {
         this.sala = sala;
     }
 
+        /**
+     * Get metoda - Vraća trenera koji vodi trening.
+     *
+     * @return Trener koji vodi trening.
+     */
     public Trener getTrener() {
         return trener;
     }
 
+        /**
+     * Set metoda - Postavlja trenera koji vodi trening.
+     *
+     * @param trener Trener koji vodi trening.
+     */
     public void setTrener(Trener trener) {
         this.trener = trener;
     }
 
+        /**
+     * Get metoda - Vraća grupu koja prisustvuje treningu.
+     *
+     * @return Grupa koja prisustvuje treningu.
+     */
     public Grupa getGrupa() {
         return grupa;
     }
 
+        /**
+     * Set metoda - Postavlja grupu koja prisustvuje treningu.
+     *
+     * @param grupa Grupa koja prisustvuje treningu.
+     */
     public void setGrupa(Grupa grupa) {
         this.grupa = grupa;
     }
 
+        /**
+     * Vraća string prezentaciju objekta {@code Trening}.
+     * <p>
+     * U ovom slučaju, vraća sve informacije o treningu.
+     * </p>
+     *
+     * @return String reprezentacija objekta {@code Trening}.
+     */
     @Override
     public String toString() {
         return "Trening{" + "rbTreninga=" + rbTreninga + ", datumTreninga=" + datumTreninga + ", tipTreninga=" + tipTreninga + ", sala=" + sala + ", trener=" + trener + ", grupa=" + grupa + '}';
@@ -97,6 +183,13 @@ public class Trening implements ApstraktniDomenskiObjekat{
         return hash;
     }
 
+        /**
+     * Upoređuje objekat {@code Trening} sa drugim objektom.
+     *
+     * @param obj Drugi objekat koji se upoređuje.
+     * @return {@code true} ako su objekti identični, {@code false} inače.
+     * Poređenje se vrši po rednom broju treninga, datumu i tipu treninga.
+     */
     @Override
     public boolean equals(Object obj) {
         if (this == obj) {
@@ -120,11 +213,25 @@ public class Trening implements ApstraktniDomenskiObjekat{
     
     
 
+        /**
+     * {@inheritDoc}
+     * Vraća naziv tabele u bazi podataka u kojoj se nalazi entitet {@code Trening}.
+     * 
+     * @return Naziv tabele.
+     */
     @Override
     public String vratiNazivTabele() {
         return "trening";
     }
 
+        /**
+     * {@inheritDoc}
+     * Vraća listu objekata {@link Trening} iz rezultata upita.
+     * 
+     * @param rs {@code ResultSet} koji sadrži rezultate upita.
+     * @return Lista objekata {@link ApstraktniDomenskiObjekat}.
+     * @throws Exception Ako dođe do greške tokom obrade {@code ResultSet}-a.
+     */
     @Override
     public List<ApstraktniDomenskiObjekat> vratiListu(ResultSet rs) throws Exception {
         /*    private int rbTreninga;
@@ -169,27 +276,60 @@ public class Trening implements ApstraktniDomenskiObjekat{
         return lista;
     }
 
+        /**
+     * {@inheritDoc}
+     * Vraća imena kolona koje se koriste za ubacivanje podataka u bazu u tabelu {@code Trening}.
+     * 
+     * @return Imena kolona.
+     */
     @Override
     public String vratiKoloneZaUbacivanje() {
         return "datumTreninga,tipTreninga,sala,trener,grupa";
     }
 
+        /**
+     * {@inheritDoc}
+     * Vraća vrednosti za ubacivanje u bazu u tabelu {@code Trening}.
+     * 
+     * @return Vrednosti za ubacivanje.
+     */
     @Override
     public String vratiVrednostiZaUbacivanje() {
         java.sql.Date datum = new java.sql.Date(datumTreninga.getTime());
         return "'"+datum+"','"+tipTreninga+"',"+sala.getSalaID()+","+trener.getTrenerID()+","+grupa.getGrupaID();
     }
 
+        /**
+     * {@inheritDoc}
+     * Vraća primarni ključ za identifikaciju treninga.
+     * 
+     * @return Primarni ključ - redni broj treninga.
+     */
     @Override
     public String vratiPrimarniKljuc() {
         return "trening.rbTreninga="+rbTreninga;
     }
 
+    
+        /**
+     * {@inheritDoc}
+     * Ova metoda trenutno nije podržana.
+     * 
+     * @param rs {@code ResultSet} koji sadrži podatke za kreiranje objekta.
+     * @return Instanca objekta klase {@link ApstraktniDomenskiObjekat}.
+     * @throws Exception Ako dođe do greške tokom obrade {@code ResultSet}-a.
+     */
     @Override
     public ApstraktniDomenskiObjekat vratiObjekatIzRS(ResultSet rs) throws Exception {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
+        /**
+     * {@inheritDoc}
+     * Vraća SQL izraz za ažuriranje podataka u bazi u tabelu {@code Trening}.
+     * 
+     * @return SQL izraz za ažuriranje.
+     */
     @Override
     public String vratiVrednostiZaIzmenu() {
         //"datumTreninga,tipTreninga,sala,trener,grupa";

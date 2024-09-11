@@ -218,7 +218,7 @@ public class Sala implements ApstraktniDomenskiObjekat{
      * {@inheritDoc}
      * Vraća vrednosti za ubacivanje u bazu u tabelu {@code Sala}.
      * 
-     * @return Vrednosti za umetanje.
+     * @return Vrednosti za ubacivanje.
      */
     @Override
     public String vratiVrednostiZaUbacivanje() {
