@@ -11,4 +11,20 @@
         <maven.compiler.target>22</maven.compiler.target>
         <exec.mainClass>rs.ac.bg.fon.zajednicki.Zajednicki</exec.mainClass>
     </properties>
+    <build>
+    <plugins>
+        <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-javadoc-plugin</artifactId>
+            <version>3.5.0</version> <!-- Use the latest version -->
+            <configuration>
+                <!-- Optional configuration -->
+                <source>11</source> <!-- Set to the Java version you're using -->
+                <encoding>UTF-8</encoding>
+                <author>true</author>
+                <version>true</version>
+            </configuration>
+        </plugin>
+    </plugins>
+</build>
 </project>

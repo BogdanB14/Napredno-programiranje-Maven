@@ -46,11 +46,33 @@ public interface ApstraktniDomenskiObjekat extends Serializable {
      */
     public String vratiKoloneZaUbacivanje();
     
+        /**
+     * Vraća listu vrednosti koje će se ubaciti u bazu podataka.
+     * 
+     * @return Vrednosti za ubacivanje kao {@code String}.
+     */
     public String vratiVrednostiZaUbacivanje();
     
+        /**
+     * Vraća primarni ključ objekta domena, koji se koristi za jedinstvenu identifikaciju u bazi podataka.
+     * 
+     * @return Primarni ključ kao {@code String}.
+     */
     public String vratiPrimarniKljuc();
     
+        /**
+     * Kreira objekat iz domena iz prosledjenog {@code ResultSet}-a.
+     * 
+     * @param rs {@code ResultSet} koji sadrži podatke iz baze podataka.
+     * @return objekat iz domena popunjen iz {@code ResultSet}-a.
+     * @throws Exception Ako dođe do greške tokom obrade {@code ResultSet}-a.
+     */
     public ApstraktniDomenskiObjekat vratiObjekatIzRS(ResultSet rs) throws Exception;
     
+        /**
+     * Vraća listu vrednosti koje će se koristiti za izmenu postojećeg reda u bazi podataka.
+     * 
+     * @return Vrednosti za izmenu kao {@code String}.
+     */
     public String vratiVrednostiZaIzmenu();
 }
