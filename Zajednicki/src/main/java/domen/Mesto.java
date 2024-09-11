@@ -191,7 +191,7 @@ public class Mesto implements ApstraktniDomenskiObjekat{
      * {@inheritDoc}
      * Vraća vrednosti za ubacivanje u bazu u tabelu {@code Mesto}.
      * 
-     * @return Vrednosti za umetanje.
+     * @return Vrednosti za ubacivanje.
      */
     @Override
     public String vratiVrednostiZaUbacivanje() {

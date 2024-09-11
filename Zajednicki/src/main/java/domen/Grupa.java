@@ -282,7 +282,7 @@ public class Grupa implements ApstraktniDomenskiObjekat{
          * {@inheritDoc}
      * Vraća vrednosti za ubacivanje u bazu u tabelu Grupa.
      * 
-     * @return Vrednosti za umetanje
+     * @return Vrednosti za ubacivanje.
      */
     @Override
     public String vratiVrednostiZaUbacivanje() {

@@ -217,7 +217,7 @@ public class Kategorija implements ApstraktniDomenskiObjekat{
      * {@inheritDoc}
      * Vraća vrednosti za ubacivanje u bazu u tabelu {@code Kategorija}.
      * 
-     * @return Vrednosti za umetanje.
+     * @return Vrednosti za ubacivanje.
      */
     @Override
     public String vratiVrednostiZaUbacivanje() {
