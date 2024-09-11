@@ -16,16 +16,36 @@ import java.util.logging.Logger;
 import niti.ObradaKlijentskihZahteva;
 
 /**
- *
+ * Klasa koja implementira server za prihvatanje i obrada klijentskih zahteva.
+ * <p>
+ * Ova klasa koristi {@code ServerSocket} za uspostavljanje veze sa klijentima na određenom portu. 
+ * Kada klijent uspostavi vezu, server kreira novu instancu {@link ObradaKlijentskihZahteva} 
+ * za obrada zahteva i upravljanje komunikacijom sa klijentom. Server može biti zaustavljen 
+ * pozivanjem metode {@link #zaustaviServer()}, koja takođe prekida sve trenutne klijentske niti.
+ * </p>
+ * 
  * @author Bogdan Blagojevic
  */
 public class Server extends Thread{
+    /**
+     * Flag koji se koristi za zaustavljanje i pokretanje while petlje u serverskoj niti
+     */
     private boolean kraj = false;
+    /**
+     * Socket koji prihvata dolazne konekcije klijenta na istom portu.
+     */
     private ServerSocket serverSocket;
   
     
 
-
+    /**
+     * Glavna metoda koja pokreće server.
+     * <p>
+     * Ova metoda kreira {@code ServerSocket} na portu 9000 i neprekidno prihvata 
+     * dolazne veze od klijenata. Za svakog povezanog klijenta, kreira se nova nit 
+     * {@link ObradaKlijentskihZahteva} koja će obraditi klijentske zahteve.
+     * </p>
+     */
     @Override
     public void run() {
         try {
@@ -44,6 +64,14 @@ public class Server extends Thread{
     }
     
     
+        /**
+     * Zaustavlja server i prekida sve trenutne klijentske niti.
+     * <p>
+     * Ova metoda postavlja {@code kraj} na {@code true} što uzrokuje da se 
+     * server zaustavi. Takođe, prekida sve aktivne niti koje trenutno 
+     * obrađuju klijentske zahteve i zatvara {@code ServerSocket}.
+     * </p>
+     */
     public void zaustaviServer(){
         try {
             kraj = true;
@@ -58,6 +86,11 @@ public class Server extends Thread{
         }
     }
 
+      /**
+     * Get metoda - Vraća {@code ServerSocket} koji server koristi za prihvatanje veza.
+     * 
+     * @return {@code ServerSocket} objekat koji koristi server.
+     */
     public ServerSocket getServerSocket() {
         return serverSocket;
     }
