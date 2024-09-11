@@ -10,8 +10,11 @@ import java.util.List;
 import java.util.Objects;
 
 /**
- *
- * @author Bogdan Blagojevic
+ * Predstavlja grupu u sistemu.
+ * Ova klasa implementira {@link ApstraktniDomenskiObjekat} interfejs
+ * i pruža metode za interakciju sa tabelom "grupa" u bazi podataka.
+ * 
+ * @autor Bogdan Blagojević
  */
 public class Grupa implements ApstraktniDomenskiObjekat{
     private Long grupaID;
@@ -21,9 +24,23 @@ public class Grupa implements ApstraktniDomenskiObjekat{
     private Administrator administrator;
     private Trener trener;
 
+    
+        /**
+     * Podrazumevani konstruktor.
+     */
     public Grupa() {
     }
 
+        /**
+     * Parametarski konstruktor
+     *
+     * @param grupaID ID grupe
+     * @param nazivGrupe naziv grupe
+     * @param brClanova maksimalan broj članova u grupi
+     * @param kategorija kategorija grupe
+     * @param administrator administrator grupe
+     * @param trener trener grupe
+     */
     public Grupa(Long grupaID, String nazivGrupe, int brClanova, Kategorija kategorija, Administrator administrator, Trener trener) {
         this.grupaID = grupaID;
         this.nazivGrupe = nazivGrupe;
@@ -33,50 +50,111 @@ public class Grupa implements ApstraktniDomenskiObjekat{
         this.trener = trener;
     }
 
+        /**
+     * Get metoda - Vraća ID grupe.
+     *
+     * @return ID grupe
+     */
     public Long getGrupaID() {
         return grupaID;
     }
 
+       /**
+     * Set metoda - Postavlja ID grupe.
+     *
+     * @param grupaID ID grupe
+     */
     public void setGrupaID(Long grupaID) {
         this.grupaID = grupaID;
     }
 
+        /**
+     * Get metoda - Vraća naziv grupe.
+     *
+     * @return naziv grupe
+     */
     public String getNazivGrupe() {
         return nazivGrupe;
     }
 
+        /**
+     * Set metoda - Postavlja naziv grupe.
+     *
+     * @param nazivGrupe naziv grupe
+     */
     public void setNazivGrupe(String nazivGrupe) {
         this.nazivGrupe = nazivGrupe;
     }
 
+        /**
+     * Get metoda - Vraća maksimalan broj članova u grupi.
+     *
+     * @return broj članova
+     */
     public int getBrClanova() {
         return brClanova;
     }
 
-    public void setBrClanova(int rbClanova) {
+      /**
+     * Set metoda - Postavlja maksimalan broj članova u grupi.
+     *
+     * @param brClanova maksimalan broj članova u grupi
+     */
+    public void setBrClanova(int brClanova) {
         this.brClanova = brClanova;
     }
+    
 
+        /**
+     * Get metoda - Vraća kategoriju grupe.
+     *
+     * @return kategorija grupe
+     */
     public Kategorija getKategorija() {
         return kategorija;
     }
 
+        /**
+     * Set metoda - Postavlja kategoriju grupe.
+     *
+     * @param kategorija kategorija grupe
+     */
     public void setKategorija(Kategorija kategorija) {
         this.kategorija = kategorija;
     }
 
+        /**
+     * Get metoda - Vraća administratora grupe.
+     *
+     * @return administrator grupe
+     */
     public Administrator getAdministrator() {
         return administrator;
     }
 
+        /**
+     * Set metoda - Postavlja administratora grupe.
+     *
+     * @param administrator administrator grupe
+     */
     public void setAdministrator(Administrator administrator) {
         this.administrator = administrator;
     }
 
+        /**
+     * Get metoda - Vraća trenera grupe.
+     *
+     * @return trener grupe
+     */
     public Trener getTrener() {
         return trener;
     }
 
+        /**
+     * Set metoda - Postavlja trenera grupe.
+     *
+     * @param trener trener grupe
+     */
     public void setTrener(Trener trener) {
         this.trener = trener;
     }
@@ -87,6 +165,13 @@ public class Grupa implements ApstraktniDomenskiObjekat{
         return hash;
     }
 
+        /**
+     * Override-ovana equals metoda za klasu Grupa. Proverava da li su 2 objekta klase Grupa jednaka
+     * 
+     * @param obj
+     * @return true ako se porede dva objekta s iste memorijske lokacije ili ako su jednaki po nazivu grupe
+     * i id-u grupe
+     */
     @Override
     public boolean equals(Object obj) {
         if (this == obj) {
@@ -111,12 +196,25 @@ public class Grupa implements ApstraktniDomenskiObjekat{
     }
 
     
-    
+        /**
+     * {@inheritDoc}
+     * Vraća naziv tabele u bazi podataka.
+     * 
+     * @return Naziv tabele
+     */
     @Override
     public String vratiNazivTabele() {
         return "grupa";
     }
 
+        /**
+     * {@inheritDoc}
+     * Vraća listu objekata {@link Grupa} iz rezultata upita.
+     * 
+     * @param rs {@code ResultSet} koji sadrži rezultate upita
+     * @return Lista objekata {@link ApstraktniDomenskiObjekat}
+     * @throws Exception Ako dođe do greške tokom obrade {@code ResultSet}-a
+     */
     @Override
     public List<ApstraktniDomenskiObjekat> vratiListu(ResultSet rs) throws Exception {
         List<ApstraktniDomenskiObjekat> lista = new ArrayList<>();
@@ -160,26 +258,58 @@ public class Grupa implements ApstraktniDomenskiObjekat{
         return lista;
     }
 
+        /**
+     * {@inheritDoc}
+     * Vraća imena kolona koje se koriste za ubacivanje podataka u bazu u tabelu Grupa.
+     * 
+     * @return Imena kolona
+     */
     @Override
     public String vratiKoloneZaUbacivanje() {
         return "nazivGrupe,brClanova,kategorija,administrator,trener";
     }
-
+    
+    /**
+         * {@inheritDoc}
+     * Vraća vrednosti za ubacivanje u bazu u tabelu Grupa.
+     * 
+     * @return Vrednosti za umetanje
+     */
     @Override
     public String vratiVrednostiZaUbacivanje() {
         return "'"+nazivGrupe+"',"+brClanova+","+kategorija.getKategorijaID()+","+administrator.getAdministratorID()+","+trener.getTrenerID();
     }
 
+        /**
+     * {@inheritDoc}
+     * Vraća primarni ključ za identifikaciju grupe.
+     * 
+     * @return Primarni ključ
+     */
     @Override
     public String vratiPrimarniKljuc() {
         return "grupa.grupaID="+grupaID;
     }
 
+        /**
+     * {@inheritDoc}
+     * Ova metoda trenutno nije podržana.
+     * 
+     * @param rs {@code ResultSet} koji sadrži podatke za kreiranje objekta
+     * @return Instanca objekta klase {@link ApstraktniDomenskiObjekat}
+     * @throws Exception Ako dođe do greške tokom obrade {@code ResultSet}-a
+     */
     @Override
     public ApstraktniDomenskiObjekat vratiObjekatIzRS(ResultSet rs) throws Exception {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
+        /**
+     * {@inheritDoc}
+     * Vraća SQL izraz za ažuriranje podataka u bazi u tabelu Grupa.
+     * 
+     * @return SQL izraz za ažuriranje
+     */
     @Override
     public String vratiVrednostiZaIzmenu() {
         //"nazivGrupe,brClanova,kategorija,administrator,trener";
