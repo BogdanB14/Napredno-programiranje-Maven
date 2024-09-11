@@ -190,6 +190,15 @@ public class Grupa implements ApstraktniDomenskiObjekat{
         return Objects.equals(this.grupaID, other.grupaID);
     }
 
+    
+        /**
+     * Vraća string prezentaciju objekta {@code Grupa}.
+     * <p>
+     * U ovom slučaju, vraća naziv grupe.
+     * </p>
+     *
+     * @return Naziv grupe.
+     */
     @Override
     public String toString() {
         return nazivGrupe;

@@ -129,6 +129,15 @@ public class ClanGrupe implements ApstraktniDomenskiObjekat{
         this.clan = clan;
     }
     
+    
+        /**
+     * Vraća string prezentaciju objekta {@code ClanGrupe}.
+     * <p>
+     * U ovom slučaju, vraća Redni broj clana, pozicija clana i status clana.
+     * </p>
+     *
+     * @return Redni broj clana, pozicija clana i status clana.
+     */
     @Override
     public String toString() {
         return "ClanGrupe{" + "rbClana=" + rbClana + ", pozicija=" + pozicija + ", status=" + status + '}';
