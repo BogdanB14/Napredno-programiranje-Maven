@@ -26,22 +26,59 @@ import komunikacija.Primalac;
 import komunikacija.Zahtev;
 
 /**
- *
+ * Klasa koja obrađuje zahteve klijenata u komunikaciji sa serverom.
+ * <p>
+ * Ova klasa nasleđuje {@link Thread} i koristi se za obradu zahteva koje
+ * server prima od klijenata. Svaki zahtev se procesuira na osnovu vrste operacije
+ * i vraća odgovarajući odgovor klijentu. 
+ * </p>
+ * 
  * @author Bogdan Blagojevic
  */
 public class ObradaKlijentskihZahteva extends Thread{
+        /**
+     * Socket koji povezuje klijenta sa serverom.
+     */
     Socket socket;
+    /**
+     * Atribut klase Primalac koji se koristi za slanje (upisivanje) objekta na soket
+     */
     Primalac primalac;
+        /**
+     * Atribut klase Primalac koji se koristi za prijem (iscitavanje) objekta sa soketa
+     */
     Posiljalac posiljalac;
+        /**
+     * Flag koji označava da li treba prekinuti obradu zahteva.
+     */
     boolean kraj = false;
+        /**
+     * Trenutno ulogovani administrator.
+     */
     Administrator administrator;
     
+        /**
+     * Konstruktor klase {@code ObradaKlijentskihZahteva}.
+     * <p>
+     * Inicijalizuje {@code Primalac} i {@code Posiljalac} koristeći zadati socket.
+     * </p>
+     * 
+     * @param socket Socket povezan sa klijentom.
+     */
     public ObradaKlijentskihZahteva(Socket socket){
         this.socket = socket;
         posiljalac = new Posiljalac(socket);
         primalac = new Primalac(socket);
     }
     
+        /**
+     * Metoda koja se izvršava u posebnoj niti i obrađuje zahteve klijenata.
+     * <p>
+     * Ova metoda neprekidno čita zahteve sa soketa, obrađuje ih i šalje odgovore
+     * klijentima. Ako dođe do greške, ili ako je zahtev {@code null}, obrada se
+     * prekida.
+     * </p>
+     */
     @Override
     public void run() {
         while(!kraj){
@@ -201,6 +238,14 @@ public class ObradaKlijentskihZahteva extends Thread{
             }
         }
     }
+    
+        /**
+     * Prekida obradu zahteva i zatvara konekciju sa klijentom.
+     * <p>
+     * Ova metoda postavlja flag {@code kraj} na {@code true}, zatvara socket
+     * i prekida nit.
+     * </p>
+     */
     public void prekiniNit(){
         try {
             kraj = true;
@@ -211,10 +256,20 @@ public class ObradaKlijentskihZahteva extends Thread{
         }
     }
 
+        /**
+     * Get metoda - Vraća trenutno ulogovanog administratora.
+     * 
+     * @return Trenutno ulogovani administrator.
+     */
     public Administrator getAdministrator() {
         return administrator;
     }
 
+        /**
+     * Set metoda - Postavlja trenutno ulogovanog administratora.
+     * 
+     * @param administrator Trenutno ulogovani administrator.
+     */
     public void setAdministrator(Administrator administrator) {
         this.administrator = administrator;
     }
