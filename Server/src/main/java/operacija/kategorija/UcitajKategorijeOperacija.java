@@ -56,19 +56,18 @@ public class UcitajKategorijeOperacija extends ApstraktnaGenerickaOperacija{
         lista = broker.getAll(new Kategorija(), "");
     }
 
-        /**
-     * Set metoda - Vraća listu kategorija koje su učitane iz baze podataka.
-     * 
-     * @return Lista kategorija.
-     */
+
+
+               
     public void setLista(List<Kategorija> lista) {
         this.lista = lista;
     }
 
-        /**
+
+             /**
      * Get metoda - Postavlja listu kategorija.
      * 
-     * @param lista Lista kategorija koja će biti postavljena.
+     * @return lista Lista kategorija koja ce biti postavljena.
      */
     public List<Kategorija> getLista() {
         return lista;
