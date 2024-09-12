@@ -4,6 +4,12 @@
  */
 package domenJSON;
 
+import com.google.gson.Gson;
+import domen.Grupa;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -14,7 +20,19 @@ public class GrupaDeserijalizacija implements JSONDeserijalizacija {
 
     @Override
     public List deserijalizuj(String putanja) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+                    Gson gson = new Gson();
+    List<Grupa> lista = new ArrayList<>();
+    try (BufferedReader reader = new BufferedReader(new FileReader(putanja))) {
+        String red;
+        while ((red = reader.readLine()) != null) {
+            Grupa grupa = gson.fromJson(red, Grupa.class);
+            System.out.println("Deserijalizovana grupa: " + grupa);
+            lista.add(grupa);
+        }
+    } catch (IOException ex) {
+        ex.printStackTrace();
+    }
+    return lista;
     }
     
 }

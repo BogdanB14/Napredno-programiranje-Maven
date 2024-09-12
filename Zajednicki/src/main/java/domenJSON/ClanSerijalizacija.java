@@ -42,10 +42,10 @@ public class ClanSerijalizacija implements JSONSerijalizacija {
                 if(postoji)
                     writer.write("\n");
                 writer.write(json);
-                System.out.println("Serijalizovan administrator: " + json + " na putanji: " + putanja);
+                System.out.println("Serijalizovan clan: " + json + " na putanji: " + putanja);
             }
         } catch(IOException e){
-            System.out.println("Usao u catch u serijalizaciji administratora");
+            System.out.println("Usao u catch u serijalizaciji clana");
             e.printStackTrace();
         }
         

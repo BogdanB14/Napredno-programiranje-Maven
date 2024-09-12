@@ -16,6 +16,8 @@ import domenJSON.AdministratorDeserijalizacija;
 import domenJSON.AdministratorSerijalizacija;
 import domenJSON.ClanDeserijalizacija;
 import domenJSON.ClanSerijalizacija;
+import domenJSON.GrupaDeserijalizacija;
+import domenJSON.GrupaSerijalizacija;
 import java.io.IOException;
 import java.net.Socket;
 import java.util.ArrayList;
@@ -267,7 +269,14 @@ public class Komunikacija {
         
         Odgovor odgovor = (Odgovor) primalac.primi();
         grupe = (List<Grupa>) odgovor.getOdgovor();
-        
+        GrupaSerijalizacija lista = new GrupaSerijalizacija();
+        for(Grupa g : grupe){
+        lista.serijalizacija(g, "D:\\Napredno programiranje\\json\\Grupa\\svegrupe.txt");
+        System.out.println("Serijalizuje se grupa upravo" + g);
+        }
+        GrupaDeserijalizacija deserijalizacija = new GrupaDeserijalizacija();
+        List<Grupa> deserijalizovana = deserijalizacija.deserijalizuj("D:\\Napredno programiranje\\json\\Grupa\\svegrupe.txt");
+        System.out.println("Deserijalizovana lista: \n" + deserijalizovana);
         return grupe;
     }
     /**
