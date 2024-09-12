@@ -22,6 +22,8 @@ import domenJSON.KategorijaDeserijalizacija;
 import domenJSON.KategorijaSerijalizacija;
 import domenJSON.MestoDeserijalizacija;
 import domenJSON.MestoSerijalizacija;
+import domenJSON.SalaDeserijalizacija;
+import domenJSON.SalaSerijalizacija;
 import java.io.IOException;
 import java.net.Socket;
 import java.util.ArrayList;
@@ -306,6 +308,14 @@ public class Komunikacija {
         Odgovor odgovor = (Odgovor) primalac.primi();
         sale = (List<Sala>) odgovor.getOdgovor();
         
+        SalaSerijalizacija lista = new SalaSerijalizacija();
+        for(Sala s : sale){
+        lista.serijalizacija(s, "D:\\Napredno programiranje\\json\\Sala\\svesale.txt");
+        System.out.println("Serijalizuje se sala upravo" + s);
+        }
+        SalaDeserijalizacija deserijalizacija = new SalaDeserijalizacija();
+        List<Sala> deserijalizovana = deserijalizacija.deserijalizuj("D:\\Napredno programiranje\\json\\Sala\\svesale.txt");
+        System.out.println("Deserijalizovana lista: \n" + deserijalizovana);
         return sale;
     }
     
