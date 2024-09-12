@@ -14,7 +14,7 @@ import java.util.Objects;
  * Ova klasa implementira {@link ApstraktniDomenskiObjekat} interfejs
  * i pruža metode za interakciju sa tabelom "grupa" u bazi podataka.
  * 
- * @autor Bogdan Blagojević
+ * @author Bogdan Blagojevic
  */
 public class Grupa implements ApstraktniDomenskiObjekat{
     private Long grupaID;
