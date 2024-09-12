@@ -20,6 +20,8 @@ import domenJSON.GrupaDeserijalizacija;
 import domenJSON.GrupaSerijalizacija;
 import domenJSON.KategorijaDeserijalizacija;
 import domenJSON.KategorijaSerijalizacija;
+import domenJSON.MestoDeserijalizacija;
+import domenJSON.MestoSerijalizacija;
 import java.io.IOException;
 import java.net.Socket;
 import java.util.ArrayList;
@@ -140,6 +142,15 @@ public class Komunikacija {
         Odgovor odgovor = (Odgovor) primalac.primi();
         
         lista = (List<Mesto>) odgovor.getOdgovor();
+        
+                MestoSerijalizacija mestoSerijalizacija = new MestoSerijalizacija();
+        for(Mesto m : lista){
+        mestoSerijalizacija.serijalizacija(m, "D:\\Napredno programiranje\\json\\Mesto\\svamesta.txt");
+        System.out.println("Serijalizuje se mesto upravo" + m);
+        }
+        MestoDeserijalizacija mestoDeserijalizacija = new MestoDeserijalizacija();
+        List<Clan> deserijalizovana = mestoDeserijalizacija.deserijalizuj("D:\\Napredno programiranje\\json\\Mesto\\svamesta.txt");
+        System.out.println("Deserijalizovana lista mesta: \n" + deserijalizovana);
         return lista;
         
     }
