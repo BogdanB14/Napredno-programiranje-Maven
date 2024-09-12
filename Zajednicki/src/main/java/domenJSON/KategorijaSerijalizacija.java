@@ -23,7 +23,7 @@ public class KategorijaSerijalizacija implements JSONSerijalizacija {
         
         try{
             File file = new File(putanja);
-            File parentDir = file.getParentFile(); // Get the directory of the file
+            File parentDir = file.getParentFile();
 
             if (!parentDir.exists()) {
                 if (parentDir.mkdirs()) {

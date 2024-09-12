@@ -26,6 +26,8 @@ import domenJSON.SalaDeserijalizacija;
 import domenJSON.SalaSerijalizacija;
 import domenJSON.TrenerDeserijalizacija;
 import domenJSON.TrenerSerijalizacija;
+import domenJSON.TreningDeserijalizacija;
+import domenJSON.TreningSerijalizacija;
 import java.io.IOException;
 import java.net.Socket;
 import java.util.ArrayList;
@@ -269,6 +271,14 @@ public class Komunikacija {
         
         Odgovor odgovor = (Odgovor) primalac.primi();
         treninzi = (List<Trening>) odgovor.getOdgovor();
+        TreningSerijalizacija treningSerijalizacija = new TreningSerijalizacija();
+        for(Trening t : treninzi){
+        treningSerijalizacija.serijalizacija(t, "D:\\Napredno programiranje\\json\\Trening\\svitreninzi.txt");
+        System.out.println("Serijalizuje se trening upravo " + t);
+        }
+        TreningDeserijalizacija treningDeserijalizacija = new TreningDeserijalizacija();
+        List<Clan> deserijalizovana = treningDeserijalizacija.deserijalizuj("D:\\Napredno programiranje\\json\\Trening\\svitreninzi.txt");
+        System.out.println("Deserijalizovana lista treninga: \n" + deserijalizovana);
         
         
         return treninzi;
