@@ -114,6 +114,7 @@ public class AdministratorTest {
      */
     @Test
     public void testVratiVrednostiZaUbacivanje() {
+        
         assertEquals("'BogdanB14','Bogdan123','Bogdan','Blagojevic'", administrator.vratiVrednostiZaUbacivanje());
         
     }

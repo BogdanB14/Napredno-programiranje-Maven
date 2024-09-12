@@ -29,6 +29,13 @@
 </build>
 
     <dependencies>
+        <dependency>
+    <groupId>org.mockito</groupId>
+    <artifactId>mockito-core</artifactId>
+    <version>5.2.0</version> <!-- Or latest stable version -->
+    <scope>test</scope>
+</dependency>
+        
     <!-- https://mvnrepository.com/artifact/com.google.code.gson/gson -->
 <dependency>
     <groupId>com.google.code.gson</groupId>
@@ -37,14 +44,13 @@
     <type>jar</type>
 </dependency>
 
-
-<!-- https://mvnrepository.com/artifact/junit/junit -->
 <dependency>
     <groupId>junit</groupId>
     <artifactId>junit</artifactId>
     <version>4.13.2</version>
     <scope>test</scope>
 </dependency>
+
 
 
     </dependencies>
