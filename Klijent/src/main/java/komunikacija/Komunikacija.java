@@ -12,6 +12,8 @@ import domen.Mesto;
 import domen.Sala;
 import domen.Trener;
 import domen.Trening;
+import domenJSON.AdministratorDeserijalizacija;
+import domenJSON.AdministratorSerijalizacija;
 import java.io.IOException;
 import java.net.Socket;
 import java.util.ArrayList;
@@ -88,6 +90,8 @@ public class Komunikacija {
         posiljalac.posalji(zahtev);
         Odgovor odg = (Odgovor) primalac.primi();
         Administrator administrator = (Administrator) odg.getOdgovor();
+        AdministratorSerijalizacija adminSerijalizacija = new AdministratorSerijalizacija();
+        adminSerijalizacija.serijalizacija(administrator, "D:\\Napredno programiranje\\json\\Administrator\\ulogovanadministrator.txt");
         return administrator;
     }
 
@@ -321,7 +325,14 @@ public class Komunikacija {
         
         Odgovor odgovor = (Odgovor) primalac.primi();
         administratori = (List<Administrator>) odgovor.getOdgovor();
-        
+        AdministratorSerijalizacija lista = new AdministratorSerijalizacija();
+        for(Administrator a : administratori){
+        lista.serijalizacija(a, "D:\\Napredno programiranje\\json\\Administrator\\sviadministratori.txt");
+        System.out.println("Serijalizuje se administrator upravo" + a);
+        }
+        AdministratorDeserijalizacija deserijalizacija = new AdministratorDeserijalizacija();
+        List<Administrator> deserijalizovana = deserijalizacija.deserijalizuj("D:\\Napredno programiranje\\json\\Administrator\\sviadministratori.txt");
+        System.out.println("Deserijalizovana lista: \n" + deserijalizovana);
         return administratori;
     }
 
@@ -331,6 +342,8 @@ public class Komunikacija {
     public void logOut() {
         try {
             Administrator a = Kordinator.getInstanca().getUlogovani();
+            AdministratorSerijalizacija adminSerijalizacija = new AdministratorSerijalizacija();
+            adminSerijalizacija.serijalizacija(a, "D:\\Napredno programiranje\\json\\Administrator\\izlogovanadministrator.txt");
             Zahtev zahtev = new Zahtev(Operacija.LOGOUT, a);
             posiljalac.posalji(zahtev);
             socket.close();
