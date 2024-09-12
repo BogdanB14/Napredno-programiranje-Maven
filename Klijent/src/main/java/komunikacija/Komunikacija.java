@@ -14,6 +14,8 @@ import domen.Trener;
 import domen.Trening;
 import domenJSON.AdministratorDeserijalizacija;
 import domenJSON.AdministratorSerijalizacija;
+import domenJSON.ClanDeserijalizacija;
+import domenJSON.ClanSerijalizacija;
 import java.io.IOException;
 import java.net.Socket;
 import java.util.ArrayList;
@@ -106,9 +108,17 @@ public class Komunikacija {
         List<Clan> lista;
         posiljalac.posalji(zahtev);
         
-        Odgovor odgovor = (Odgovor) primalac.primi(); 
-        
+        Odgovor odgovor = (Odgovor) primalac.primi();
         lista = (List<Clan>) odgovor.getOdgovor();
+        ClanSerijalizacija clanSerijalizacija = new ClanSerijalizacija();
+        for(Clan a : lista){
+        clanSerijalizacija.serijalizacija(a, "D:\\Napredno programiranje\\json\\Clan\\sviclanovi.txt");
+        System.out.println("Serijalizuje se clan upravo" + a);
+        }
+        ClanDeserijalizacija clanDeserijalizacija = new ClanDeserijalizacija();
+        List<Clan> deserijalizovana = clanDeserijalizacija.deserijalizuj("D:\\Napredno programiranje\\json\\Clan\\sviclanovi.txt");
+        System.out.println("Deserijalizovana lista clanova: \n" + deserijalizovana);
+        
         return lista;
     }
     

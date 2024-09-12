@@ -12,12 +12,11 @@
     </properties>
 
     <dependencies>
-        <!-- Add Zajednicki dependency -->
         <dependency>
-            <groupId>rs.ac.bg.fon</groupId>
-            <artifactId>Zajednicki</artifactId>
-            <version>1.0-SNAPSHOT</version>
-        </dependency>
+    <groupId>rs.ac.bg.fon</groupId>
+    <artifactId>Zajednicki</artifactId>
+    <version>1.0-SNAPSHOT</version>
+</dependency>
     </dependencies>
 
     <build>
