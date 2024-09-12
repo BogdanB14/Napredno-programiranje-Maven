@@ -18,6 +18,8 @@ import domenJSON.ClanDeserijalizacija;
 import domenJSON.ClanSerijalizacija;
 import domenJSON.GrupaDeserijalizacija;
 import domenJSON.GrupaSerijalizacija;
+import domenJSON.KategorijaDeserijalizacija;
+import domenJSON.KategorijaSerijalizacija;
 import java.io.IOException;
 import java.net.Socket;
 import java.util.ArrayList;
@@ -310,7 +312,14 @@ public class Komunikacija {
         
         Odgovor odgovor = (Odgovor) primalac.primi();
         kategorije = (List<Kategorija>) odgovor.getOdgovor();
-        
+        KategorijaSerijalizacija lista = new KategorijaSerijalizacija();
+        for(Kategorija k : kategorije){
+        lista.serijalizacija(k, "D:\\Napredno programiranje\\json\\Kategorija\\svekategorije.txt");
+        System.out.println("Serijalizuje se kategorija upravo" + k);
+        }
+        KategorijaDeserijalizacija deserijalizacija = new KategorijaDeserijalizacija();
+        List<Kategorija> deserijalizovana = deserijalizacija.deserijalizuj("D:\\Napredno programiranje\\json\\Kategorija\\svekategorije.txt");
+        System.out.println("Deserijalizovana lista: \n" + deserijalizovana);
         return kategorije;
     }
 
