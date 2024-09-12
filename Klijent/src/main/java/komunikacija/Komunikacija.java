@@ -24,6 +24,8 @@ import domenJSON.MestoDeserijalizacija;
 import domenJSON.MestoSerijalizacija;
 import domenJSON.SalaDeserijalizacija;
 import domenJSON.SalaSerijalizacija;
+import domenJSON.TrenerDeserijalizacija;
+import domenJSON.TrenerSerijalizacija;
 import java.io.IOException;
 import java.net.Socket;
 import java.util.ArrayList;
@@ -121,7 +123,7 @@ public class Komunikacija {
         ClanSerijalizacija clanSerijalizacija = new ClanSerijalizacija();
         for(Clan a : lista){
         clanSerijalizacija.serijalizacija(a, "D:\\Napredno programiranje\\json\\Clan\\sviclanovi.txt");
-        System.out.println("Serijalizuje se clan upravo" + a);
+        System.out.println("Serijalizuje se clan upravo " + a);
         }
         ClanDeserijalizacija clanDeserijalizacija = new ClanDeserijalizacija();
         List<Clan> deserijalizovana = clanDeserijalizacija.deserijalizuj("D:\\Napredno programiranje\\json\\Clan\\sviclanovi.txt");
@@ -148,7 +150,7 @@ public class Komunikacija {
                 MestoSerijalizacija mestoSerijalizacija = new MestoSerijalizacija();
         for(Mesto m : lista){
         mestoSerijalizacija.serijalizacija(m, "D:\\Napredno programiranje\\json\\Mesto\\svamesta.txt");
-        System.out.println("Serijalizuje se mesto upravo" + m);
+        System.out.println("Serijalizuje se mesto upravo " + m);
         }
         MestoDeserijalizacija mestoDeserijalizacija = new MestoDeserijalizacija();
         List<Clan> deserijalizovana = mestoDeserijalizacija.deserijalizuj("D:\\Napredno programiranje\\json\\Mesto\\svamesta.txt");
@@ -268,6 +270,7 @@ public class Komunikacija {
         Odgovor odgovor = (Odgovor) primalac.primi();
         treninzi = (List<Trening>) odgovor.getOdgovor();
         
+        
         return treninzi;
      }
 
@@ -287,7 +290,7 @@ public class Komunikacija {
         GrupaSerijalizacija lista = new GrupaSerijalizacija();
         for(Grupa g : grupe){
         lista.serijalizacija(g, "D:\\Napredno programiranje\\json\\Grupa\\svegrupe.txt");
-        System.out.println("Serijalizuje se grupa upravo" + g);
+        System.out.println("Serijalizuje se grupa upravo " + g);
         }
         GrupaDeserijalizacija deserijalizacija = new GrupaDeserijalizacija();
         List<Grupa> deserijalizovana = deserijalizacija.deserijalizuj("D:\\Napredno programiranje\\json\\Grupa\\svegrupe.txt");
@@ -311,7 +314,7 @@ public class Komunikacija {
         SalaSerijalizacija lista = new SalaSerijalizacija();
         for(Sala s : sale){
         lista.serijalizacija(s, "D:\\Napredno programiranje\\json\\Sala\\svesale.txt");
-        System.out.println("Serijalizuje se sala upravo" + s);
+        System.out.println("Serijalizuje se sala upravo " + s);
         }
         SalaDeserijalizacija deserijalizacija = new SalaDeserijalizacija();
         List<Sala> deserijalizovana = deserijalizacija.deserijalizuj("D:\\Napredno programiranje\\json\\Sala\\svesale.txt");
@@ -336,7 +339,7 @@ public class Komunikacija {
         KategorijaSerijalizacija lista = new KategorijaSerijalizacija();
         for(Kategorija k : kategorije){
         lista.serijalizacija(k, "D:\\Napredno programiranje\\json\\Kategorija\\svekategorije.txt");
-        System.out.println("Serijalizuje se kategorija upravo" + k);
+        System.out.println("Serijalizuje se kategorija upravo " + k);
         }
         KategorijaDeserijalizacija deserijalizacija = new KategorijaDeserijalizacija();
         List<Kategorija> deserijalizovana = deserijalizacija.deserijalizuj("D:\\Napredno programiranje\\json\\Kategorija\\svekategorije.txt");
@@ -357,7 +360,14 @@ public class Komunikacija {
         
         Odgovor odgovor = (Odgovor) primalac.primi();
         treneri = (List<Trener>) odgovor.getOdgovor();
-        
+        TrenerSerijalizacija lista = new TrenerSerijalizacija();
+        for(Trener t : treneri){
+        lista.serijalizacija(t, "D:\\Napredno programiranje\\json\\Trener\\svitreneri.txt");
+        System.out.println("Serijalizuje se trener upravo " + t);
+        }
+        TrenerDeserijalizacija deserijalizacija = new TrenerDeserijalizacija();
+        List<Trener> deserijalizovana = deserijalizacija.deserijalizuj("D:\\Napredno programiranje\\json\\Trener\\svitreneri.txt");
+        System.out.println("Deserijalizovana lista: \n" + deserijalizovana);
         return treneri;
     }
 
@@ -377,7 +387,7 @@ public class Komunikacija {
         AdministratorSerijalizacija lista = new AdministratorSerijalizacija();
         for(Administrator a : administratori){
         lista.serijalizacija(a, "D:\\Napredno programiranje\\json\\Administrator\\sviadministratori.txt");
-        System.out.println("Serijalizuje se administrator upravo" + a);
+        System.out.println("Serijalizuje se administrator upravo " + a);
         }
         AdministratorDeserijalizacija deserijalizacija = new AdministratorDeserijalizacija();
         List<Administrator> deserijalizovana = deserijalizacija.deserijalizuj("D:\\Napredno programiranje\\json\\Administrator\\sviadministratori.txt");
