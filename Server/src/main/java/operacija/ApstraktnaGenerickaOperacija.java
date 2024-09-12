@@ -35,7 +35,7 @@ public abstract class ApstraktnaGenerickaOperacija {
     
         /**
      * Izvršava generičku operaciju sa podrškom za transakcije.
-     *  <p>
+     *  
      * Ova metoda obavlja sledeće korake:
      *        <ul>
      *   <li>Proverava preduslove za operaciju.</li>
@@ -44,7 +44,7 @@ public abstract class ApstraktnaGenerickaOperacija {
      *   <li>Potvrđuje transakciju ako sve operacije prođu bez grešaka.</li>
      *   <li>U slučaju greške, poništava transakciju.</li>
      *        </ul>
-     *  </p>
+     *  
      * 
      * @param objekat Objekt koji se koristi u operaciji.
      * @param kljuc Ključ koji se koristi u operaciji.
