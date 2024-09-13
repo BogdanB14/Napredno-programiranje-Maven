@@ -109,7 +109,7 @@ public class Mesto implements ApstraktniDomenskiObjekat{
      * @return {@code true} ako su objekti identični, {@code false} inače.
      * Poređenje se vrši po nazivu mesta, identifikatoru mesta i poštanskom broju.
      */
-    @Override
+    @Override    
     public boolean equals(Object obj) {
         if (this == obj) {
             return true;
@@ -130,8 +130,7 @@ public class Mesto implements ApstraktniDomenskiObjekat{
         return Objects.equals(this.postanskiBroj, other.postanskiBroj);
     }
 
-    
-        /**
+    /**
      * Vraća string prezentaciju objekta {@code Mesto}.
      * <p>
      * U ovom slučaju, vraća naziv mesta.

@@ -202,18 +202,10 @@ public class Trening implements ApstraktniDomenskiObjekat{
             return false;
         }
         final Trening other = (Trening) obj;
-        if (this.rbTreninga != other.rbTreninga) {
-            return false;
-        }
-        if (!Objects.equals(this.datumTreninga, other.datumTreninga)) {
-            return false;
-        }
-        return this.tipTreninga == other.tipTreninga;
+        return this.rbTreninga == other.rbTreninga;
     }
-    
-    
 
-        /**
+    /**
      * {@inheritDoc}
      * Vraća naziv tabele u bazi podataka u kojoj se nalazi entitet {@code Trening}.
      * 

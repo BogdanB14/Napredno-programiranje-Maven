@@ -136,13 +136,6 @@ public class Kategorija implements ApstraktniDomenskiObjekat{
         return hash;
     }
 
-        /**
-     * Upoređuje objekat {@code Kategorija} sa drugim objektom.
-     *
-     * @param obj Drugi objekat koji se upoređuje.
-     * @return {@code true} ako su objekti identični, {@code false} inače.
-     * Poredjenje se vrsi po nazivu kategorije, opisu kategorije i ID-u kategorije.
-     */
     @Override
     public boolean equals(Object obj) {
         if (this == obj) {
@@ -155,17 +148,10 @@ public class Kategorija implements ApstraktniDomenskiObjekat{
             return false;
         }
         final Kategorija other = (Kategorija) obj;
-        if (!Objects.equals(this.nazivKategorije, other.nazivKategorije)) {
-            return false;
-        }
-        if (!Objects.equals(this.opisKategorije, other.opisKategorije)) {
-            return false;
-        }
-        if (!Objects.equals(this.kategorijaID, other.kategorijaID)) {
-            return false;
-        }
-        return this.pol == other.pol;
+        return Objects.equals(this.kategorijaID, other.kategorijaID);
     }
+
+
     
 
         /**

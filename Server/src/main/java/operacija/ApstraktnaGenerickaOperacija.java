@@ -24,7 +24,7 @@ public abstract class ApstraktnaGenerickaOperacija {
         /**
      * Atribut klase Repository koji se koristi za komunikaciju sa bazom podataka.
      */
-    protected final Repository broker;
+    public  Repository broker; //AKO TE ZEZA PROGRAM SAMO VRATI FINAL 
 
         /**
      * Konstruktor koji inicijalizuje {@code broker} kao instancu {@link DBRepositoryGeneric}.

@@ -133,10 +133,8 @@ public class Trener implements ApstraktniDomenskiObjekat{
 
     @Override
     public int hashCode() {
-        int hash = 7;
-        return hash;
+        return Objects.hash(trenerID, imeTrener, prezimeTrener, mesto);
     }
-
         /**
      * Upoređuje objekat {@code Trener} sa drugim objektom.
      *
@@ -165,7 +163,8 @@ public class Trener implements ApstraktniDomenskiObjekat{
         return Objects.equals(this.trenerID, other.trenerID);
     }
 
-        /**
+
+    /**
      * {@inheritDoc}
      * Vraća naziv tabele u bazi podataka u kojoj se nalazi entitet {@code Trener}.
      * 
