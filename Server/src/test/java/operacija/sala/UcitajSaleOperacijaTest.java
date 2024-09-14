@@ -46,11 +46,10 @@ public class UcitajSaleOperacijaTest {
     
     @BeforeEach
     public void setUp() {
+        operacija = new UcitajSaleOperacija();
         brokerMock = mock(DBRepository.class);
         mesto = new Mesto(1L, 17530L, "Surdulica");
-        operacija = new UcitajSaleOperacija();
-        
-        
+        operacija.broker = brokerMock;
     }
     
     @AfterEach
@@ -70,12 +69,10 @@ public class UcitajSaleOperacijaTest {
     @Test
     public void testPredusloviException() throws Exception {
         assertThrows(Exception.class, () -> {
-            operacija.preduslovi(new Administrator()); // Replace with a class that should throw an exception
+            operacija.preduslovi(new Administrator());
         });
     }
-    /**
-     * Test of izvrsiOperaciju method, of class UcitajSaleOperacija.
-     */
+
     @Test
     public void testIzvrsiOperaciju() throws Exception {
         List<Sala> sale = Arrays.asList(
@@ -85,11 +82,11 @@ public class UcitajSaleOperacijaTest {
             new Sala(4L, "Bora Stankovic", 200, mesto)
         );
         when(brokerMock.getAll(any(Sala.class), anyString())).thenReturn(sale); 
-        operacija.izvrsiOperaciju(null, "");
+        operacija.izvrsiOperaciju(null,"");
         List<Sala> stvarne = operacija.getLista();
         System.out.println(stvarne);
         assertEquals(sale, stvarne);
-        verify(brokerMock, times(1)).getAll(any(Sala.class), eq("JOIN mesto mesto ON sala.mesto=mesto.mestoID"));
+        verify(brokerMock, times(1)).getAll(any(Sala.class), eq(" JOIN mesto mesto ON sala.mesto=mesto.mestoID"));
     }
 
 

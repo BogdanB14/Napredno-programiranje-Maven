@@ -67,7 +67,7 @@ public class UcitajKategorijeOperacijaTest {
     @Test
     public void testPredusloviException() throws Exception {
         assertThrows(Exception.class, () -> {
-            operacija.preduslovi(new Administrator()); // Replace with a class that should throw an exception
+            operacija.preduslovi(new Administrator()); 
         });
     }
 
@@ -78,13 +78,9 @@ public class UcitajKategorijeOperacijaTest {
             new Kategorija(1L, "Kategorija 1", "opis1", Pol.MUSKI),
             new Kategorija(2L, "Kategorija 2", "opis2", Pol.ZENSKI)
         );
-        // Set up mock behavior
+       
         when(brokerMock.getAll(any(Kategorija.class), anyString())).thenReturn(kategorije);
-
-        // Execute the operation
         operacija.izvrsiOperaciju(null, "");
-
-        // Verify results
         assertEquals(kategorije, operacija.getLista());
         verify(brokerMock, times(1)).getAll(any(Kategorija.class), anyString());
     }

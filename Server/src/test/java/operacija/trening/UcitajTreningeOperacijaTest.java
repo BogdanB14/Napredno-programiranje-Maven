@@ -54,20 +54,18 @@ public class UcitajTreningeOperacijaTest {
     }
 
     @Test
-    public void testPredusloviTrening() throws Exception {
+    public void testPreduslovi() throws Exception {
         operacija.preduslovi(new Trening());
     }
 
     @Test
     public void testPredusloviException() {
         assertThrows(Exception.class, () -> {
-            operacija.preduslovi(new Administrator()); // Replace with a class that should throw an exception
+            operacija.preduslovi(new Administrator());
         });
     }
 
-    /**
-     * Test of izvrsiOperaciju method, of class UcitajTreningeOperacija.
-     */
+
     @Test
     public void testIzvrsiOperaciju() throws Exception {
         List<Trening> treninzi = Arrays.asList(

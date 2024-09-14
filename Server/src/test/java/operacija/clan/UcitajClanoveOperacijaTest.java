@@ -59,9 +59,7 @@ public class UcitajClanoveOperacijaTest {
     public void tearDown() {
     }
 
-    /**
-     * Test of preduslovi method, of class UcitajClanoveOperacija.
-     */
+    
     @Test
     public void testPredusloviNull() throws Exception {
         operacija.preduslovi(null);
@@ -76,13 +74,11 @@ public class UcitajClanoveOperacijaTest {
     @Test
     public void testPredusloviException() throws Exception {
         assertThrows(Exception.class, () -> {
-            operacija.preduslovi(new Administrator()); // Assuming this should throw an exception
+            operacija.preduslovi(new Administrator()); 
         });
     }
 
-    /**
-     * Test of izvrsiOperaciju method, of class UcitajClanoveOperacija.
-     */
+    
     @Test
     public void testIzvrsiOperaciju() throws Exception {
         List<Clan> clanovi = Arrays.asList(

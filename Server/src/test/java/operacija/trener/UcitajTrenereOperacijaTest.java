@@ -47,12 +47,14 @@ public class UcitajTrenereOperacijaTest {
     
     @BeforeEach
     public void setUp() {
+        operacija = new UcitajTrenereOperacija();
+        brokerMock = mock(DBRepository.class);
+        operacija.broker = brokerMock;
         mesto1 = new Mesto(1L, 17530L, "Surdulica");
         mesto2 = new Mesto(1L, 17500L, "Vranje");
         mesto3 = new Mesto(1L, 17510L, "Vladicin Han");
         mesto4 = new Mesto(1L, 18000L, "Nis");
-        operacija = new UcitajTrenereOperacija();
-        brokerMock = mock(DBRepository.class);
+        
     }
     
     @AfterEach
@@ -74,7 +76,7 @@ public class UcitajTrenereOperacijaTest {
     @Test
     public void testPredusloviException() throws Exception {
         assertThrows(Exception.class, () -> {
-            operacija.preduslovi(new Administrator()); // Replace with a class that should throw an exception
+            operacija.preduslovi(new Administrator()); 
         });
     }
 

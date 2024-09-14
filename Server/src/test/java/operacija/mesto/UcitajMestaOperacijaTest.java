@@ -66,7 +66,7 @@ public class UcitajMestaOperacijaTest {
     @Test
     public void testPredusloviException() throws Exception {
         assertThrows(Exception.class, () -> {
-            operacija.preduslovi(new Administrator()); // Replace with a class that should throw an exception
+            operacija.preduslovi(new Administrator()); 
         });
     }
 

@@ -59,7 +59,9 @@ public class UcitajGrupeOperacijaTest {
         //Grupa 1:
  //'1', 'Prvi muski tim', '15', '1', '2', '1', '1', 'Dalibor', 'Rasic', '1', '1', 'SENIORI', 'U ovoj grupi se nalaze muske osobe koje se takmice i igraju sa prvim timom.\r\nTo su clanovi kluba koji imaju minimalno 18 godina.', 'MUSKI', '2', 'Vladica70', 'Vladica70', 'Vladica', 'Blagojevic'
 //'2', 'Prvi zenski tim', '20', '2', '3', '2', '2', 'Caslav', 'Nikolic', '2', '2', 'SENIORI', 'U ovoj grupi se nalaze zenske osobe koje se takmice i igraju sa prvim timom.\r\nTo su clanovi kluba koji imaju minimalno 18 godina.', 'ZENSKI', '3', 'Nikolino', 'Nikolina21', 'Nikolina', 'Stanisavljevic'
-
+        brokerMock = mock(DBRepository.class);
+        operacija = new UcitajGrupeOperacija();
+        operacija.broker = brokerMock;
         mesto1 = new Mesto(1l, 17530L, "Surdulica");
         administrator1 = new Administrator(4l, "Vladica70", "Vladica70", "Vladica", "Blagojevic");
         kategorija1 = new Kategorija(1L, "SENIORI", "U ovoj grupi se nalaze muske osobe koje se takmice i igraju sa prvim timom.\\r\\nTo su clanovi kluba koji imaju minimalno 18 godina.", Pol.MUSKI);
@@ -69,17 +71,15 @@ public class UcitajGrupeOperacijaTest {
         administrator2 = new Administrator(3l, "Nikolino", "Nikolina21", "Nikolina", "Stanisavljevic");
         kategorija2 = new Kategorija(2L, "SENIORI", "U ovoj grupi se nalaze zenske osobe koje se takmice i igraju sa prvim timom.\\r\\nTo su clanovi kluba koji imaju minimalno 18 godina.", Pol.ZENSKI);
         trener2 = new Trener(2L, "Caslav", "Nikolic", mesto2);
-        operacija = new UcitajGrupeOperacija();
-        brokerMock = mock(DBRepository.class);
+       
+        
     }
     
     @AfterEach
     public void tearDown() {
     }
 
-    /**
-     * Test of preduslovi method, of class UcitajGrupeOperacija.
-     */
+ 
     @Test
     public void testPredusloviNull() throws Exception {
         operacija.preduslovi(null);
@@ -93,21 +93,16 @@ public class UcitajGrupeOperacijaTest {
     @Test
     public void testPredusloviException() throws Exception {
         assertThrows(Exception.class, () -> {
-            operacija.preduslovi(new Object()); // Assuming this should throw an exception
+            operacija.preduslovi(new Object()); 
         });
     }
 
-
-    /**
-     * Test of izvrsiOperaciju method, of class UcitajGrupeOperacija.
-     */
     @Test
     public void testIzvrsiOperaciju() throws Exception {
        List<Grupa> grupe = Arrays.asList(
                 new Grupa(1L, "Prvi muski tim", 15, kategorija1, administrator1, trener1),
         new Grupa(2L, "Prvi zenski tim", 15, kategorija1, administrator1, trener1),
         new Grupa(3L, "Drugi muski tim", 15, kategorija1, administrator1, trener1),
-        // Add all expected groups to match the data in the actual database
         new Grupa(4L, "Drugi zenski tim",  15, kategorija1, administrator1, trener1),
         new Grupa(5L, "Muski razvojni tim",  15, kategorija1, administrator1, trener1),
         new Grupa(6L, "Zenski razvojni tim", 15, kategorija1, administrator1, trener1),
@@ -122,32 +117,27 @@ public class UcitajGrupeOperacijaTest {
         new Grupa(15L, "Nikolinina grupic", 15, kategorija1, administrator1, trener1)
                
        );
-           // Set up mock behavior
+           
     when(brokerMock.getAll(any(Grupa.class), anyString())).thenReturn(grupe);
 
-    // Execute operation
+    
     operacija.izvrsiOperaciju(null, "");
 
-    // Retrieve the actual result
-    List<Grupa> actualLista = operacija.getLista();
+   
+    List<Grupa> lista = operacija.getLista();
     
-    // Debugging output
+  
     System.out.println("Expected: " + grupe);
-    System.out.println("Actual: " + actualLista);
+    System.out.println("Actual: " + lista);
 
-    // Assert equality
     
-    
-    // Verify that the method was called with the expected parameters
     verify(brokerMock).getAll(any(Grupa.class), anyString());
-    assertEquals(grupe, actualLista);
+    assertEquals(grupe, lista);
     }
 
 
 
-    /**
-     * Test of setLista method, of class UcitajGrupeOperacija.
-     */
+
     @Test
     public void testSetLista() {
        List<Grupa> grupe = Arrays.asList(

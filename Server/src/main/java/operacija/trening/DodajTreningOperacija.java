@@ -19,7 +19,6 @@ import operacija.ApstraktnaGenerickaOperacija;
  * @author Bogdan Blagojevic
  */
 public class DodajTreningOperacija extends ApstraktnaGenerickaOperacija {
-    private List<Trening> lista;
 
     /**
      * Proverava preduslove za izvršenje operacije dodavanja treninga.
@@ -56,30 +55,5 @@ public class DodajTreningOperacija extends ApstraktnaGenerickaOperacija {
         broker.add((Trening) param);
     }
 
-    /**
-     * Vraća listu treninga koja je učitana ili postavljena tokom operacije.
-     * <p>
-     * U ovoj konkretnoj implementaciji, lista se koristi samo za demonstraciju i 
-     * nije korišćena u metodama ove klase.
-     * </p>
-     * 
-     * @return Lista treninga.
-     */
-    public List<Trening> getLista() {
-        return lista;
-    }
-
-    /**
-     * Postavlja listu treninga koju treba koristiti ili prikazati.
-     * <p>
-     * U ovoj konkretnoj implementaciji, lista se koristi samo za demonstraciju i 
-     * nije korišćena u metodama ove klase.
-     * </p>
-     * 
-     * @param lista Lista treninga koju treba postaviti.
-     */
-    public void setLista(List<Trening> lista) {
-        this.lista = lista;
-    }
 }
 
