@@ -13,11 +13,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- *
+ * Klasa koja implementira metodu za deserijalizaciju liste clanova.
  * @author Bogdan Blagojevic
  */
 public class ClanDeserijalizacija implements JSONDeserijalizacija {
 
+    /**
+     * {@inheritDoc }
+     * @param putanja
+     * @return 
+     */
     @Override
     public List<Clan> deserijalizuj(String putanja) {
             Gson gson = new Gson();

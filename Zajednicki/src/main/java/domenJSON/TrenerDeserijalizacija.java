@@ -13,11 +13,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- *
+ * Klasa koja implementira metodu za deserijalizaciju liste trenera.
  * @author Bogdan Blagojevic
  */
 public class TrenerDeserijalizacija implements JSONDeserijalizacija {
 
+    /**
+     * {@inheritDoc }
+     * @param putanja
+     * @return 
+     */
     @Override
     public List deserijalizuj(String putanja) {
         Gson gson = new Gson();

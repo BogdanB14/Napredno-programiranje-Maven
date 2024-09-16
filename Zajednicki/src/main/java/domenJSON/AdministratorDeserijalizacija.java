@@ -17,11 +17,16 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
- *
+ * Klasa koja implementira metodu za deserijalizaciju liste Administratora.
  * @author Bogdan Blagojevic
  */
 public class AdministratorDeserijalizacija implements JSONDeserijalizacija<Administrator>{
 
+    /**
+     * {@inheritDoc}
+     * @param putanja
+     * @return 
+     */
 @Override
 public List<Administrator> deserijalizuj(String putanja) {
     Gson gson = new Gson();

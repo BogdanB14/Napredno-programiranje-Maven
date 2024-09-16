@@ -71,11 +71,12 @@ public class Administrator implements ApstraktniDomenskiObjekat{
         this.sifra = sifra;
         this.imeAdmin = imeAdmin;
         this.prezimeAdmin = prezimeAdmin;
+
     }
     
     
     /**
-     *Get metoda - Vraća ID administratora.
+     * Get metoda - Vraća ID administratora.
      * 
      * @return ID administratora
      */
@@ -88,7 +89,7 @@ public class Administrator implements ApstraktniDomenskiObjekat{
      *Set metoda - Postavlja ID administratora.
      * 
      * @param administratorID ID administratora
-     *  @throws RuntimeException Ako je ID administratora postavljen na broj manji od 0
+     * @throws RuntimeException Ako je ID administratora postavljen na broj manji od 0
      */
     public void setAdministratorID(Long administratorID) {
         if(administratorID > 0)
@@ -109,7 +110,7 @@ public class Administrator implements ApstraktniDomenskiObjekat{
      * Set metoda - Postavlja korisničko ime administratora.
      * 
      * @param korisnickoIme korisničko ime administratora
-     *  @throws NullPointerException Ako je korisnicko ime administratora null, prazno ili se sastoji samo od razmaka
+     * @throws NullPointerException Ako je korisnicko ime administratora null, prazno ili se sastoji samo od razmaka
      */
     public void setKorisnickoIme(String korisnickoIme) {
         if(korisnickoIme != null && !korisnickoIme.isEmpty() && !korisnickoIme.isBlank())
@@ -131,7 +132,7 @@ public class Administrator implements ApstraktniDomenskiObjekat{
      * Set metoda - Postavlja lozinku administratora.
      * 
      * @param sifra lozinka administratora
-     *  @throws NullPointerException Ako je sifra administratora null, prazna ili se sastoji samo od razmaka
+     * @throws NullPointerException Ako je sifra administratora null, prazna ili se sastoji samo od razmaka
      */
     public void setSifra(String sifra) {
         if(sifra != null && !sifra.isEmpty() && !korisnickoIme.isBlank())

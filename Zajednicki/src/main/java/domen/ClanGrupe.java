@@ -88,7 +88,7 @@ public class ClanGrupe implements ApstraktniDomenskiObjekat{
      * Set metoda - Postavlja redni broj člana u grupi.
      * 
      * @param rbClana Redni broj člana
-     *  @throws RunTimeExcepton Ako je redni broj clana 0 ili manji od 0
+     * @throws RuntimeException Ako je redni broj clana 0 ili manji od 0
      */
     public void setRbClana(int rbClana) {
         if(rbClana > 0)

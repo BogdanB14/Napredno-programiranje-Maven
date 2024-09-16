@@ -11,11 +11,16 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 /**
- *
+ * Klasa koja implementira metodu za serijalizaciju liste kategorija.
  * @author Bogdan Blagojevic
  */
 public class KategorijaSerijalizacija implements JSONSerijalizacija {
 
+    /**
+     * {@inheritDoc }
+     * @param klasa
+     * @param putanja 
+     */
     @Override
     public void serijalizacija(ApstraktniDomenskiObjekat klasa, String putanja) {
           Gson gson = new Gson();

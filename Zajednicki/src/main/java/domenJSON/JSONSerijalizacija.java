@@ -7,9 +7,14 @@ package domenJSON;
 import domen.ApstraktniDomenskiObjekat;
 
 /**
- *
+ *Interface JSONSerijalizacija u sebi ima samo jednu metodu, zaduzenu za serijalizaciju objekta
  * @author Bogdan Blagojevic
  */
 public interface JSONSerijalizacija<T> {
+    /**
+     * Metoda koja serijalizuje prosledjeni objekat u fajl na prosledjenoj putanji.
+     * @param klasa Bilo koja klasa koja implementira interfejs ApstraktniDomenskiObjekat iz domena
+     * @param putanja Putanja do fajla u direktorijumu gde ce se vrsiti serijalizacija
+     */
     void serijalizacija(ApstraktniDomenskiObjekat klasa, String putanja);
 }

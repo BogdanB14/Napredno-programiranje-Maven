@@ -69,7 +69,12 @@ public class ClanTest {
         NullPointerException exception = assertThrows(NullPointerException.class, () -> {
             clan.setJmbg(null);
         });
-         exception = assertThrows(NullPointerException.class, () -> {
+    }
+    
+    @Test
+    public void testSetJmbgNije13(){
+        Clan clan = new Clan();
+        NullPointerException exception = assertThrows(NullPointerException.class, () -> {
             clan.setJmbg("12345");
         });
         assertEquals(exception.getMessage(), "JMBG nije u dobrom formatu");
@@ -106,15 +111,21 @@ public class ClanTest {
             clan.setPrezimeClana(null);
         });
         assertEquals("Prezime nije u dobrom formatu", exception.getMessage());
-
-        
-        exception = assertThrows(NullPointerException.class, () -> {
+    }
+    
+    @Test
+    public void testSetPrezimeClanaEmpty(){
+        Clan clan = new Clan();
+        NullPointerException exception = assertThrows(NullPointerException.class, () -> {
             clan.setPrezimeClana("");
         });
         assertEquals("Prezime nije u dobrom formatu", exception.getMessage());
-
-       
-        exception = assertThrows(NullPointerException.class, () -> {
+    }   
+    
+    @Test
+    public void testSetPrezimeClanaSpace(){
+        Clan clan = new Clan();
+        NullPointerException exception = assertThrows(NullPointerException.class, () -> {
             clan.setPrezimeClana("   ");
         });
         assertEquals("Prezime nije u dobrom formatu", exception.getMessage());
@@ -137,7 +148,10 @@ public class ClanTest {
         });
         assertEquals("Datum nije u dobrom forrmatu", exception.getMessage());
         
-        exception = assertThrows(NullPointerException.class, () -> {
+    }
+        @Test
+        public void testSetDatumRodjenjaBuducnost(){
+        NullPointerException exception = assertThrows(NullPointerException.class, () -> {
             clan.setDatumRodjenja(new Date(System.currentTimeMillis() + 1000000000L));
         });
         assertEquals("Datum nije u dobrom forrmatu", exception.getMessage());
@@ -156,7 +170,7 @@ public class ClanTest {
     }
     
         @Test
-    public void testSetTelefon_InvalidMessage() {
+    public void testSetTelefonNull() {
         Clan clan = new Clan();
         
         NullPointerException exception = assertThrows(NullPointerException.class, () -> {

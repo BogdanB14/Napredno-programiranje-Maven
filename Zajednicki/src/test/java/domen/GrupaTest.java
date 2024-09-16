@@ -87,11 +87,17 @@ public class GrupaTest {
     public void testSetNazivGrupeNull() {
         Exception exception = assertThrows(NullPointerException.class, () -> grupa.setNazivGrupe(null));
         assertEquals("Naziv grupe nije u dobrom formatu", exception.getMessage());
-
-        exception = assertThrows(NullPointerException.class, () -> grupa.setNazivGrupe("   "));
+    }
+    
+    @Test
+    public void testSetNazivGrupeSpace(){
+        Exception exception = assertThrows(NullPointerException.class, () -> grupa.setNazivGrupe("   "));
         assertEquals("Naziv grupe nije u dobrom formatu", exception.getMessage());
-        
-        exception = assertThrows(NullPointerException.class, () -> grupa.setNazivGrupe(""));
+    }
+
+    @Test
+    public void testSetNazivGrupeEmpty(){
+        Exception exception = assertThrows(NullPointerException.class, () -> grupa.setNazivGrupe(""));
         assertEquals("Naziv grupe nije u dobrom formatu", exception.getMessage());
     }
 

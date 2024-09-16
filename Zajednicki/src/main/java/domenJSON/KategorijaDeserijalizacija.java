@@ -13,11 +13,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- *
+ * Klasa koja implementira metodu za deserijalizaciju liste kategorija.
  * @author Bogdan Blagojevic
  */
 public class KategorijaDeserijalizacija implements JSONDeserijalizacija {
 
+    /**
+     * {@inheritDoc }
+     * @param putanja
+     * @return 
+     */
     @Override
     public List deserijalizuj(String putanja) {
         Gson gson = new Gson();

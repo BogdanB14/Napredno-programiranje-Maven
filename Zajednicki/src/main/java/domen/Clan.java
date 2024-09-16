@@ -107,7 +107,7 @@ public class Clan implements ApstraktniDomenskiObjekat{
      * Set metoda - Postavlja JMBG člana.
      * 
      * @param jmbg JMBG člana.
-     *  @throws NullPointerException Ako je JMBG clana null ili nije duzine od 13 karaktera
+     * @throws NullPointerException Ako je JMBG clana null ili nije duzine od 13 karaktera
      */
     public void setJmbg(String jmbg) {
         if(jmbg != null && jmbg.length() == 13)
@@ -129,7 +129,7 @@ public class Clan implements ApstraktniDomenskiObjekat{
      * Set metoda - Postavlja ime člana.
      * 
      * @param imeClana Ime člana.
-     *  @throws NullPointerException Ako je ime clana null
+     * @throws NullPointerException Ako je ime clana null
      */
     public void setImeClana(String imeClana) {
         if(imeClana != null)
@@ -151,7 +151,7 @@ public class Clan implements ApstraktniDomenskiObjekat{
      * Set metoda - Postavlja prezime člana.
      * 
      * @param prezimeClana Prezime člana.
-     *  @throws NullPointerException Ako je prezime clana null, prazno ili se sastoji samo od razmaka
+     * @throws NullPointerException Ako je prezime clana null, prazno ili se sastoji samo od razmaka
      */
     public void setPrezimeClana(String prezimeClana) {
         if(prezimeClana != null && !prezimeClana.isEmpty() && !prezimeClana.isBlank())
@@ -172,7 +172,7 @@ public class Clan implements ApstraktniDomenskiObjekat{
      * Set metoda - Postavlja datum rođenja člana.
      * 
      * @param datumRodjenja Datum rođenja člana.
-     *  @throws NullPointerException Ako je datum rodjenja clana null ili datum iz buducnosti.
+     * @throws NullPointerException Ako je datum rodjenja clana null ili datum iz buducnosti.
      */
     public void setDatumRodjenja(Date datumRodjenja) {
         if(datumRodjenja != null && datumRodjenja.before(new Date()))
@@ -212,7 +212,7 @@ public class Clan implements ApstraktniDomenskiObjekat{
      * Set metoda - Postavlja telefon člana.
      * 
      * @param telefon Telefon člana.
-     *  @throws NullPointerException Ako je telefon clana null
+     * @throws NullPointerException Ako je telefon clana null
      */
     public void setTelefon(String telefon) {
         if(telefon != null)
@@ -234,7 +234,7 @@ public class Clan implements ApstraktniDomenskiObjekat{
      * Set metoda - Postavlja mesto rodjenja člana (Grad)
      * 
      * @param mesto Mesto (grad) člana.
-     *  @throws NullPointerException Ako je mesto null
+     * @throws NullPointerException Ako je mesto null
      */
     public void setMesto(Mesto mesto) {
         if(mesto != null)

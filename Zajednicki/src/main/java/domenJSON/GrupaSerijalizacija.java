@@ -13,10 +13,16 @@ import java.io.IOException;
 
 /**
  *
+ * Klasa koja implementira metodu za serijalizaciju liste grupa.
  * @author Bogdan Blagojevic
  */
 public class GrupaSerijalizacija implements JSONSerijalizacija {
 
+    /**
+     * {@inheritDoc }
+     * @param klasa
+     * @param putanja 
+     */
     @Override
     public void serijalizacija(ApstraktniDomenskiObjekat klasa, String putanja) {
          Gson gson = new Gson();

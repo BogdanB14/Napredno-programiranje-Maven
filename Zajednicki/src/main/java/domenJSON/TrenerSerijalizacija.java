@@ -12,11 +12,16 @@ import java.io.FileWriter;
 import java.io.IOException;
 
 /**
- *
+ * Klasa koja implementira metodu za serijalizaciju liste trenera.
  * @author Bogdan Blagojevic
  */
 public class TrenerSerijalizacija implements JSONSerijalizacija {
 
+    /**
+     * {@inheritDoc }
+     * @param klasa
+     * @param putanja 
+     */
     @Override
     public void serijalizacija(ApstraktniDomenskiObjekat klasa, String putanja) {
         Gson gson = new Gson();
