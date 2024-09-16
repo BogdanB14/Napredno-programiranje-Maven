@@ -25,7 +25,7 @@ public class LoginOperacija extends ApstraktnaGenerickaOperacija {
      */
     private Administrator administrator;
     
-        /**
+    /**
      * Proverava preduslove za izvršenje operacije prijave administratora.
      * <p>
      * Ova metoda osigurava da parametar koji se prosleđuje nije {@code null} i da je instanca {@link Administrator}.
@@ -42,7 +42,7 @@ public class LoginOperacija extends ApstraktnaGenerickaOperacija {
             
     }
 
-        /**
+    /**
      * Izvršava operaciju prijave administratora.
      * <p>
      * Ova metoda koristi {@code broker} za preuzimanje svih administratora iz baze podataka i upoređuje
@@ -68,7 +68,7 @@ public class LoginOperacija extends ApstraktnaGenerickaOperacija {
         administrator = null;
     }
 
-        /**
+    /**
      * Get metoda - Vraća trenutno prijavljenog administratora.
      * 
      * @return Trenutno prijavljeni {@link Administrator}, ili {@code null} ako nije pronađen.

@@ -22,16 +22,16 @@ import java.util.logging.Logger;
  * @author Bogdan Blagojevic
  */
 public class Konfiguracija {
-        /**
+    /**
      * Singleton instanca klase {@code Konfiguracija}.
      */
     private static Konfiguracija instanca;
-        /**
+    /**
      * Objekt koji sadrži konfiguracijska svojstva.
      */
     private Properties konfiguracija;
     
-        /**
+    /**
      * Vraća jedinu instancu klase {@code Konfiguracija} (Singleton).
      * <p>
      * Ako instanca ne postoji, kreira se nova instanca i vraća.
@@ -63,7 +63,7 @@ public class Konfiguracija {
         }
     }
 
-        /**
+    /**
      * Vraća vrednost propertija na osnovu ključa.
      * <p>
      * Ako ključ ne postoji, vraća podrazumevanu vrednost {@code "n/a"}.
@@ -91,7 +91,7 @@ public class Konfiguracija {
         konfiguracija.setProperty(key, value);
     }
     
-        /**
+    /**
      * Čuva trenutne izmene propertija u datoteku.
      * <p>
      * Ova metoda upisuje sve promene iz memorije u datoteku {@code config.properties}.

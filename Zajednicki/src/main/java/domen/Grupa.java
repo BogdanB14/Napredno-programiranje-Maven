@@ -17,21 +17,51 @@ import java.util.Objects;
  * @author Bogdan Blagojevic
  */
 public class Grupa implements ApstraktniDomenskiObjekat{
+    /**
+     * Identifikator grupe.
+     * Predstavlja jedinstveni identifikator za grupu.
+     * Tip Long
+     */
     private Long grupaID;
+    /**
+     * Naziv grupe.
+     * Predstavlja naziv grupe.
+     * Tip String
+     */
     private String nazivGrupe;
+    /**
+     * Broj clanova u grupi.
+     * Predstavlja ukupni broj članova koji su deo grupe.
+     * Tip Integer
+     */
     private int brClanova;
+    /**
+     * Kategorija kojoj grupa pripada.
+     * Predstavlja kategoriju koja se dodeljuje grupi.
+     * Tip Integer
+     */
     private Kategorija kategorija;
+    /**
+     * Administrator koji upravlja grupom.
+     * Predstavlja administratora koji je dodao grupu.
+     * Tip Administrator
+     */
     private Administrator administrator;
+    /**
+     * Trener koji vodi grupu.
+     * Predstavlja trenera grupe.
+     * Tip Trener
+     */
     private Trener trener;
 
     
-        /**
+    /**
      * Podrazumevani konstruktor.
      */
     public Grupa() {
     }
 
-        /**
+    /**
      * Parametarski konstruktor
      *
      * @param grupaID ID grupe
@@ -50,7 +80,7 @@ public class Grupa implements ApstraktniDomenskiObjekat{
         this.trener = trener;
     }
 
-        /**
+    /**
      * Get metoda - Vraća ID grupe.
      *
      * @return ID grupe
@@ -59,16 +89,19 @@ public class Grupa implements ApstraktniDomenskiObjekat{
         return grupaID;
     }
 
-       /**
+    /**
      * Set metoda - Postavlja ID grupe.
      *
      * @param grupaID ID grupe
+     * @throws RuntimeException ako je id grupe 0 ili manji od 0
      */
     public void setGrupaID(Long grupaID) {
+        if(grupaID > 0)
         this.grupaID = grupaID;
+        else throw new RuntimeException("ID grupe mora biti vece od 0");
     }
 
-        /**
+    /**
      * Get metoda - Vraća naziv grupe.
      *
      * @return naziv grupe
@@ -77,16 +110,19 @@ public class Grupa implements ApstraktniDomenskiObjekat{
         return nazivGrupe;
     }
 
-        /**
+    /**
      * Set metoda - Postavlja naziv grupe.
      *
      * @param nazivGrupe naziv grupe
+     * @throws NullPointerException ako je naziv grupe null, prazan string ili se sastoji samo od razmaka.
      */
     public void setNazivGrupe(String nazivGrupe) {
+        if(nazivGrupe != null && !nazivGrupe.isBlank() && !nazivGrupe.isEmpty())
         this.nazivGrupe = nazivGrupe;
+        else throw new NullPointerException("Naziv grupe nije u dobrom formatu");
     }
 
-        /**
+    /**
      * Get metoda - Vraća maksimalan broj članova u grupi.
      *
      * @return broj članova
@@ -95,17 +131,20 @@ public class Grupa implements ApstraktniDomenskiObjekat{
         return brClanova;
     }
 
-      /**
+    /**
      * Set metoda - Postavlja maksimalan broj članova u grupi.
      *
      * @param brClanova maksimalan broj članova u grupi
+     * @throws RuntimeException ako je broj clanova 0 ili manji od 0
      */
     public void setBrClanova(int brClanova) {
+        if(brClanova > 0)
         this.brClanova = brClanova;
+        else throw new RuntimeException("Broj clanova mora biti veci od 0");
     }
     
 
-        /**
+    /**
      * Get metoda - Vraća kategoriju grupe.
      *
      * @return kategorija grupe
@@ -114,16 +153,19 @@ public class Grupa implements ApstraktniDomenskiObjekat{
         return kategorija;
     }
 
-        /**
+    /**
      * Set metoda - Postavlja kategoriju grupe.
      *
      * @param kategorija kategorija grupe
+     * @throws NullPointerException ako je kategorija null
      */
     public void setKategorija(Kategorija kategorija) {
+        if(kategorija != null)
         this.kategorija = kategorija;
+        else throw new NullPointerException("Kategorija ne sme biti null");
     }
 
-        /**
+    /**
      * Get metoda - Vraća administratora grupe.
      *
      * @return administrator grupe
@@ -132,16 +174,19 @@ public class Grupa implements ApstraktniDomenskiObjekat{
         return administrator;
     }
 
-        /**
+    /**
      * Set metoda - Postavlja administratora grupe.
      *
      * @param administrator administrator grupe
+     * @throws NullPointerException ako je administrator null
      */
     public void setAdministrator(Administrator administrator) {
+        if(administrator != null)
         this.administrator = administrator;
+        else throw new NullPointerException("Administrator ne sme biti null");
     }
 
-        /**
+    /**
      * Get metoda - Vraća trenera grupe.
      *
      * @return trener grupe
@@ -150,13 +195,16 @@ public class Grupa implements ApstraktniDomenskiObjekat{
         return trener;
     }
 
-        /**
+    /**
      * Set metoda - Postavlja trenera grupe.
      *
      * @param trener trener grupe
+     * @throws NullPointerException ako je trener null
      */
     public void setTrener(Trener trener) {
+        if(trener != null)
         this.trener = trener;
+        else throw new NullPointerException("Trener ne sme biti null");
     }
 
     @Override
@@ -165,7 +213,7 @@ public class Grupa implements ApstraktniDomenskiObjekat{
         return hash;
     }
 
-        /**
+    /**
      * Override-ovana equals metoda za klasu Grupa. Proverava da li su 2 objekta klase Grupa jednaka
      * 
      * @param obj
@@ -191,7 +239,7 @@ public class Grupa implements ApstraktniDomenskiObjekat{
     }
 
     
-        /**
+    /**
      * Vraća string prezentaciju objekta {@code Grupa}.
      * <p>
      * U ovom slučaju, vraća naziv grupe.
@@ -205,7 +253,7 @@ public class Grupa implements ApstraktniDomenskiObjekat{
     }
 
     
-        /**
+    /**
      * {@inheritDoc}
      * Vraća naziv tabele u bazi podataka.
      * 
@@ -216,7 +264,7 @@ public class Grupa implements ApstraktniDomenskiObjekat{
         return "grupa";
     }
 
-        /**
+    /**
      * {@inheritDoc}
      * Vraća listu objekata {@link Grupa} iz rezultata upita.
      * 
@@ -267,7 +315,7 @@ public class Grupa implements ApstraktniDomenskiObjekat{
         return lista;
     }
 
-        /**
+    /**
      * {@inheritDoc}
      * Vraća imena kolona koje se koriste za ubacivanje podataka u bazu u tabelu Grupa.
      * 
@@ -279,7 +327,7 @@ public class Grupa implements ApstraktniDomenskiObjekat{
     }
     
     /**
-         * {@inheritDoc}
+     * {@inheritDoc}
      * Vraća vrednosti za ubacivanje u bazu u tabelu Grupa.
      * 
      * @return Vrednosti za ubacivanje.
@@ -289,7 +337,7 @@ public class Grupa implements ApstraktniDomenskiObjekat{
         return "'"+nazivGrupe+"',"+brClanova+","+kategorija.getKategorijaID()+","+administrator.getAdministratorID()+","+trener.getTrenerID();
     }
 
-        /**
+    /**
      * {@inheritDoc}
      * Vraća primarni ključ za identifikaciju grupe.
      * 
@@ -300,7 +348,7 @@ public class Grupa implements ApstraktniDomenskiObjekat{
         return "grupa.grupaID="+grupaID;
     }
 
-        /**
+    /**
      * {@inheritDoc}
      * Ova metoda trenutno nije podržana.
      * 
@@ -313,7 +361,7 @@ public class Grupa implements ApstraktniDomenskiObjekat{
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
-        /**
+    /**
      * {@inheritDoc}
      * Vraća SQL izraz za ažuriranje podataka u bazi u tabelu Grupa.
      * 

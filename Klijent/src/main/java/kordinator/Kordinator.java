@@ -54,7 +54,7 @@ public class Kordinator {
     private Map<String, Object> parametri;
     
     
-        /**
+    /**
      * Vraća instancu klase Kordinator.
      * Ukoliko instanca ne postoji, kreira se nova.
      * 
@@ -66,7 +66,7 @@ public class Kordinator {
         return instanca;
     }
     
-        /**
+    /**
      * Privatni konstruktor koji kreira mapu parametara.
      * Konstruktori su privatni kako bi se obezbedila primena Singleton šablona.
      */
@@ -74,7 +74,7 @@ public class Kordinator {
         parametri = new HashMap<>();
     }
 
-        /**
+    /**
      * Otvara formu za prijavu i kreira novi LoginController.
      */
     public void otvoriLoginFormu() {
@@ -83,7 +83,7 @@ public class Kordinator {
         
     }
 
-        /**
+    /**
      * Otvara glavnu formu i kreira novi GlavnaFormaController.
      */
     public void otvoriGlavnuFormu() {
@@ -100,7 +100,7 @@ public class Kordinator {
         prikazClanaController.otvoriFormu();
     }
     
-        /**
+    /**
      * Vraća trenutno ulogovanog administratora.
      * 
      * @return ulogovani administrator
@@ -109,7 +109,7 @@ public class Kordinator {
         return ulogovani;
     }
 
-        /**
+    /**
      * Postavlja trenutno ulogovanog administratora.
      * 
      * @param ulogovani administrator koji se postavlja
@@ -118,7 +118,7 @@ public class Kordinator {
         this.ulogovani = ulogovani;
     }
 
-        /**
+    /**
      * Otvara formu za dodavanje novog člana i kreira novi DodajClanaController.
      * Postavlja formu u mod za dodavanje.
      */
@@ -130,7 +130,7 @@ public class Kordinator {
     }
 
 
-        /**
+    /**
      * Otvara formu za dodavanje novog trenera i kreira novi DodajTreneraController.
      */
     public void otvoriDodajTreneraFormu() {
@@ -141,7 +141,7 @@ public class Kordinator {
     }
     
     
-        /**
+    /**
      * Osvežava tabelu članova pozivanjem metode za pripremu forme.
      */
     public void osveziTabeluClanova() {
@@ -159,7 +159,7 @@ public class Kordinator {
         parametri.put(s, o);
     }
     
-        /**
+    /**
      * Vraća parametar iz mape parametara na osnovu prosleđenog ključa.
      * 
      * @param s ključno ime parametra
@@ -169,7 +169,7 @@ public class Kordinator {
         return parametri.get(s);
     }
 
-       /**
+    /**
      * Otvara formu za izmenu člana i postavlja formu u mod za izmenu.
      */
     public void otvoriIzmeniClanaFormu() {
@@ -177,14 +177,14 @@ public class Kordinator {
         dodajClanaController.otvoriFormu(ModFormeClan.IZMENI);
     }
 
-        /**
+    /**
      * Osvežava glavnu formu pozivanjem metode za pripremu forme za članove.
      */
     public void osveziGlavnuFormu() {
         prikazClanaController.pripremiFormu();
     }
     
-        /**
+    /**
      * Otvara formu za prikaz grupa i kreira novi PrikazGrupaController.
      */
     public void otvoriPrikazGrupaFormu(){
@@ -192,7 +192,7 @@ public class Kordinator {
         prikazGrupaController.otvoriFormu();
     }
     
-        /**
+    /**
      * Otvara formu za prikaz treninga i kreira novi PrikazTreningaController.
      */
     public void otvoriPrikazTreningaFormu(){
@@ -207,7 +207,7 @@ public class Kordinator {
         dodajGrupuController.otvoriFormu();
     }
 
-        /**
+    /**
      * Otvara formu za dodavanje novog treninga i kreira novi DodajTreningController.
      */
     public void otvoriDodajTreningFormu() {

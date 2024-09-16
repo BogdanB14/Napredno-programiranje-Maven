@@ -36,7 +36,7 @@ public class DodajGrupuOperacija extends ApstraktnaGenerickaOperacija{
             throw new Exception("Podaci o novoj grupi nisu upamceni");
     }
 
-        /**
+    /**
      * Izvršava operaciju dodavanja nove grupe u bazu podataka.
      * <p>
      * Ova metoda koristi {@code broker} za obavljanje dodavanja nove grupe u bazu podataka.

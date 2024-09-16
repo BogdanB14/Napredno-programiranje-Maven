@@ -52,7 +52,7 @@ public class Komunikacija {
     private static Komunikacija instanca;
     
     
-        /**
+    /**
      * Vraća jedinu instancu klase Komunikacija. Ukoliko instanca nije kreirana,
      * kreira novu instancu.
      * 
@@ -64,14 +64,14 @@ public class Komunikacija {
         return instanca;
     }
     
-        /**
+    /**
      * Privatni konstruktor klase kako bi se onemogućilo kreiranje više instanci.
      */
     private Komunikacija(){
         
     }
     
-        /**
+    /**
      * Uspostavlja konekciju sa serverom na lokalnoj mašini koristeći port 9000.
      * Kreira instance klasa Posiljalac i Primalac koje omogućavaju komunikaciju
      * sa serverom.
@@ -87,7 +87,7 @@ public class Komunikacija {
         }
     }
 
-        /**
+    /**
      * Omogućava prijavu administratora. Šalje zahteve za autentifikaciju serveru
      * i prima odgovor o uspešnosti prijave.
      * 
@@ -161,7 +161,7 @@ public class Komunikacija {
         
     }
 
-        /**
+    /**
      * Briše člana iz baze podataka na osnovu prosleđenog objekta Clan.
      * 
      * @param clan Objekat člana koji treba da se obriše
@@ -176,7 +176,7 @@ public class Komunikacija {
         
     }
 
-        /**
+    /**
      * Kreira novog člana u bazi podataka na osnovu prosleđenog objekta Clan.
      * 
      * @param clan Objekat člana koji treba da se kreira
@@ -192,7 +192,7 @@ public class Komunikacija {
         return odgovor;
     }
     
-        /**
+    /**
      * Kreira novog trenera u bazi podataka na osnovu prosleđenog objekta Trener.
      * 
      * @param trener Objekat trenera koji treba da se kreira
@@ -208,7 +208,7 @@ public class Komunikacija {
         return odgovor;
     }
     
-        /**
+    /**
      * Kreira novu grupu u bazi podataka na osnovu prosleđenog objekta Grupa.
      * 
      * @param grupa Objekat grupe koja treba da se kreira
@@ -224,7 +224,7 @@ public class Komunikacija {
         return odgovor;
     }
     
-    /**
+/**
  * Kreira novi trening u bazi podataka na osnovu prosleđenog objekta Trening.
  * 
  * @param trening Objekat treninga koji treba da se kreira
@@ -240,7 +240,7 @@ public class Komunikacija {
         return odgovor;
     }
 
-    /**
+/**
  * Ažurira podatke o članu u bazi podataka na osnovu prosleđenog objekta Clan.
  * Nakon ažuriranja, osvežava glavnu formu.
  * 
@@ -284,7 +284,7 @@ public class Komunikacija {
         return treninzi;
      }
 
-    /**
+/**
  * Učitava listu grupa iz baze podataka.
  * 
  * @return Lista grupa
@@ -307,7 +307,7 @@ public class Komunikacija {
         System.out.println("Deserijalizovana lista: \n" + deserijalizovana);
         return grupe;
     }
-    /**
+/**
  * Učitava listu sala iz baze podataka.
  * 
  * @return Lista sala
@@ -333,7 +333,7 @@ public class Komunikacija {
     }
     
 
-    /**
+/**
  * Učitava listu kategorija iz baze podataka.
  * 
  * @return Lista kategorija
@@ -357,7 +357,7 @@ public class Komunikacija {
         return kategorije;
     }
 
-    /**
+/**
  * Učitava listu trenera iz baze podataka.
  * 
  * @return Lista trenera
@@ -381,7 +381,7 @@ public class Komunikacija {
         return treneri;
     }
 
-    /**
+/**
  * Učitava listu administratora iz baze podataka.
  * 
  * @return Lista administratora
@@ -405,7 +405,7 @@ public class Komunikacija {
         return administratori;
     }
 
-    /**
+/**
  * Odjavljuje trenutno prijavljenog administratora i zatvara socket konekciju.
  */
     public void logOut() {

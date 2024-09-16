@@ -18,7 +18,7 @@ import operacija.ApstraktnaGenerickaOperacija;
  * @author Bogdan Blagojevic
  */
 public class AzurirajClanaOperacija extends ApstraktnaGenerickaOperacija{
-        /**
+    /**
      * Staticka promenljiva koja označava rezultat ažuriranja.
      * <p>
      * Ova promenljiva je postavljena na {@code false} kada se operacija započne i ažurira se
@@ -28,7 +28,7 @@ public class AzurirajClanaOperacija extends ApstraktnaGenerickaOperacija{
      */
     public static boolean update = false;
     
-        /**
+    /**
      * Proverava preduslove za izvršenje operacije.
      * <p>
      * Ova metoda osigurava da parametar koji se prosleđuje bude instanca {@link Clan}.
@@ -44,7 +44,7 @@ public class AzurirajClanaOperacija extends ApstraktnaGenerickaOperacija{
             throw new Exception("Sistem ne moze da ucita clana");
     }
 
-        /**
+    /**
      * Izvršava operaciju ažuriranja podataka o članu u bazi podataka.
      * <p>
      * Ova metoda koristi {@code broker} za obavljanje ažuriranja podataka o članu.

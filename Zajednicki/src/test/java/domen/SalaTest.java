@@ -6,12 +6,13 @@ package domen;
 
 import java.sql.ResultSet;
 import java.util.List;
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
-import org.junit.Test;
-import static org.junit.Assert.*;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
 /**
  *
@@ -23,21 +24,18 @@ public class SalaTest {
     public SalaTest() {
     }
     
-    @BeforeClass
-    public static void setUpClass() {
-    }
     
-    @AfterClass
-    public static void tearDownClass() {
-    }
-    
-    @Before
+    @BeforeEach
     public void setUp() {
         mesto = new Mesto(1L, 17530L, "Surdulica");
-        sala = new Sala(1L, "Jovan Jovanovic Zmaj", 100, mesto);
+        sala = new Sala();
+        sala.setSalaID(1L);
+        sala.setNazivSale("Jovan Jovanovic Zmaj");
+        sala.setKapacitet(100);
+        sala.setMesto(mesto);
     }
     
-    @After
+    @AfterEach
     public void tearDown() {
     }
 
@@ -50,6 +48,13 @@ public class SalaTest {
         assertEquals(noviId, sala.getSalaID());
     }
 
+        @Test
+    public void testSetSalaIDManjiOd1() {
+        Exception exception = assertThrows(RuntimeException.class, () -> {
+            sala.setSalaID(0L);
+        });
+        assertEquals("ID sale mora biti veci od 0", exception.getMessage());
+    }
 
 
     @Test
@@ -57,6 +62,30 @@ public class SalaTest {
         String noviNaziv = "Vuk Karadzic";
         sala.setNazivSale(noviNaziv);
         assertEquals(noviNaziv, sala.getNazivSale());
+    }
+    
+        @Test
+    public void testSetNazivSaleEmpty() {
+        Exception exception = assertThrows(NullPointerException.class, () -> {
+            sala.setNazivSale("");
+        });
+        assertEquals("Naziv sale nije u dobrom formatu", exception.getMessage());
+    }
+    
+           @Test
+    public void testSetNazivSaleNull() {
+        Exception exception = assertThrows(NullPointerException.class, () -> {
+            sala.setNazivSale(null);
+        });
+        assertEquals("Naziv sale nije u dobrom formatu", exception.getMessage());
+    }
+    
+           @Test
+    public void testSetNazivSaleSpace() {
+        Exception exception = assertThrows(NullPointerException.class, () -> {
+            sala.setNazivSale("          ");
+        });
+        assertEquals("Naziv sale nije u dobrom formatu", exception.getMessage());
     }
 
 
@@ -68,6 +97,14 @@ public class SalaTest {
         assertEquals(novi, sala.getKapacitet());
     }
 
+    
+        @Test
+    public void testSetKapacitetManjiOd1() {
+        Exception exception = assertThrows(RuntimeException.class, () -> {
+            sala.setKapacitet(0);
+        });
+        assertEquals("Kapacitet mora biti veci od 0", exception.getMessage());
+    }
 
 
 
@@ -76,6 +113,14 @@ public class SalaTest {
         Mesto novo = new Mesto(2L, 17000L, "Nis");
         sala.setMesto(novo);
         assertEquals(novo, sala.getMesto());
+    }
+    
+        @Test
+    public void testSetMestoNull() {
+        Exception exception = assertThrows(NullPointerException.class, () -> {
+            sala.setMesto(null);
+        });
+        assertEquals("Mesto ne sme biti null", exception.getMessage());
     }
 
     @Test
@@ -86,17 +131,20 @@ public class SalaTest {
 
 
 
-    @Test
-    public void testEquals() {
-        Sala nova = new Sala(1L, "Jovan Jovanovic Zmaj", 100, mesto);
-        assertTrue(sala.equals(nova));
-    }
-    
-    
-    @Test
-    public void testNotEquals() {
-        Sala nova = new Sala(2L, "Vuk Karadzic", 100, mesto);
-        assertFalse(sala.equals(nova));
+    @ParameterizedTest
+    @CsvSource({
+        "1, Sala 1, 100, 1, Sala 1, 100, true",  
+        "1, Sala 1, 100, 2, Sala 1, 100, false",  
+        "1, Sala 1, 100, 1, Sala 2, 100, false",  
+        "1, Sala 1, 100, 1, Sala 1, 200, true"
+    })
+    public void testEquals(Long salaID1, String nazivSale1, int kapacitet1,
+                           Long salaID2, String nazivSale2, int kapacitet2, boolean tacno) {
+        Mesto mesto = new Mesto(1L, 11000L, "Beograd");
+        Sala s1 = new Sala(salaID1, nazivSale1, kapacitet1, mesto);
+        Sala s2 = new Sala(salaID2, nazivSale2, kapacitet2, mesto);
+
+        assertEquals(tacno, s1.equals(s2));
     }
 
 

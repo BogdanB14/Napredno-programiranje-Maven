@@ -23,7 +23,7 @@ public class UcitajKategorijeOperacija extends ApstraktnaGenerickaOperacija{
      */
     List<Kategorija> lista;
     
-        /**
+    /**
      * Proverava preduslove za izvršenje operacije učitavanja kategorija.
      * <p>
      * Ova metoda osigurava da parametar koji se prosleđuje bude {@code null} ili instanca {@link Kategorija}.
@@ -39,7 +39,7 @@ public class UcitajKategorijeOperacija extends ApstraktnaGenerickaOperacija{
             throw new Exception("Sistem ne moze da ucita kategorije");
     }
 
-        /**
+    /**
      * Izvršava operaciju učitavanja svih kategorija iz baze podataka.
      * <p>
      * Ova metoda koristi {@code broker} za obavljanje učitavanja podataka o kategorijama.
@@ -64,7 +64,7 @@ public class UcitajKategorijeOperacija extends ApstraktnaGenerickaOperacija{
     }
 
 
-             /**
+    /**
      * Get metoda - Postavlja listu kategorija.
      * 
      * @return lista Lista kategorija koja ce biti postavljena.

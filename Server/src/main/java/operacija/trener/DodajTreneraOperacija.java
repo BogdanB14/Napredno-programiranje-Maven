@@ -19,7 +19,7 @@ import operacija.ApstraktnaGenerickaOperacija;
  */
 public class DodajTreneraOperacija extends ApstraktnaGenerickaOperacija{
 
-        /**
+    /**
      * Proverava preduslove za izvršenje operacije dodavanja trenera.
      * <p>
      * Ova metoda osigurava da parametar koji se prosleđuje jeste instanca {@link Trener}.

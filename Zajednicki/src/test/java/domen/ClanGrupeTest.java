@@ -4,21 +4,29 @@
  */
 package domen;
 
-import java.sql.ResultSet;
+import domen.Administrator;
+import domen.Clan;
+import domen.ClanGrupe;
+import domen.Grupa;
+import domen.Kategorija;
+import domen.Mesto;
+import domen.Pol;
+import domen.Trener;
 import java.util.Date;
-import java.util.List;
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
-import org.junit.Test;
-import static org.junit.Assert.*;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
 /**
  *
  * @author Bogdan Blagojevic
  */
 public class ClanGrupeTest {
+
     private ClanGrupe clanGrupe;
     private Clan clan;
     private Grupa grupa;
@@ -27,20 +35,13 @@ public class ClanGrupeTest {
     private Administrator administrator;
     private Trener trener;
     private Date datumRodjenja = new Date();
-    public ClanGrupeTest() {
+    
+    public ClanGrupeTest() {   
         
     }
     
-    @BeforeClass
-    public static void setUpClass() {
-        
-    }
     
-    @AfterClass
-    public static void tearDownClass() {
-    }
-    
-    @Before
+    @BeforeEach
     public void setUp() {
         mesto = new Mesto(1L, 17530L, "Surdulica");
         clan = new Clan("1234567890123", "Marko", "Markovic", datumRodjenja, Pol.MUSKI, "0612345678", mesto);
@@ -48,13 +49,29 @@ public class ClanGrupeTest {
         administrator = new Administrator(1L, "BogdanB14", "Bogdan123", "Bogdan", "Blagojevic");
         trener = new Trener(3L, "Uros", "Blagojevic", mesto);
         grupa = new Grupa(1L, "Prvi muski tim", 100, kategorija, administrator, trener);
-        clanGrupe = new ClanGrupe(1, "Libero", "Aktivan", clan, grupa);
+//        clanGrupe = new ClanGrupe(1, "Libero", "Aktivan", clan, grupa);
+        clanGrupe = new ClanGrupe();
+        clanGrupe.setRbClana(1);
+        clanGrupe.setPozicija("Libero");
+        clanGrupe.setStatus("Aktivan");
+        clanGrupe.setClan(clan);
+        clanGrupe.setGrupa(grupa);
     }
     
-    @After
+    
+    @AfterEach
     public void tearDown() {
     }
-
+    
+    @Test
+    public void testParametarskiKonstruktor() {
+        ClanGrupe noviClanGrupe = new ClanGrupe(2, "Pozicija", "Status", clan, grupa);
+        assertEquals(2, noviClanGrupe.getRbClana());
+        assertEquals("Pozicija", noviClanGrupe.getPozicija());
+        assertEquals("Status", noviClanGrupe.getStatus());
+        assertEquals(clan, noviClanGrupe.getClan());
+        assertEquals(grupa, noviClanGrupe.getGrupa());
+    }
 
 
     @Test
@@ -62,13 +79,36 @@ public class ClanGrupeTest {
         clanGrupe.setRbClana(2);
         assertEquals(2, clanGrupe.getRbClana());
     }
-
+    
+    @Test
+    void testSetRbClanaNull() {
+        Exception exception = assertThrows(RuntimeException.class, () -> {
+            clanGrupe.setRbClana(0);
+        });
+        assertEquals("Redni broj clana mora biti veci od 0", exception.getMessage());
+    }
 
 
     @Test
     public void testSetPozicija() {
         clanGrupe.setPozicija("Korektor");
         assertEquals("Korektor", clanGrupe.getPozicija());
+    }
+         
+         @Test
+    void testSetPozicijaNull() {
+        Exception exception = assertThrows(NullPointerException.class, () -> {
+            clanGrupe.setPozicija(null);
+        });
+        assertEquals("Pozicija nije u dobrom formatu", exception.getMessage());
+    }
+    
+        @Test
+    void testSetPozicijaEmpty() {
+        Exception exception = assertThrows(NullPointerException.class, () -> {
+            clanGrupe.setPozicija("");
+        });
+        assertEquals("Pozicija nije u dobrom formatu", exception.getMessage());
     }
 
 
@@ -77,13 +117,51 @@ public class ClanGrupeTest {
         clanGrupe.setStatus("Neaktivan");
         assertEquals("Neaktivan", clanGrupe.getStatus());
     }
-        
+    
+    @Test
+    void testSetStatusNull() {
+        Exception exception = assertThrows(NullPointerException.class, () -> {
+            clanGrupe.setStatus(null);
+        });
+        assertEquals("Status nije u dobrom formatu", exception.getMessage());
+    }
+    
+        @Test
+    void testSetStatusEmpty() {
+        Exception exception = assertThrows(NullPointerException.class, () -> {
+            clanGrupe.setStatus("");
+        });
+        assertEquals("Status nije u dobrom formatu", exception.getMessage());
+    }
+    
     @Test
      public void testSetClan() {
         Clan noviclan = new Clan("9876543210987", "Jovan", "Jovanovic", datumRodjenja, Pol.MUSKI, "0618765432", mesto);
         clanGrupe.setClan(noviclan);
         assertEquals(noviclan, clanGrupe.getClan());
     }
+     
+         @Test
+    void testSetClanNull() {
+        Exception exception = assertThrows(NullPointerException.class, () -> {
+            clanGrupe.setClan(null);
+        });
+        assertEquals("Clan ne sme biti null", exception.getMessage());
+    }
+    
+    @Test
+    void testSetGrupa(){
+        clanGrupe.setGrupa(grupa);
+        assertEquals(clanGrupe.getGrupa(), grupa);
+    }
+    @Test
+    void testSetGrupaNull(){
+        Exception exception = assertThrows(NullPointerException.class, () -> {
+            clanGrupe.setGrupa(null);
+        });
+        assertEquals("Grupa ne sme biti null", exception.getMessage());
+    }
+
 
     @Test
     public void testToString() {
@@ -93,20 +171,23 @@ public class ClanGrupeTest {
 
 
 
-    /**
-     * Test of equals method, of class ClanGrupe.
-     */
-    @Test
-    public void testEquals() {
-        ClanGrupe novi = new ClanGrupe(1, "Libero", "Aktivan", clan, grupa);
-        assertTrue(clanGrupe.equals(novi));
-    }
-    
-    
-    @Test
-    public void testNotEquals() {
-        ClanGrupe novi = new ClanGrupe(2, "Korektor", "Neaktivan", clan, grupa);
-        assertFalse(clanGrupe.equals(novi));
+    @ParameterizedTest
+    @CsvSource({
+        "1, Vodja, Aktivan, 1, Vodja, Aktivan, true",
+        "1, Vodja, Aktivan, 2, Vodja, Aktivan, false",
+        "1, Vodja, Aktivan, 1, Nije vodja, Aktivan, false",
+        "1, Vodja, Aktivan, 1, Vodja, Pasivan, false",
+        "1, Vodja, Aktivan, 2, Nije vodja, Aktivan, false",
+        "1, Vodja, Aktivan, 1, Nije vodja, Pasivan, false",
+        "1, Vodja, Aktivan, 2, Vodja, Pasivan, false",
+        "1, Vodja, Aktivan, 2, Nije vodja, Pasivan, false"
+    })
+    public void testEquals(int rbClana1, String pozicija1, String status1,
+                           int rbClana2, String pozicija2, String status2, boolean tacno) {
+        ClanGrupe cg1 = new ClanGrupe(rbClana1, pozicija1, status1, clan, grupa);
+        ClanGrupe cg2 = new ClanGrupe(rbClana2, pozicija2, status2, clan, grupa);
+
+        assertEquals(tacno, cg1.equals(cg2));
     }
 
     @Test

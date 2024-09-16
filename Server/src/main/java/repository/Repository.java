@@ -17,7 +17,7 @@ import java.util.List;
  * @param <T> Tip entiteta sa kojim se radi.
  */
 public interface Repository<T> {
-        /**
+    /**
      * Pretražuje sve entitete u bazi podataka na osnovu uslova.
      * 
      * @param param Parametar koji definiše tip entiteta za pretragu.
@@ -26,7 +26,7 @@ public interface Repository<T> {
      * @throws Exception Ako dođe do greške prilikom pretrage.
      */
     List<T> getAll(T param, String uslov) throws Exception; //Претрага
-        /**
+    /**
      * Dodaje novi entitet u bazu podataka.
      * 
      * @param param Entitet koji se dodaje.
@@ -34,7 +34,7 @@ public interface Repository<T> {
      */
     void add(T param) throws Exception; //Radi insert operaciju
     
-        /**
+    /**
      * Ažurira postojeći entitet u bazu podataka.
      * 
      * @param param Entitet koji se ažurira.
@@ -43,7 +43,7 @@ public interface Repository<T> {
      */
     boolean edit(T param) throws Exception; //Radi update operaciju nad parametrom T
     
-        /**
+    /**
      * Briše entitet iz baze podataka.
      * 
      * @param param Entitet koji se briše.
@@ -52,7 +52,7 @@ public interface Repository<T> {
      */
     boolean delete(T param) throws Exception; //Radi se delete operacija nad parametrom T koji moze biti bilo koji objekat iz modela
     
-        /**
+    /**
      * Vraća sve entitete iz skladišta podataka.
      * 
      * @return Lista svih entiteta.

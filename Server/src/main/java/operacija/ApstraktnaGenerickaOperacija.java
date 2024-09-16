@@ -21,19 +21,19 @@ import repository.db.impl.DBRepositoryGeneric;
  * @author Bogdan Blagojevic
  */
 public abstract class ApstraktnaGenerickaOperacija {
-        /**
+    /**
      * Atribut klase Repository koji se koristi za komunikaciju sa bazom podataka.
      */
     public  Repository broker; //AKO TE ZEZA PROGRAM SAMO VRATI FINAL 
 
-        /**
+    /**
      * Konstruktor koji inicijalizuje {@code broker} kao instancu {@link DBRepositoryGeneric}.
      */
     public ApstraktnaGenerickaOperacija() {
         this.broker = new DBRepositoryGeneric();
     }
     
-        /**
+    /**
      * Izvršava generičku operaciju sa podrškom za transakcije.
      *  
      * Ova metoda obavlja sledeće korake:
@@ -63,7 +63,7 @@ public abstract class ApstraktnaGenerickaOperacija {
         
     }
     
-        /**
+    /**
      * Proverava preduslove koji moraju biti ispunjeni pre izvršavanja konkretne operacije.
      * <p>
      * Ova metoda treba biti implementirana u podklasama da definiše specifične preduslove
@@ -76,7 +76,7 @@ public abstract class ApstraktnaGenerickaOperacija {
     protected abstract void preduslovi(Object param) throws Exception;
     
     
-        /**
+    /**
      * Izvršava konkretnu operaciju u bazi podataka.
      * <p>
      * Ova metoda treba biti implementirana u podklasama da definiše specifične operacije
@@ -89,7 +89,7 @@ public abstract class ApstraktnaGenerickaOperacija {
      */
     protected abstract void izvrsiOperaciju(Object param, String kljuc) throws Exception;
     
-        /**
+    /**
      * Pokreće transakciju u bazi podataka.
      * <p>
      * Ova metoda se poziva pre nego što se konkretna operacija izvrši.
@@ -101,7 +101,7 @@ public abstract class ApstraktnaGenerickaOperacija {
         ((DBRepository) broker).connect();
     }
     
-        /**
+    /**
      * Potvrđuje transakciju u bazi podataka.
      * <p>
      * Ova metoda se poziva nakon uspešnog izvršavanja operacije. Radi se commit operacija.
@@ -114,7 +114,7 @@ public abstract class ApstraktnaGenerickaOperacija {
     }
     
     
-        /**
+    /**
      * Poništava transakciju u bazi podataka.
      * <p>
      * Ova metoda se poziva u slučaju greške tokom izvršavanja operacije. Radi se rollback operacija.
@@ -126,7 +126,7 @@ public abstract class ApstraktnaGenerickaOperacija {
         ((DBRepository) broker).rollback();
     }
     
-        /**
+    /**
      * Zatvara konekciju sa bazom podataka.
      * <p>
      * Ova metoda je trenutno komentarisana iz razloga što može uzrokovati da neka operacija

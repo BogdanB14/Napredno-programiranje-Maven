@@ -5,7 +5,14 @@
 package domen;
 
 /**
- *
+ * Enum koji predstavlja pol osobe.
+ * Ovaj enum se koristi za označavanje pola osobe i sadrzi dve moguce vrednosti:
+ * <ul>
+ *   <li>{@code MUSKI} - predstavlja muski pol</li>
+ *   <li>{@code ZENSKI} - predstavlja zenski pol</li>
+ * </ul>
+ * 
+ * 
  * @author Bogdan Blagojevic
  */
 public enum Pol {

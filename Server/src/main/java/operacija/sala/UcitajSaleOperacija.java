@@ -21,7 +21,7 @@ import operacija.ApstraktnaGenerickaOperacija;
 public class UcitajSaleOperacija extends ApstraktnaGenerickaOperacija{
     List<Sala> lista;
     
-        /**
+    /**
      * Proverava preduslove za izvršenje operacije preuzimanja sala.
      * <p>
      * Ova metoda osigurava da parametar koji se prosleđuje nije {@code null} i da je instanca {@link Sala}.
@@ -37,7 +37,7 @@ public class UcitajSaleOperacija extends ApstraktnaGenerickaOperacija{
             throw new Exception("Sistem ne moze da ucita sale");
     }
 
-        /**
+    /**
      * Izvršava operaciju preuzimanja svih sala iz baze podataka.
      * <p>
      * Ova metoda koristi {@code broker} za preuzimanje svih sala iz baze podataka. 
@@ -53,7 +53,7 @@ public class UcitajSaleOperacija extends ApstraktnaGenerickaOperacija{
         lista = broker.getAll(new Sala(), " JOIN mesto mesto ON sala.mesto=mesto.mestoID");
     }
 
-        /**
+    /**
      * Get metoda - Vraća listu sala preuzetih iz baze podataka.
      * 
      * @return Lista sala {@link Sala} preuzetih iz baze podataka.
@@ -62,7 +62,7 @@ public class UcitajSaleOperacija extends ApstraktnaGenerickaOperacija{
         return lista;
     }
 
-        /**
+    /**
      * Set metoda - Postavlja listu sala preuzetih iz baze podataka.
      * 
      * @param lista Lista sala {@link Sala} koja će biti postavljena.

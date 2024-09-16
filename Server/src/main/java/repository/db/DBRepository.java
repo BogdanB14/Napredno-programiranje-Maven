@@ -18,7 +18,7 @@ import repository.Repository;
  */
 public interface DBRepository<T> extends Repository<T>{
     
-        /**
+    /**
      * Povezuje se sa bazom podataka.
      * 
      * @throws Exception Ako dođe do greške prilikom povezivanja.
@@ -27,7 +27,7 @@ public interface DBRepository<T> extends Repository<T>{
         DBConnectionFactory.getInstance().getConnection();
     }
     
-        /**
+    /**
      * Prekida vezu sa bazom podataka.
      * 
      * @throws Exception Ako dođe do greške prilikom prekidanja veze.
@@ -36,7 +36,7 @@ public interface DBRepository<T> extends Repository<T>{
         DBConnectionFactory.getInstance().getConnection().close();
     }
     
-        /**
+    /**
      * Potvrdjuje sve promene u bazu podataka.
      * 
      * @throws Exception Ako dođe do greške prilikom komitovanja.
@@ -45,7 +45,7 @@ public interface DBRepository<T> extends Repository<T>{
         DBConnectionFactory.getInstance().getConnection().commit();
     }
     
-        /**
+    /**
      * Vraća sve promene koje nisu komitovane u bazu podataka.
      * 
      * @throws Exception Ako dođe do greške prilikom rollback-a.

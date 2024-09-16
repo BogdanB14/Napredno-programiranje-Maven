@@ -21,12 +21,12 @@ import java.util.logging.Logger;
  * @author Bogdan Blagojevic
  */
 public class Primalac {
-        /**
+    /**
      * Socket koji se koristi za komunikaciju.
      */
     private Socket socket;
 
-        /**
+    /**
      * Konstruktor koji inicijalizuje objekat {@code Primalac} sa datim soketom.
      *
      * @param socket Socket koji koristi ovaj primalac za komunikaciju.
@@ -35,7 +35,7 @@ public class Primalac {
         this.socket = socket;
     }
     
-        /**
+    /**
      * Metoda koja prima objekat od klijenta.
      * <p>
      * Ova metoda koristi {@link ObjectInputStream} za čitanje objekta sa socket veze.

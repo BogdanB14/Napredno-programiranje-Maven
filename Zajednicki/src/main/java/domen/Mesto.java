@@ -19,17 +19,32 @@ import java.util.Objects;
  * @author Bogdan Blagojevic
  */
 public class Mesto implements ApstraktniDomenskiObjekat{
+    /**
+     * Identifikator mesta.
+     * Predstavlja jedinstveni identifikator za mesto.
+     * Tip Long
+     */
     private Long mestoID;
+    /**
+     * Postanski broj mesta.
+     * Predstavlja postanski broj povezan sa mestom.
+     * Tip Long
+     */
     private Long postanskiBroj;
+    /**
+     * Naziv mesta.
+     * Predstavlja naziv mesta.
+     * Tip String
+     */
     private String naziv;
 
-        /**
+    /**
      * Podrazumevani konstruktor koji inicijalizuje novi objekat {@code Mesto}.
      */
     public Mesto() {
     }
 
-        /**
+    /**
      * Parametarski konstruktor koji inicijalizuje objekat {@code Mesto}.
      *
      * @param mestoID Identifikator mesta.
@@ -42,7 +57,7 @@ public class Mesto implements ApstraktniDomenskiObjekat{
         this.naziv = naziv;
     }
 
-        /**
+    /**
      * Get metoda - Vraća identifikator mesta.
      *
      * @return Identifikator mesta.
@@ -51,16 +66,19 @@ public class Mesto implements ApstraktniDomenskiObjekat{
         return mestoID;
     }
 
-        /**
+    /**
      * Set metoda - Postavlja identifikator mesta.
      *
      * @param mestoID Identifikator mesta.
+     * @throws RuntimeException ako je id mesta 0 ili manji od 0
      */
     public void setMestoID(Long mestoID) {
+        if(mestoID > 0)
         this.mestoID = mestoID;
+        else throw new RuntimeException("ID mesta mora biti vece od 0");
     }
 
-        /**
+    /**
      * Get metoda - Vraća poštanski broj mesta.
      *
      * @return Poštanski broj mesta.
@@ -69,16 +87,19 @@ public class Mesto implements ApstraktniDomenskiObjekat{
         return postanskiBroj;
     }
 
-        /**
+    /**
      * Set metoda - Postavlja poštanski broj mesta.
      *
      * @param postanskiBroj Poštanski broj mesta.
+     * @throws RuntimeException ako postanski broj nije petocifren
      */
     public void setPostanskiBroj(Long postanskiBroj) {
+        if(postanskiBroj > 9999 && postanskiBroj < 100000)
         this.postanskiBroj = postanskiBroj;
+        else throw new RuntimeException("Postanski broj mora biti petocifren");
     }
 
-        /**
+    /**
      * Get metoda - Vraća naziv mesta.
      *
      * @return Naziv mesta.
@@ -87,13 +108,16 @@ public class Mesto implements ApstraktniDomenskiObjekat{
         return naziv;
     }
 
-        /**
+    /**
      * Set metoda - Postavlja naziv mesta.
      *
      * @param naziv Naziv mesta.
+     * @throws NullPointerException naziv ne sme biti null, prazan string ili samo spejs.
      */
     public void setNaziv(String naziv) {
+        if(naziv != null && !naziv.isEmpty() && !naziv.isBlank())
         this.naziv = naziv;
+        else throw new NullPointerException("Naziv nije u dobrom formatu");
     }
 
     @Override
@@ -102,7 +126,7 @@ public class Mesto implements ApstraktniDomenskiObjekat{
         return hash;
     }
 
-        /**
+    /**
      * Upoređuje objekat {@code Mesto} sa drugim objektom.
      *
      * @param obj Drugi objekat koji se upoređuje.
@@ -143,7 +167,7 @@ public class Mesto implements ApstraktniDomenskiObjekat{
         return naziv;
     }
 
-        /**
+    /**
      * {@inheritDoc}
      * Vraća naziv tabele u bazi podataka u kojoj se nalazi entitet {@code Mesto}.
      * 
@@ -154,7 +178,7 @@ public class Mesto implements ApstraktniDomenskiObjekat{
         return "mesto";
     }
 
-        /**
+    /**
      * {@inheritDoc}
      * Vraća listu objekata {@link Mesto} iz rezultata upita.
      * 
@@ -175,7 +199,7 @@ public class Mesto implements ApstraktniDomenskiObjekat{
         return lista;
      }
 
-        /**
+    /**
      * {@inheritDoc}
      * Vraća imena kolona koje se koriste za ubacivanje podataka u bazu u tabelu {@code Mesto}.
      * 
@@ -186,7 +210,7 @@ public class Mesto implements ApstraktniDomenskiObjekat{
         return "postanskiBroj,naziv";
     }
 
-        /**
+    /**
      * {@inheritDoc}
      * Vraća vrednosti za ubacivanje u bazu u tabelu {@code Mesto}.
      * 
@@ -197,7 +221,7 @@ public class Mesto implements ApstraktniDomenskiObjekat{
         return""+postanskiBroj+",'"+naziv+"'";
     }
 
-        /**
+    /**
      * {@inheritDoc}
      * Vraća primarni ključ za identifikaciju mesta.
      * 
@@ -208,7 +232,7 @@ public class Mesto implements ApstraktniDomenskiObjekat{
         return "mesto.mestoID="+mestoID;
     }
 
-        /**
+    /**
      * {@inheritDoc}
      * Ova metoda trenutno nije podržana.
      * 
@@ -221,7 +245,7 @@ public class Mesto implements ApstraktniDomenskiObjekat{
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
-        /**
+    /**
      * {@inheritDoc}
      * Vraća SQL izraz za ažuriranje podataka u bazi u tabelu {@code Mesto}.
      * 

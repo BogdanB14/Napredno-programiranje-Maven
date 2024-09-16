@@ -18,7 +18,7 @@ import operacija.ApstraktnaGenerickaOperacija;
  * @author Bogdan Blagojevic
  */
 public class ObrisiClanaOperacija extends ApstraktnaGenerickaOperacija{
-        /**
+    /**
      * Indikator uspeha operacije brisanja.
      * <p>
      * Ova statička promenljiva čuva rezultat operacije brisanja člana. Ako je brisanje uspešno,

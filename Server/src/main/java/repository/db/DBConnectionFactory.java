@@ -24,7 +24,7 @@ public class DBConnectionFactory {
     private static DBConnectionFactory instance;
     private Connection connection;
     
-        /**
+    /**
      * Vraća jedini primerak klase .
      * 
      * @return Jedini primerak {@code DBConnectionFactory}.
@@ -59,7 +59,7 @@ public class DBConnectionFactory {
         }
     }
 
-        /**
+    /**
      * Vraća trenutno otvorenu konekciju sa bazom podataka.
      * 
      * @return Konekcija sa bazom podataka.

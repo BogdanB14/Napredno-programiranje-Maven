@@ -19,7 +19,7 @@ import operacija.ApstraktnaGenerickaOperacija;
  */
 public class DodajClanaOperacija extends ApstraktnaGenerickaOperacija{
 
-        /**
+    /**
      * Proverava preduslove za izvršenje operacije dodavanja člana.
      * <p>
      * Ova metoda osigurava da parametar koji se prosleđuje bude instanca {@link Clan}.
@@ -37,7 +37,7 @@ public class DodajClanaOperacija extends ApstraktnaGenerickaOperacija{
         
     }
 
-       /**
+    /**
      * Izvršava operaciju dodavanja novog člana u bazu podataka.
      * <p>
      * Ova metoda koristi {@code broker} za obavljanje dodavanja podataka o članu u bazu podataka.

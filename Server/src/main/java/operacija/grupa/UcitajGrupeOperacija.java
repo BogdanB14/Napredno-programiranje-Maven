@@ -24,7 +24,7 @@ public class UcitajGrupeOperacija extends ApstraktnaGenerickaOperacija{
      */
     private List<Grupa> lista;
     
-        /**
+    /**
      * Proverava preduslove za izvršenje operacije učitavanja grupa.
      * <p>
      * Ova metoda osigurava da parametar koji se prosleđuje bude {@code null} ili instanca {@link Grupa}.
@@ -40,7 +40,7 @@ public class UcitajGrupeOperacija extends ApstraktnaGenerickaOperacija{
             throw new Exception("Sistem ne moze da ucita grupe");
     }
 
-        /**
+    /**
      * Izvršava operaciju učitavanja svih grupa iz baze podataka.
      * <p>
      * Ova metoda koristi {@code broker} za obavljanje učitavanja podataka o grupama.
@@ -57,7 +57,7 @@ public class UcitajGrupeOperacija extends ApstraktnaGenerickaOperacija{
         lista = broker.getAll(new Grupa(), " JOIN kategorija kategorija ON grupa.`kategorija`=kategorija.`kategorijaID` JOIN administrator administrator ON grupa.`administrator`=administrator.`administratorID` JOIN trener trener ON grupa.`trener`=trener.`trenerID` JOIN mesto mesto ON trener.`mesto`=mesto.`mestoID` ORDER BY grupa.grupaID");
     }
 
-        /**
+    /**
      * Get metoda - Vraća listu grupa koje su učitane iz baze podataka.
      * 
      * @return Lista grupa.
@@ -66,7 +66,7 @@ public class UcitajGrupeOperacija extends ApstraktnaGenerickaOperacija{
         return lista;
     }
 
-        /**
+    /**
      * Set metoda- Postavlja listu grupa.
      * 
      * @param lista Lista grupa koja će biti postavljena.

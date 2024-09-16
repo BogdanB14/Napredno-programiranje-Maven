@@ -25,7 +25,7 @@ import java.sql.ResultSet;
  */
 public class DBRepositoryGeneric implements DBRepository<ApstraktniDomenskiObjekat> {
 
-        /**
+    /**
      * Vraća sve entitete koji odgovaraju uslovima iz baze podataka.
      * 
      * @param param Entitet koji se koristi za formiranje SQL upita.
@@ -53,7 +53,7 @@ public class DBRepositoryGeneric implements DBRepository<ApstraktniDomenskiObjek
         return lista;
     }
 
-        /**
+    /**
      * Dodaje novi entitet u bazu podataka.
      * 
      * @param param Entitet koji se dodaje.
@@ -69,7 +69,7 @@ public class DBRepositoryGeneric implements DBRepository<ApstraktniDomenskiObjek
         st.close();
     }
 
-        /**
+    /**
      * Ažurira postojeći entitet u bazi podataka.
      * 
      * @param param Entitet koji se ažurira.
@@ -88,7 +88,7 @@ public class DBRepositoryGeneric implements DBRepository<ApstraktniDomenskiObjek
         return affectedRows > 0;
     }
 
-        /**
+    /**
      * Briše entitet iz baze podataka.
      * 
      * @param param Entitet koji se briše.

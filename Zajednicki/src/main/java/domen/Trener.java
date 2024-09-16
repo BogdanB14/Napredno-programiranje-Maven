@@ -19,18 +19,38 @@ import java.util.Objects;
  * @author Bogdan Blagojevic
  */
 public class Trener implements ApstraktniDomenskiObjekat{
+    /**
+     * Identifikator trenera.
+     * Predstavlja jedinstveni identifikator za trenera.
+     * Tip Long
+     */
     private Long trenerID;
+    /**
+     * Ime trenera.
+     * Predstavlja ime trenera.
+     * Tip String
+     */
     private String imeTrener;
+    /**
+     * Prezime trenera.
+     * Predstavlja prezime trenera.
+     * Tip String
+     */
     private String prezimeTrener;
+    /**
+     * Mesto gde trener zivi ili radi.
+     * Predstavlja objekat klase {@link Mesto} koji opisuje lokaciju trenera.
+     * Tip Mesto
+     */
     private Mesto mesto;
 
-        /**
+    /**
      * Podrazumevani konstruktor koji inicijalizuje novi objekat {@code Trener}.
      */
     public Trener() {
     }
 
-        /**
+    /**
      * Parametarski konstruktor koji inicijalizuje objekat {@code Trener}.
      *
      * @param trenerID Identifikator trenera.
@@ -45,7 +65,7 @@ public class Trener implements ApstraktniDomenskiObjekat{
         this.mesto = mesto;
     }
 
-        /**
+    /**
      * Get metoda - Vraća identifikator trenera.
      *
      * @return Identifikator trenera.
@@ -54,16 +74,19 @@ public class Trener implements ApstraktniDomenskiObjekat{
         return trenerID;
     }
 
-        /**
+    /**
      * Set metoda - Postavlja identifikator trenera.
      *
      * @param trenerID Identifikator trenera.
+     * @throws RuntimeException ako je id trenera 0 ili manji od 0
      */
     public void setTrenerID(Long trenerID) {
+        if(trenerID > 0)
         this.trenerID = trenerID;
+        else throw new RuntimeException("ID trenera mora biti veci od 0");
     }
 
-        /**
+    /**
      * Get metoda - Vraća ime trenera.
      *
      * @return Ime trenera.
@@ -72,16 +95,19 @@ public class Trener implements ApstraktniDomenskiObjekat{
         return imeTrener;
     }
 
-        /**
+    /**
      * Set metoda - Postavlja ime trenera.
      *
      * @param imeTrener Ime trenera.
+     * @throws NullPointerException ako je prezime trenera null, prazan string ili se sastoji samo od blanko znaka
      */
     public void setImeTrener(String imeTrener) {
+        if(imeTrener != null && !imeTrener.isEmpty() && !imeTrener.isBlank())
         this.imeTrener = imeTrener;
+        else throw new NullPointerException("Ime trenera nije u dobrom formatu");
     }
 
-        /**
+    /**
      * Get metoda - Vraća prezime trenera.
      *
      * @return Prezime trenera.
@@ -90,16 +116,19 @@ public class Trener implements ApstraktniDomenskiObjekat{
         return prezimeTrener;
     }
 
-        /**
+    /**
      * Set metoda - Postavlja prezime trenera.
      *
      * @param prezimeTrener Prezime trenera.
+     * @throws NullPointerException ako je prezime trenera null, prazan string ili se sastoji samo od blanko znaka
      */
     public void setPrezimeTrener(String prezimeTrener) {
+        if(prezimeTrener != null && !prezimeTrener.isEmpty() && !prezimeTrener.isBlank())
         this.prezimeTrener = prezimeTrener;
+        else throw new NullPointerException("Prezime trenera nije u dobrom formatu");
     }
 
-        /**
+    /**
      * Get metoda - Vraća mesto prebivališta trenera.
      *
      * @return Mesto prebivališta trenera.
@@ -108,17 +137,20 @@ public class Trener implements ApstraktniDomenskiObjekat{
         return mesto;
     }
 
-        /**
+    /**
      * Set metoda - Postavlja mesto prebivališta trenera.
      *
      * @param mesto Mesto prebivališta trenera.
+     * @throws NullPointerException ako je mesto null
      */
     public void setMesto(Mesto mesto) {
+        if(mesto != null)
         this.mesto = mesto;
+        else throw new NullPointerException("Mesto ne sme biti null");
     }
 
     
-        /**
+    /**
      * Vraća string prezentaciju objekta {@code Trener}.
      * <p>
      * U ovom slučaju, vraća ime i prezime trenera.
@@ -135,7 +167,7 @@ public class Trener implements ApstraktniDomenskiObjekat{
     public int hashCode() {
         return Objects.hash(trenerID, imeTrener, prezimeTrener, mesto);
     }
-        /**
+    /**
      * Upoređuje objekat {@code Trener} sa drugim objektom.
      *
      * @param obj Drugi objekat koji se upoređuje.
@@ -175,7 +207,7 @@ public class Trener implements ApstraktniDomenskiObjekat{
         return "trener";
     }
 
-        /**
+    /**
      * {@inheritDoc}
      * Vraća listu objekata {@link Trener} iz rezultata upita.
      * 
@@ -202,7 +234,7 @@ public class Trener implements ApstraktniDomenskiObjekat{
         return lista;
     }
 
-        /**
+    /**
      * {@inheritDoc}
      * Vraća imena kolona koje se koriste za ubacivanje podataka u bazu u tabelu {@code Trener}.
      * 
@@ -213,7 +245,7 @@ public class Trener implements ApstraktniDomenskiObjekat{
         return "imeTrener,prezimeTrener,mesto";
     }
 
-        /**
+    /**
      * {@inheritDoc}
      * Vraća vrednosti za ubacivanje u bazu u tabelu {@code Trener}.
      * 
@@ -224,7 +256,7 @@ public class Trener implements ApstraktniDomenskiObjekat{
         return "'"+imeTrener+"','"+prezimeTrener+"',"+mesto.getMestoID();
     }
 
-        /**
+    /**
      * {@inheritDoc}
      * Vraća primarni ključ za identifikaciju trenera.
      * 
@@ -235,7 +267,7 @@ public class Trener implements ApstraktniDomenskiObjekat{
         return "trener.trenerID="+trenerID;
     }
 
-        /**
+    /**
      * {@inheritDoc}
      * Ova metoda trenutno nije podržana.
      * 
@@ -248,7 +280,7 @@ public class Trener implements ApstraktniDomenskiObjekat{
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
-        /**
+    /**
      * {@inheritDoc}
      * Vraća SQL izraz za ažuriranje podataka u bazi u tabelu {@code Trener}.
      * 

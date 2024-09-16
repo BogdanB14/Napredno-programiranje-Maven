@@ -11,26 +11,45 @@ import java.util.Objects;
 
 /**
  * Klasa koja predstavlja entitet sale u sistemu.
- * <p>
+ * 
  * Ova klasa implementira interfejs {@link ApstraktniDomenskiObjekat} i pruža osnovne informacije o sali,
  * kao što su identifikator, naziv sale, kapacitet i mesto u kojem se sala nalazi.
- * </p>
  * 
  * @author Bogdan Blagojevic
  */
 public class Sala implements ApstraktniDomenskiObjekat{
+    /**
+     * Identifikator sale.
+     * Predstavlja jedinstveni identifikator za salu.
+     * Tip Long
+     */
     private Long salaID;
+    /**
+     * Naziv sale.
+     * Predstavlja naziv sale.
+     * Tip String
+     */
     private String nazivSale;
+    /**
+     * Kapacitet sale.
+     * Predstavlja maksimalan broj osoba koji sala može da primi.
+     * Tip Integer
+     */
     private int kapacitet;
+    /**
+     * Mesto na kojem se nalazi sala.
+     * Predstavlja objekat klase {@link Mesto} koji opisuje lokaciju sale.
+     * Tip Mesto
+     */
     private Mesto mesto;
     
-       /**
+    /**
      * Podrazumevani konstruktor koji inicijalizuje novi objekat {@code Sala}.
      */
     public Sala() {
     }
 
-        /**
+    /**
      * Parametarski konstruktor koji inicijalizuje objekat {@code Sala}.
      *
      * @param salaID Identifikator sale.
@@ -45,7 +64,7 @@ public class Sala implements ApstraktniDomenskiObjekat{
         this.mesto = mesto;
     }
 
-        /**
+    /**
      * Get metoda - Vraća identifikator sale.
      *
      * @return Identifikator sale.
@@ -54,16 +73,19 @@ public class Sala implements ApstraktniDomenskiObjekat{
         return salaID;
     }
 
-        /**
+    /**
      * Set metoda - Postavlja identifikator sale.
      *
      * @param salaID Identifikator sale.
+     * @throws RuntimeException ako je id sale 0 ili manji od 0
      */
     public void setSalaID(Long salaID) {
+        if(salaID > 0)
         this.salaID = salaID;
+        else throw new RuntimeException("ID sale mora biti veci od 0");
     }
 
-        /**
+    /**
      * Get metoda - Vraća naziv sale.
      *
      * @return Naziv sale.
@@ -72,16 +94,19 @@ public class Sala implements ApstraktniDomenskiObjekat{
         return nazivSale;
     }
 
-        /**
+    /**
      * Set metoda - Postavlja naziv sale.
      *
      * @param nazivSale Naziv sale.
+     * @throws NullPointerException ako je naziv sale null, prazan string ili se sastoji samo od blanko znakova
      */
     public void setNazivSale(String nazivSale) {
+        if(nazivSale != null && !nazivSale.isEmpty() && !nazivSale.isBlank())
         this.nazivSale = nazivSale;
+        else throw new NullPointerException("Naziv sale nije u dobrom formatu");
     }
 
-        /**
+    /**
      * Get metoda - Vraća kapacitet sale.
      *
      * @return Kapacitet sale.
@@ -90,16 +115,19 @@ public class Sala implements ApstraktniDomenskiObjekat{
         return kapacitet;
     }
 
-        /**
+    /**
      * Set metoda - Postavlja kapacitet sale.
      *
      * @param kapacitet Kapacitet sale.
+     * @throws RuntimeException ako je kapacitet 0 ili manji od 0
      */
     public void setKapacitet(int kapacitet) {
+        if(kapacitet > 0)
         this.kapacitet = kapacitet;
+        else throw new RuntimeException("Kapacitet mora biti veci od 0");
     }
 
-        /**
+    /**
      * Get metoda - Vraća mesto u kojem se sala nalazi.
      *
      * @return Mesto u kojem se sala nalazi.
@@ -108,16 +136,19 @@ public class Sala implements ApstraktniDomenskiObjekat{
         return mesto;
     }
 
-        /**
+    /**
      * Set metoda - Postavlja mesto u kojem se sala nalazi.
      *
      * @param mesto Mesto u kojem se sala nalazi.
+     * @throws NullPointerException ako je mesto null
      */
     public void setMesto(Mesto mesto) {
+        if(mesto != null)
         this.mesto = mesto;
+        else throw new NullPointerException("Mesto ne sme biti null");
     }
     
-        /**
+    /**
      * Vraća string prezentaciju objekta {@code Sala}.
      * <p>
      * U ovom slučaju, vraća naziv sale.
@@ -136,7 +167,7 @@ public class Sala implements ApstraktniDomenskiObjekat{
         return hash;
     }
 
-        /**
+    /**
      * Upoređuje objekat {@code Sala} sa drugim objektom.
      *
      * @param obj Drugi objekat koji se upoređuje.
@@ -161,7 +192,7 @@ public class Sala implements ApstraktniDomenskiObjekat{
         return Objects.equals(this.salaID, other.salaID);
     }
 
-        /**
+    /**
      * {@inheritDoc}
      * Vraća naziv tabele u bazi podataka u kojoj se nalazi entitet {@code Sala}.
      * 
@@ -172,7 +203,7 @@ public class Sala implements ApstraktniDomenskiObjekat{
         return "sala";
     }
 
-        /**
+    /**
      * {@inheritDoc}
      * Vraća listu objekata {@link Sala} iz rezultata upita.
      * 
@@ -202,7 +233,7 @@ public class Sala implements ApstraktniDomenskiObjekat{
         return lista;
     }
 
-        /**
+    /**
      * {@inheritDoc}
      * Vraća imena kolona koje se koriste za ubacivanje podataka u bazu u tabelu {@code Sala}.
      * 
@@ -214,7 +245,7 @@ public class Sala implements ApstraktniDomenskiObjekat{
     }
     
 
-        /**
+    /**
      * {@inheritDoc}
      * Vraća vrednosti za ubacivanje u bazu u tabelu {@code Sala}.
      * 
@@ -225,7 +256,7 @@ public class Sala implements ApstraktniDomenskiObjekat{
         return "'"+nazivSale+"',"+kapacitet+","+mesto.getMestoID();
     }
 
-        /**
+    /**
      * {@inheritDoc}
      * Vraća primarni ključ za identifikaciju sale.
      * 
@@ -236,7 +267,7 @@ public class Sala implements ApstraktniDomenskiObjekat{
         return "sala.salaID="+salaID;
     }
 
-        /**
+    /**
      * {@inheritDoc}
      * Ova metoda trenutno nije podržana.
      * 
@@ -249,7 +280,7 @@ public class Sala implements ApstraktniDomenskiObjekat{
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
-        /**
+    /**
      * {@inheritDoc}
      * Vraća SQL izraz za ažuriranje podataka u bazi u tabelu {@code Sala}.
      * 

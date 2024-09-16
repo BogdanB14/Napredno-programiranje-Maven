@@ -64,7 +64,7 @@ public class Server extends Thread{
     }
     
     
-        /**
+    /**
      * Zaustavlja server i prekida sve trenutne klijentske niti.
      * <p>
      * Ova metoda postavlja {@code kraj} na {@code true} što uzrokuje da se 
@@ -86,7 +86,7 @@ public class Server extends Thread{
         }
     }
 
-      /**
+    /**
      * Get metoda - Vraća {@code ServerSocket} koji server koristi za prihvatanje veza.
      * 
      * @return {@code ServerSocket} objekat koji koristi server.

@@ -11,10 +11,6 @@ import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 
-/**
- *
- * @author Bogdan Blagojevic
- */
 
 /**
  * Klasa koja predstavlja člana u sistemu.
@@ -24,21 +20,58 @@ import java.util.Objects;
  * @author Bogdan Blagojevic
  */
 public class Clan implements ApstraktniDomenskiObjekat{
+    /**
+     * JMBG (Jedinstveni Maticni Broj Gradjana) clana.
+     * Predstavlja jedinstveni identifikator clana u sistemu.
+     * Tip String
+     */
     private String jmbg;
+    
+    /**
+     * Ime clana.
+     * Predstavlja ime clana.
+     * Tip String
+     */
     private String imeClana;
+    /**
+     * Prezime clana.
+     * Predstavlja prezime clana.
+     * Tip String
+     */
     private String prezimeClana;
+    /**
+     * Datum rođenja clana.
+     * Predstavlja datum kada je clan rođen.
+     * Tip Date
+     */
     private Date datumRodjenja;
+    /**
+     * Pol clana.
+     * Predstavlja pol clana (muski, zenski).
+     * Tip Pol
+     */
     private Pol pol;
+    /**
+     * Telefon clana.
+     * Predstavlja kontakt telefon clana.
+     * Tip String
+     */
     private String telefon;
+    
+    /**
+     * Mesto prebivalista clana.
+     * Predstavlja mesto u kojem clan zivi.
+     * Tip Mesto
+     */
     private Mesto mesto;
     
-        /**
-     * Podrazumevani (default) konstruktor.
-     */
+  /**
+   * Podrazumevani (default) konstruktor.
+   */
     public Clan() {
     }
 
-        /**
+    /**
      * Konstruktor sa svim atributima.
      * 
      * @param jmbg JMBG člana.
@@ -60,7 +93,7 @@ public class Clan implements ApstraktniDomenskiObjekat{
     }
 
     
-        /**
+    /**
      * Get metoda - Vraća JMBG člana.
      * 
      * @return JMBG člana.
@@ -70,17 +103,20 @@ public class Clan implements ApstraktniDomenskiObjekat{
     }
 
     
-        /**
+    /**
      * Set metoda - Postavlja JMBG člana.
      * 
      * @param jmbg JMBG člana.
+     *  @throws NullPointerException Ako je JMBG clana null ili nije duzine od 13 karaktera
      */
     public void setJmbg(String jmbg) {
+        if(jmbg != null && jmbg.length() == 13)
         this.jmbg = jmbg;
+        else throw new NullPointerException("JMBG nije u dobrom formatu");
     }
 
     
-        /**
+    /**
      * Get metoda - Vraća ime člana.
      * 
      * @return Ime člana.
@@ -89,16 +125,19 @@ public class Clan implements ApstraktniDomenskiObjekat{
         return imeClana;
     }
 
-        /**
+    /**
      * Set metoda - Postavlja ime člana.
      * 
      * @param imeClana Ime člana.
+     *  @throws NullPointerException Ako je ime clana null
      */
     public void setImeClana(String imeClana) {
+        if(imeClana != null)
         this.imeClana = imeClana;
+        else throw new NullPointerException("Clan nije u dobrom formatu");
     }
 
-            /**
+    /**
      * Get metoda - Vraća prezime člana.
      * 
      * @return Prezime člana.
@@ -108,16 +147,19 @@ public class Clan implements ApstraktniDomenskiObjekat{
     }
 
 
-        /**
+    /**
      * Set metoda - Postavlja prezime člana.
      * 
      * @param prezimeClana Prezime člana.
+     *  @throws NullPointerException Ako je prezime clana null, prazno ili se sastoji samo od razmaka
      */
     public void setPrezimeClana(String prezimeClana) {
+        if(prezimeClana != null && !prezimeClana.isEmpty() && !prezimeClana.isBlank())
         this.prezimeClana = prezimeClana;
+        else throw new NullPointerException("Prezime nije u dobrom formatu");
     }
 
-        /**
+    /**
      * Get metoda - Vraća datum rođenja člana.
      * 
      * @return Datum rođenja člana.
@@ -126,13 +168,16 @@ public class Clan implements ApstraktniDomenskiObjekat{
         return datumRodjenja;
     }
 
-        /**
+    /**
      * Set metoda - Postavlja datum rođenja člana.
      * 
      * @param datumRodjenja Datum rođenja člana.
+     *  @throws NullPointerException Ako je datum rodjenja clana null ili datum iz buducnosti.
      */
     public void setDatumRodjenja(Date datumRodjenja) {
+        if(datumRodjenja != null && datumRodjenja.before(new Date()))
         this.datumRodjenja = datumRodjenja;
+        else throw new NullPointerException("Datum nije u dobrom forrmatu");
     }
 
     
@@ -145,7 +190,7 @@ public class Clan implements ApstraktniDomenskiObjekat{
         return pol;
     }
 
-        /**
+    /**
      * Set metoda - Postavlja pol člana.
      * 
      * @param pol Pol člana.
@@ -154,7 +199,7 @@ public class Clan implements ApstraktniDomenskiObjekat{
         this.pol = pol;
     }
 
-        /**
+    /**
      * Get metoda - Vraća telefon člana.
      * 
      * @return Telefon člana.
@@ -163,16 +208,19 @@ public class Clan implements ApstraktniDomenskiObjekat{
         return telefon;
     }
 
-        /**
+    /**
      * Set metoda - Postavlja telefon člana.
      * 
      * @param telefon Telefon člana.
+     *  @throws NullPointerException Ako je telefon clana null
      */
     public void setTelefon(String telefon) {
+        if(telefon != null)
         this.telefon = telefon;
+        else throw new NullPointerException("Telefon ne sme biti null");
     }
 
-        /**
+    /**
      * Get metoda - Vraća mesto rodjenja člana (Grad)
      * 
      * @return Mesto (grad) člana.
@@ -186,12 +234,15 @@ public class Clan implements ApstraktniDomenskiObjekat{
      * Set metoda - Postavlja mesto rodjenja člana (Grad)
      * 
      * @param mesto Mesto (grad) člana.
+     *  @throws NullPointerException Ako je mesto null
      */
     public void setMesto(Mesto mesto) {
+        if(mesto != null)
         this.mesto = mesto;
+        else throw new NullPointerException("Mesto ne sme biti null");
     }
 
-            /**
+    /**
      * Vraća string prezentaciju objekta {@code Clan}.
      * <p>
      * U ovom slučaju, vraća izgled celog objekta.
@@ -235,7 +286,7 @@ public class Clan implements ApstraktniDomenskiObjekat{
         return Objects.equals(this.jmbg, other.jmbg);
     }
 
-        /**
+    /**
      * {@inheritDoc}
      * Vraća naziv tabele u bazi podataka za klasu Clan.
      * 
@@ -246,7 +297,7 @@ public class Clan implements ApstraktniDomenskiObjekat{
         return "clan";
     }
 
-        /**
+    /**
      * {@inheritDoc}
      * Vraća listu objekata {@link Clan} iz rezultata upita.
      * 
@@ -274,7 +325,7 @@ public class Clan implements ApstraktniDomenskiObjekat{
         return lista;
     }
 
-        /**
+    /**
      * {@inheritDoc}
      * Vraća imena kolona koje se koriste za ubacivanje podataka u bazu u tabelu Clan.
      * 
@@ -285,7 +336,7 @@ public class Clan implements ApstraktniDomenskiObjekat{
         return "jmbg,imeClana,prezimeClana,datumRodjenja,pol,telefon,mesto";
     }
 
-        /**
+    /**
      * {@inheritDoc}
      * Vraća vrednosti za ubacivanje u bazu u tabelu Clan
      * 
@@ -297,7 +348,7 @@ public class Clan implements ApstraktniDomenskiObjekat{
         return "'"+jmbg+"','"+imeClana+"','"+prezimeClana+"','"+datum+"','"+pol+"','"+telefon+"',"+mesto.getMestoID();
     }
 
-        /**
+    /**
      * {@inheritDoc}
      * Vraća primarni ključ za identifikaciju člana.
      * 
@@ -308,7 +359,7 @@ public class Clan implements ApstraktniDomenskiObjekat{
         return "clan.jmbg='"+jmbg+"'";
     }
 
-        /**
+    /**
      * {@inheritDoc}
      * Ova metoda trenutno nije podržana.
      * 
@@ -322,7 +373,7 @@ public class Clan implements ApstraktniDomenskiObjekat{
     }
 
     
-        /**
+    /**
      * {@inheritDoc}
      * Vraća SQL izraz za ažuriranje podataka u bazi za klasu Clan.
      * 

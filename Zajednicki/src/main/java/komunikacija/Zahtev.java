@@ -16,25 +16,25 @@ import java.io.Serializable;
  * @author Bogdan Blagojevic
  */
 public class Zahtev implements Serializable{
-        /** 
+    /** 
      * Operacija koju korisnik zahteva od servera.
      * Ovaj objekat predstavlja vrstu operacije koja treba da se izvrši.
      */
     private Operacija operacija;
-        /** 
+    /** 
      * Parametar koji se šalje uz zahtev.
      * Ovaj objekat može biti bilo koji tip podataka koji je potreban za izvršenje operacije.
      */
     private Object parametar;
 
-        /**
+    /**
      * Podrazumevani konstruktor koji inicijalizuje objekat {@code Zahtev}.
      * Ovaj konstruktor ne postavlja nikakve vrednosti za {@code operacija} i {@code parametar}.
      */
     public Zahtev() {
     }
 
-        /**
+    /**
      * Parametarski konstruktor koji inicijalizuje objekat {@code Zahtev} sa datom operacijom i parametrom.
      *
      * @param operacija Operacija koju korisnik zahteva od servera.
@@ -55,7 +55,7 @@ public class Zahtev implements Serializable{
         return operacija;
     }
 
-        /**
+    /**
      * Set metoda - Postavlja operaciju koju korisnik zahteva.
      *
      * @param operacija Operacija koju korisnik zahteva od servera.
@@ -64,7 +64,7 @@ public class Zahtev implements Serializable{
         this.operacija = operacija;
     }
 
-        /**
+    /**
      * Get metoda - Vraća parametar koji se šalje uz zahtev.
      *
      * @return Parametar koji se šalje uz zahtev.
@@ -73,7 +73,7 @@ public class Zahtev implements Serializable{
         return parametar;
     }
 
-        /**
+    /**
      * Set metoda - Postavlja parametar koji se šalje uz zahtev.
      *
      * @param parametar Parametar koji se šalje uz zahtev.
@@ -88,7 +88,7 @@ public class Zahtev implements Serializable{
         return hash;
     }
 
-        /**
+    /**
      * Upoređuje objekat {@code Zahtev} sa drugim objekatom.
      *
      * @param obj Drugi objekat koji se upoređuje.
@@ -113,3 +113,8 @@ public class Zahtev implements Serializable{
     
     
 }
+
+
+/*
+
+*/

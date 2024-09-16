@@ -24,7 +24,7 @@ public class UcitajMestaOperacija extends ApstraktnaGenerickaOperacija{
      */
     private List<Mesto> lista;
     
-        /**
+    /**
      * Proverava preduslove za izvršenje operacije preuzimanja mesta.
      * <p>
      * Ova metoda osigurava da parametar koji se prosleđuje nije {@code null} i da je instanca {@link Mesto}.
@@ -40,7 +40,7 @@ public class UcitajMestaOperacija extends ApstraktnaGenerickaOperacija{
             throw new Exception("Sistem ne moze da ucita mesta");
     }
 
-        /**
+    /**
      * Izvršava operaciju preuzimanja svih mesta iz baze podataka.
      * <p>
      * Ova metoda koristi {@code broker} za preuzimanje svih mesta iz baze podataka. 
@@ -56,7 +56,7 @@ public class UcitajMestaOperacija extends ApstraktnaGenerickaOperacija{
         lista = broker.getAll(new Mesto(), "");
     }
 
-        /**
+    /**
      * Get metoda - Vraća listu mesta ucitanih iz baze podataka.
      * 
      * @return Lista mesta {@link Mesto} preuzetih iz baze podataka.
@@ -65,7 +65,7 @@ public class UcitajMestaOperacija extends ApstraktnaGenerickaOperacija{
         return lista;
     }
 
-        /**
+    /**
      * Set metoda - Postavlja listu mesta ucitanih iz baze podataka.
      * 
      * @param lista Lista mesta {@link Mesto} koja će biti postavljena.

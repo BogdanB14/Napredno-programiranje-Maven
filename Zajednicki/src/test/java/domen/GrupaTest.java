@@ -6,12 +6,13 @@ package domen;
 
 import java.sql.ResultSet;
 import java.util.List;
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
-import org.junit.Test;
-import static org.junit.Assert.*;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
 /**
  *
@@ -26,27 +27,38 @@ public class GrupaTest {
     public GrupaTest() {
     }
     
-    @BeforeClass
-    public static void setUpClass() {
-    }
+
     
-    @AfterClass
-    public static void tearDownClass() {
-    }
-    
-    @Before
+    @BeforeEach
     public void setUp() {
          mesto = new Mesto(1L, 17530L, "Surdulica");
          kategorija = new Kategorija(1L, "Seniori", "Opis", Pol.MUSKI);
          administrator = new Administrator(1L, "BogdanB14", "Bogdan123", "Bogdan", "Blagojevic");
          trener = new Trener(3L, "Uros", "Blagojevic", mesto);
-         grupa = new Grupa(1L, "Prvi muski tim", 20, kategorija, administrator, trener);
+         grupa = new Grupa();
+         grupa.setGrupaID(1L);
+         grupa.setNazivGrupe("Prvi muski tim");
+         grupa.setBrClanova(20);
+         grupa.setKategorija(kategorija);
+         grupa.setAdministrator(administrator);
+         grupa.setTrener(trener);
     }
     
-    @After
+    @AfterEach
     public void tearDown() {
     }
-
+    
+    @Test
+    public void testParametarskiKonstruktor() {
+        Grupa novaGrupa = new Grupa(1L, "Grupa A", 10, kategorija, administrator, trener);
+        
+        assertEquals(1L, novaGrupa.getGrupaID());
+        assertEquals("Grupa A", novaGrupa.getNazivGrupe());
+        assertEquals(10, novaGrupa.getBrClanova());
+        assertEquals(kategorija, novaGrupa.getKategorija());
+        assertEquals(administrator, novaGrupa.getAdministrator());
+        assertEquals(trener, novaGrupa.getTrener());
+    }
 
 
     @Test
@@ -57,6 +69,11 @@ public class GrupaTest {
 
     }
 
+        @Test
+    public void testSetGrupaManjeOd1() {
+        Exception exception = assertThrows(RuntimeException.class, () -> grupa.setGrupaID(0L));
+        assertEquals("ID grupe mora biti vece od 0", exception.getMessage());
+    }
 
 
     @Test
@@ -64,6 +81,18 @@ public class GrupaTest {
         String noviNaziv = "Drugi muski tim";
         grupa.setNazivGrupe(noviNaziv);
         assertEquals(noviNaziv, grupa.getNazivGrupe());
+    }
+    
+    @Test
+    public void testSetNazivGrupeNull() {
+        Exception exception = assertThrows(NullPointerException.class, () -> grupa.setNazivGrupe(null));
+        assertEquals("Naziv grupe nije u dobrom formatu", exception.getMessage());
+
+        exception = assertThrows(NullPointerException.class, () -> grupa.setNazivGrupe("   "));
+        assertEquals("Naziv grupe nije u dobrom formatu", exception.getMessage());
+        
+        exception = assertThrows(NullPointerException.class, () -> grupa.setNazivGrupe(""));
+        assertEquals("Naziv grupe nije u dobrom formatu", exception.getMessage());
     }
 
 
@@ -73,13 +102,24 @@ public class GrupaTest {
         grupa.setBrClanova(brClanova);
         assertEquals(brClanova, grupa.getBrClanova());
     }
+    
+        @Test
+    public void testSetBrClanovaManjiOd1() {
+        Exception exception = assertThrows(RuntimeException.class, () -> grupa.setBrClanova(0));
+        assertEquals("Broj clanova mora biti veci od 0", exception.getMessage());
+    }
 
     @Test
     public void testSetKategorija() {
         Kategorija novaKategorija = new Kategorija(2L, "Juniori", "Opis", Pol.MUSKI);
         grupa.setKategorija(novaKategorija);
         assertEquals(novaKategorija, grupa.getKategorija());
-
+    }
+    
+        @Test
+    public void testSetKategorijaNull() {
+        Exception exception = assertThrows(NullPointerException.class, () -> grupa.setKategorija(null));
+        assertEquals("Kategorija ne sme biti null", exception.getMessage());
     }
 
 
@@ -90,6 +130,12 @@ public class GrupaTest {
         grupa.setAdministrator(noviAdmin);
         assertEquals(noviAdmin, grupa.getAdministrator());
     }
+    
+    @Test
+    public void testSetAdministratorNull() {
+        Exception exception = assertThrows(NullPointerException.class, () -> grupa.setAdministrator(null));
+        assertEquals("Administrator ne sme biti null", exception.getMessage());
+    }
 
     @Test
     public void testSetTrener() {
@@ -98,16 +144,26 @@ public class GrupaTest {
         grupa.setTrener(noviTrener);
         assertEquals(noviTrener, grupa.getTrener());
     }
-
-    /**
-     * Test of equals method, of class Grupa.
-     */
-    @Test
-    public void testEquals() {
-        Grupa novaGrupa = new Grupa(1L, "Prvi muski tim", 20, kategorija, administrator, trener);
-        assertTrue(grupa.equals(novaGrupa));
+    
+        @Test
+    public void testSetTrenerNull() {
+        Exception exception = assertThrows(NullPointerException.class, () -> grupa.setTrener(null));
+        assertEquals("Trener ne sme biti null", exception.getMessage());
     }
 
+  @ParameterizedTest
+    @CsvSource({
+        "1, Grupa A, 1, Grupa A, true",   
+        "1, Grupa A, 2, Grupa A, false",  
+        "1, Grupa A, 1, Grupa B, false",  
+        "1, Grupa A, 2, Grupa B, false"   
+    })
+    public void testEquals(Long grupaID1, String naziv1, Long grupaID2, String naziv2, boolean tacno) {
+        Grupa g1 = new Grupa(grupaID1, naziv1, 10, kategorija, administrator, trener);
+        Grupa g2 = new Grupa(grupaID2, naziv2, 10, kategorija, administrator, trener);
+
+        assertEquals(tacno, g1.equals(g2));
+    }
     @Test
     public void testNotEquals() {
          Grupa novaGrupa = new Grupa(2L, "Drugi muski tim", 15, kategorija, administrator, trener);

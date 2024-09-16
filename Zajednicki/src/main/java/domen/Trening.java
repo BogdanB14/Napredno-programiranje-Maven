@@ -21,20 +21,50 @@ import java.util.Objects;
  * @author Bogdan Blagojevic
  */
 public class Trening implements ApstraktniDomenskiObjekat{
+    /**
+     * Redni broj treninga.
+     * Predstavlja jedinstveni identifikator za svaki trening.
+     * Tip Integer
+     */
     private int rbTreninga;
+    /**
+     * Datum treninga.
+     * Predstavlja datum kada se trening odrzava.
+     * Tip Date
+     */
     private Date datumTreninga;
+    /**
+     * Tip treninga.
+     * Predstavlja tip treninga, koji je instanca klase {@link TipTreninga}.
+     * Tip Date
+     */
     private TipTreninga tipTreninga;
+    /**
+     * Sala u kojoj se održava trening.
+     * Predstavlja objekat klase {@link Sala} koji opisuje lokaciju treninga.
+     * Tip TipTreninga
+     */
     private Sala sala;
+    /**
+     * Trener koji vodi trening.
+     * Predstavlja objekat klase {@link Trener} koji vodi trening.
+     * Tip Trener
+     */
     private Trener trener;
+    /**
+     * Grupa koja učestvuje u treningu.
+     * Predstavlja objekat klase {@link Grupa} koja je prisutna na treningu.
+     * Tip Grupa
+     */
     private Grupa grupa;
 
-        /**
+    /**
      * Podrazumevani konstruktor koji inicijalizuje novi objekat {@code Trening}.
      */
     public Trening() {
     }
 
-        /**
+    /**
      * Parametarski konstruktor koji inicijalizuje objekat {@code Trening}.
      *
      * @param rbTreninga Redni broj treninga.
@@ -53,7 +83,7 @@ public class Trening implements ApstraktniDomenskiObjekat{
         this.grupa = grupa;
     }
 
-        /**
+    /**
      * Get metoda - Vraća redni broj treninga.
      *
      * @return Redni broj treninga.
@@ -62,16 +92,19 @@ public class Trening implements ApstraktniDomenskiObjekat{
         return rbTreninga;
     }
 
-        /**
+    /**
      * Set metoda - Postavlja redni broj treninga.
      *
      * @param rbTreninga Redni broj treninga.
+     * @throws  RuntimeException ako je redni broj manji od 0 ili 0
      */
     public void setRbTreninga(int rbTreninga) {
+        if(rbTreninga > 0)
         this.rbTreninga = rbTreninga;
+        else throw new RuntimeException("Redni broj mora biti veci od 0");
     }
 
-        /**
+    /**
      * Get metoda - Vraća datum održavanja treninga.
      *
      * @return Datum održavanja treninga.
@@ -80,16 +113,19 @@ public class Trening implements ApstraktniDomenskiObjekat{
         return datumTreninga;
     }
 
-        /**
+    /**
      * Set metoda - Postavlja datum održavanja treninga.
      *
      * @param datumTreninga Datum održavanja treninga.
+     * @throws  NullPointerException ako je datum null ili ako je datum treninga postavljen na proslo vreme
      */
     public void setDatumTreninga(Date datumTreninga) {
+        if(datumTreninga != null && datumTreninga.after(new Date()))
         this.datumTreninga = datumTreninga;
+        else throw new NullPointerException("Datum nije u skladu sa ogranicenjima");
     }
 
-        /**
+    /**
      * Get metoda - Vraća tip treninga.
      *
      * @return Tip treninga.
@@ -98,7 +134,7 @@ public class Trening implements ApstraktniDomenskiObjekat{
         return tipTreninga;
     }
 
-        /**
+    /**
      * Set metoda - Postavlja tip treninga.
      *
      * @param tipTreninga Tip treninga.
@@ -108,7 +144,7 @@ public class Trening implements ApstraktniDomenskiObjekat{
     }
 
     
-        /**
+    /**
      * Get metoda - Vraća salu u kojoj se održava trening.
      *
      * @return Sala u kojoj se održava trening.
@@ -117,16 +153,19 @@ public class Trening implements ApstraktniDomenskiObjekat{
         return sala;
     }
 
-        /**
+    /**
      * Set metoda - Postavlja salu u kojoj se održava trening.
      *
      * @param sala Sala u kojoj se održava trening.
+     * @throws NullPointerException ako je sala null
      */
     public void setSala(Sala sala) {
+        if(sala != null)
         this.sala = sala;
+        else throw new NullPointerException("Sala ne sme biti null");
     }
 
-        /**
+    /**
      * Get metoda - Vraća trenera koji vodi trening.
      *
      * @return Trener koji vodi trening.
@@ -135,16 +174,19 @@ public class Trening implements ApstraktniDomenskiObjekat{
         return trener;
     }
 
-        /**
+    /**
      * Set metoda - Postavlja trenera koji vodi trening.
      *
      * @param trener Trener koji vodi trening.
+     * @throws NullPointerException ako je trener null
      */
     public void setTrener(Trener trener) {
+        if(trener != null)
         this.trener = trener;
+        else throw new NullPointerException("Trener ne sme biti null");
     }
 
-        /**
+    /**
      * Get metoda - Vraća grupu koja prisustvuje treningu.
      *
      * @return Grupa koja prisustvuje treningu.
@@ -153,16 +195,19 @@ public class Trening implements ApstraktniDomenskiObjekat{
         return grupa;
     }
 
-        /**
+    /**
      * Set metoda - Postavlja grupu koja prisustvuje treningu.
      *
      * @param grupa Grupa koja prisustvuje treningu.
+     * @throws NullPointerException ako je grupa null
      */
     public void setGrupa(Grupa grupa) {
+        if(grupa != null)
         this.grupa = grupa;
+        else throw new NullPointerException("Grupa ne sme biti null");
     }
 
-        /**
+    /**
      * Vraća string prezentaciju objekta {@code Trening}.
      * <p>
      * U ovom slučaju, vraća sve informacije o treningu.
@@ -183,7 +228,7 @@ public class Trening implements ApstraktniDomenskiObjekat{
         return hash;
     }
 
-        /**
+    /**
      * Upoređuje objekat {@code Trening} sa drugim objektom.
      *
      * @param obj Drugi objekat koji se upoređuje.
@@ -216,7 +261,7 @@ public class Trening implements ApstraktniDomenskiObjekat{
         return "trening";
     }
 
-        /**
+    /**
      * {@inheritDoc}
      * Vraća listu objekata {@link Trening} iz rezultata upita.
      * 
@@ -268,7 +313,7 @@ public class Trening implements ApstraktniDomenskiObjekat{
         return lista;
     }
 
-        /**
+    /**
      * {@inheritDoc}
      * Vraća imena kolona koje se koriste za ubacivanje podataka u bazu u tabelu {@code Trening}.
      * 
@@ -279,7 +324,7 @@ public class Trening implements ApstraktniDomenskiObjekat{
         return "datumTreninga,tipTreninga,sala,trener,grupa";
     }
 
-        /**
+    /**
      * {@inheritDoc}
      * Vraća vrednosti za ubacivanje u bazu u tabelu {@code Trening}.
      * 
@@ -291,7 +336,7 @@ public class Trening implements ApstraktniDomenskiObjekat{
         return "'"+datum+"','"+tipTreninga+"',"+sala.getSalaID()+","+trener.getTrenerID()+","+grupa.getGrupaID();
     }
 
-        /**
+    /**
      * {@inheritDoc}
      * Vraća primarni ključ za identifikaciju treninga.
      * 
@@ -303,7 +348,7 @@ public class Trening implements ApstraktniDomenskiObjekat{
     }
 
     
-        /**
+    /**
      * {@inheritDoc}
      * Ova metoda trenutno nije podržana.
      * 
@@ -316,7 +361,7 @@ public class Trening implements ApstraktniDomenskiObjekat{
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
-        /**
+    /**
      * {@inheritDoc}
      * Vraća SQL izraz za ažuriranje podataka u bazi u tabelu {@code Trening}.
      * 

@@ -17,21 +17,21 @@ import java.util.Objects;
  * @author Bogdan Blagojevic
  */
 public class Odgovor implements Serializable{
-        /** 
+    /** 
      * Objekat koji predstavlja odgovor servera.
      * Može biti bilo koje vrste podataka koji je potrebno preneti klijentu.
      */
     private Object odgovor;
 
     
-        /**
+    /**
      * Podrazumevani konstruktor koji inicijalizuje objekat {@code Odgovor}.
      * Ovaj konstruktor ne postavlja nikakve vrednosti za {@code odgovor}.
      */
     public Odgovor() {
     }
 
-        /**
+    /**
      * Parametarski konstruktor koji inicijalizuje objekat {@code Odgovor} sa datim odgovorom.
      *
      * @param odgovor Objekat koji predstavlja odgovor servera.
@@ -40,7 +40,7 @@ public class Odgovor implements Serializable{
         this.odgovor = odgovor;
     }
 
-        /**
+    /**
      * Get metoda - Vraća odgovor servera.
      *
      * @return Objekat koji predstavlja odgovor servera.
@@ -49,7 +49,7 @@ public class Odgovor implements Serializable{
         return odgovor;
     }
 
-        /**
+    /**
      * Set metoda - Postavlja odgovor servera.
      *
      * @param odgovor Objekat koji predstavlja odgovor servera.
@@ -64,7 +64,7 @@ public class Odgovor implements Serializable{
         return hash;
     }
 
-        /**
+    /**
      * Upoređuje objekat {@code Odgovor} sa drugim objekatom.
      *
      * @param obj Drugi objekat koji se upoređuje.

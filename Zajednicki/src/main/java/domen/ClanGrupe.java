@@ -9,11 +9,6 @@ import java.util.List;
 import java.util.Objects;
 
 /**
- *
- * @author Bogdan Blagojevic
- */
-
-/**
  * Predstavlja model člana u grupi u sistemu.
  * Ova klasa implementira interfejs {@link ApstraktniDomenskiObjekat} i obezbeđuje implementaciju svih
  * potrebnih metoda za rad sa članom grupe u sistemu.
@@ -21,21 +16,45 @@ import java.util.Objects;
  * @author Bogdan Blagojevic
  */
 public class ClanGrupe implements ApstraktniDomenskiObjekat{
+    /**
+     * Redni broj clana.
+     * Predstavlja jedinstveni redni broj clana unutar grupe.
+     * Tip Integer
+     */
     private int rbClana;
+    /**
+     * Grupa kojoj clan pripada.
+     * TIp Grupa
+     */
     private Grupa grupa;
+    /**
+     * Pozicija clana u grupi.
+     * Predstavlja poziciji u rotaciji clana.
+     * Tip String
+     */
     private String pozicija;
+    /**
+     * Status clana.
+     * Predstavlja trenutni status clana (AKTIVAN, NEAKTIVAN)
+     * Tip String
+     */
     private String status;
+    /**
+     * Objekat clan.
+     * Predstavlja referencu na objekat {@link Clan} koji sadrži dodatne informacije o clanu.
+     * Tip Clan
+     */
     private Clan clan;
 
     
-        /**
+    /**
      * Default konstruktor - Kreira novu instancu {@link ClanGrupe} sa podrazumevanim vrednostima.
      */
     public ClanGrupe() {
     }
 
     
-        /**
+    /**
      * Parametarski konstruktor - Kreira novu instancu {@link ClanGrupe} sa zadatim vrednostima.
      * 
      * @param rbClana Redni broj člana u grupi
@@ -52,7 +71,7 @@ public class ClanGrupe implements ApstraktniDomenskiObjekat{
         this.grupa = grupa;
     }
 
-        /**
+    /**
      * Get metoda - Vraća redni broj člana u grupi.
      * 
      * Redni broj predstavlja primarni kljuc u tabeli Clan u bazi.
@@ -62,17 +81,22 @@ public class ClanGrupe implements ApstraktniDomenskiObjekat{
     public int getRbClana() {
         return rbClana;
     }
+    
+    
 
-        /**
+    /**
      * Set metoda - Postavlja redni broj člana u grupi.
      * 
      * @param rbClana Redni broj člana
+     *  @throws RunTimeExcepton Ako je redni broj clana 0 ili manji od 0
      */
     public void setRbClana(int rbClana) {
+        if(rbClana > 0)
         this.rbClana = rbClana;
+        else throw new RuntimeException("Redni broj clana mora biti veci od 0");
     }
 
-        /**
+    /**
      * Get metoda - Vraća poziciju člana u grupi.
      * 
      * @return Pozicija člana
@@ -88,7 +112,9 @@ public class ClanGrupe implements ApstraktniDomenskiObjekat{
      * @param pozicija Pozicija člana
      */
     public void setPozicija(String pozicija) {
+        if(pozicija != null && !pozicija.isEmpty() && !pozicija.isBlank())
         this.pozicija = pozicija;
+        else throw new NullPointerException("Pozicija nije u dobrom formatu");
     }
 
     
@@ -108,10 +134,12 @@ public class ClanGrupe implements ApstraktniDomenskiObjekat{
      * @param status Status člana
      */
     public void setStatus(String status) {
+        if(status != null && !status.isEmpty() && !status.isBlank())
         this.status = status;
+        else throw new NullPointerException("Status nije u dobrom formatu");
     }
 
-        /**
+    /**
      * Vraća člana koji pripada grupi.
      * 
      * @return Član grupe
@@ -120,17 +148,39 @@ public class ClanGrupe implements ApstraktniDomenskiObjekat{
         return clan;
     }
 
-        /**
+    /**
      * Postavlja člana koji pripada grupi.
      * 
      * @param clan Član grupe
+     * @throws NullPointerException ako je clan null
      */
     public void setClan(Clan clan) {
+        if(clan != null)
         this.clan = clan;
+        else throw new NullPointerException("Clan ne sme biti null");
+    }
+
+    /**
+     * Postavlja grupu u kojoj pripada clan.
+     * 
+     * @param grupa  
+     * @throws NullPointerException ako je grupa null
+     */
+    public void setGrupa(Grupa grupa) {
+        if(grupa != null)
+        this.grupa = grupa;
+        else throw new NullPointerException("Grupa ne sme biti null");
+        
+    }
+
+    public Grupa getGrupa() {
+        return grupa;
     }
     
     
-        /**
+    
+    
+    /**
      * Vraća string prezentaciju objekta {@code ClanGrupe}.
      * <p>
      * U ovom slučaju, vraća Redni broj clana, pozicija clana i status clana.
@@ -177,7 +227,7 @@ public class ClanGrupe implements ApstraktniDomenskiObjekat{
         return Objects.equals(this.status, other.status);
     }
 
-        /**
+    /**
      * {@inheritDoc}
      * Vraća naziv tabele u bazi podataka.
      * 
@@ -188,7 +238,7 @@ public class ClanGrupe implements ApstraktniDomenskiObjekat{
         return "clangrupe";
     }
 
-        /**
+    /**
      * {@inheritDoc}
      * Vraća listu objekata {@link ClanGrupe} iz rezultata upita.
      * 
@@ -201,7 +251,7 @@ public class ClanGrupe implements ApstraktniDomenskiObjekat{
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
-       /**
+    /**
      * {@inheritDoc}
      * Vraća imena kolona koje se koriste za ubacivanje podataka u bazu u tabelu ClanGrupe.
      * 
@@ -212,7 +262,7 @@ public class ClanGrupe implements ApstraktniDomenskiObjekat{
         return "grupa,pozicija,status,clan";
     }
 
-        /**
+    /**
      * {@inheritDoc}
      * Vraća vrednosti za ubacivanje u bazu u tabelu ClanGrupe.
      * 
@@ -223,7 +273,7 @@ public class ClanGrupe implements ApstraktniDomenskiObjekat{
         return ""+grupa.getGrupaID()+",'"+pozicija+"','"+status+"',"+clan.getJmbg();
     }
 
-        /**
+    /**
      * {@inheritDoc}
      * Vraća primarni ključ za identifikaciju člana u grupi.
      * Redni broj clana i ID grupe u kojoj se nalazi
@@ -234,7 +284,7 @@ public class ClanGrupe implements ApstraktniDomenskiObjekat{
         return "clangrupe.rbClana="+rbClana + " AND clangrupe.grupa="+grupa.getGrupaID();
     }
 
-        /**
+    /**
      * {@inheritDoc}
      * Ova metoda trenutno nije podržana.
      * 
@@ -247,7 +297,7 @@ public class ClanGrupe implements ApstraktniDomenskiObjekat{
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
-        /**
+    /**
      * {@inheritDoc}
      * Vraća SQL izraz za ažuriranje podataka u bazi.
      * 

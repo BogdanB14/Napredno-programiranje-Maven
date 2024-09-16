@@ -24,7 +24,7 @@ public class UcitajTrenereOperacija extends ApstraktnaGenerickaOperacija{
      */
     List<Trener> lista;
     
-        /**
+    /**
      * Proverava preduslove za izvršenje operacije učitavanja trenera.
      * <p>
      * Ova metoda osigurava da parametar koji se prosleđuje nije {@code null}
@@ -41,7 +41,7 @@ public class UcitajTrenereOperacija extends ApstraktnaGenerickaOperacija{
             throw new Exception("Sistem ne moze da ucita trener");
     }
 
-        /**
+    /**
      * Izvršava operaciju učitavanja trenera iz baze podataka.
      * <p>
      * Ova metoda koristi {@code broker} za preuzimanje liste trenera iz baze podataka. 
@@ -59,7 +59,7 @@ public class UcitajTrenereOperacija extends ApstraktnaGenerickaOperacija{
        lista = broker.getAll(new Trener(), " JOIN mesto mesto ON trener.mesto=mesto.mestoID");
     }
 
-        /**
+    /**
      * Get metoda - Vraća listu trenera učitanih iz baze podataka.
      * 
      * @return Lista trenera.
@@ -68,7 +68,7 @@ public class UcitajTrenereOperacija extends ApstraktnaGenerickaOperacija{
         return lista;
     }
 
-        /**
+    /**
      * Set metoda - Postavlja listu trenera učitanih iz baze podataka.
      * 
      * @param lista Lista trenera koju treba postaviti.

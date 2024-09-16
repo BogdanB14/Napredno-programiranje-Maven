@@ -19,12 +19,12 @@ import operacija.ApstraktnaGenerickaOperacija;
  * @author Bogdan Blagojevic
  */
 public class UcitajAdministratoreOperacija extends ApstraktnaGenerickaOperacija{
-        /**
+    /**
      * Lista administratora koja se popunjava rezultatom operacije.
      */
     List<Administrator> lista;
     
-        /**
+    /**
      * Proverava preduslove za izvršenje operacije.
      * <p>
      * Ova metoda se koristi za osiguranje da parametar koji se prosleđuje
@@ -40,7 +40,7 @@ public class UcitajAdministratoreOperacija extends ApstraktnaGenerickaOperacija{
             throw new Exception("");
     }
 
-        /**
+    /**
      * Izvršava operaciju učitavanja svih administratora iz baze podataka.
      * <p>
      * Ova metoda koristi {@code broker} za obavljanje upita i popunjava listu administratora
@@ -56,7 +56,7 @@ public class UcitajAdministratoreOperacija extends ApstraktnaGenerickaOperacija{
         lista = broker.getAll(new Administrator(), "");
     }
 
-        /**
+    /**
      * Vraća listu administratora koja je popunjena rezultatima operacije.
      * 
      * @return Lista administratora.
@@ -65,7 +65,7 @@ public class UcitajAdministratoreOperacija extends ApstraktnaGenerickaOperacija{
         return lista;
     }
 
-        /**
+    /**
      * Postavlja listu administratora.
      * 
      * @param lista Lista administratora za postavljanje.

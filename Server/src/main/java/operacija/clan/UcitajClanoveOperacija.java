@@ -20,7 +20,7 @@ import operacija.ApstraktnaGenerickaOperacija;
  */
 public class UcitajClanoveOperacija extends ApstraktnaGenerickaOperacija {
 
-        /**
+    /**
      * Lista članova učitana iz baze podataka.
      * <p>
      * Ova promenljiva čuva rezultate operacije učitavanja članova iz baze podataka.
@@ -29,7 +29,7 @@ public class UcitajClanoveOperacija extends ApstraktnaGenerickaOperacija {
     List<Clan> lista;
     
     
-        /**
+    /**
      * Proverava preduslove za izvršenje operacije učitavanja članova.
      * <p>
      * Ova metoda osigurava da parametar koji se prosleđuje bude {@code null} ili instanca {@link Clan}.
@@ -45,7 +45,7 @@ public class UcitajClanoveOperacija extends ApstraktnaGenerickaOperacija {
             throw new Exception("Sistem ne moze da ucita clanove");
     }
 
-        /**
+    /**
      * Izvršava operaciju učitavanja članova iz baze podataka.
      * <p>
      * Ova metoda koristi {@code broker} za učitavanja članova iz baze podataka.
@@ -62,7 +62,7 @@ public class UcitajClanoveOperacija extends ApstraktnaGenerickaOperacija {
         lista = broker.getAll(new Clan(), " JOIN mesto mesto ON clan.mesto=mesto.mestoID");
     }
 
-        /**
+    /**
      * Get metoda - Vraća listu članova učitanu iz baze podataka.
      * 
      * @return Lista članova.
@@ -71,7 +71,7 @@ public class UcitajClanoveOperacija extends ApstraktnaGenerickaOperacija {
         return lista;
     }
 
-        /**
+    /**
      * Set metoda- Postavlja listu članova.
      * 
      * @param lista Lista članova koja će biti postavljena.

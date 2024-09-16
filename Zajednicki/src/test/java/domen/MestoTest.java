@@ -6,12 +6,13 @@ package domen;
 
 import java.sql.ResultSet;
 import java.util.List;
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
-import org.junit.Test;
-import static org.junit.Assert.*;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
 /**
  *
@@ -22,21 +23,24 @@ public class MestoTest {
     public MestoTest() {
     }
     
-    @BeforeClass
-    public static void setUpClass() {
-    }
-    
-    @AfterClass
-    public static void tearDownClass() {
-    }
-    
-    @Before
+    @BeforeEach
     public void setUp() {
-        mesto = new Mesto(1L, 17530L, "Surdulica");
+        mesto = new Mesto();
+        mesto.setMestoID(1L);
+        mesto.setPostanskiBroj(17530L);
+        mesto.setNaziv("Surdulica");
     }
     
-    @After
+    @AfterEach
     public void tearDown() {
+    }
+    
+        @Test
+    public void testParametarskiKonstruktor() {
+        Mesto m = new Mesto(2L, 17000L, "Nis");
+        assertEquals(2L, m.getMestoID());
+        assertEquals(17000L, m.getPostanskiBroj());
+        assertEquals("Nis", m.getNaziv());
     }
 
 
@@ -48,6 +52,14 @@ public class MestoTest {
         mesto.setMestoID(noviID);
         assertEquals(noviID, mesto.getMestoID());
     }
+    
+    @Test
+    public void testSetMestoIDException() {
+        Exception exception = assertThrows(RuntimeException.class, () -> {
+            mesto.setMestoID(0L);
+        });
+        assertEquals("ID mesta mora biti vece od 0", exception.getMessage());
+    }
 
 
 
@@ -58,7 +70,21 @@ public class MestoTest {
         assertEquals(noviPostanskiBroj, mesto.getMestoID());
     }
 
-
+        @Test
+    public void testSetPostanskiBrojManji() {
+        Exception exception = assertThrows(RuntimeException.class, () -> {
+            mesto.setPostanskiBroj(1234L);
+        });
+        assertEquals("Postanski broj mora biti petocifren", exception.getMessage());
+    }
+    
+        @Test
+    public void testSetPostanskiBrojVeci() {
+        Exception exception = assertThrows(RuntimeException.class, () -> {
+            mesto.setPostanskiBroj(123411L);
+        });
+        assertEquals("Postanski broj mora biti petocifren", exception.getMessage());
+    }
 
     @Test
     public void testSetNaziv() {
@@ -70,16 +96,23 @@ public class MestoTest {
 
 
  
-    @Test
-    public void testEquals() {
-        Mesto drugoMesto = new Mesto(1L,17530L, "Surdulica");
-        assertTrue(mesto.equals(drugoMesto));
-    }
-    
-    @Test
-    public void testNotEquals() {
-        Mesto drugoMesto = new Mesto(2L,17000L, "Nis");
-        assertFalse(mesto.equals(drugoMesto));
+    @ParameterizedTest
+    @CsvSource({
+        "1, 11000, Beograd, 1, 11000, Beograd, true",
+        "1, 11000, Beograd, 2, 11000, Beograd, false",
+        "1, 11000, Beograd, 1, 12000, Beograd, false",
+        "1, 11000, Beograd, 1, 11000, Novi Sad, false",
+        "1, 11000, Beograd, 1, 12000, Novi Sad, false",
+        "1, 11000, Beograd, 2, 12000, Beograd, false",
+        "1, 11000, Beograd, 2, 11000, Novi Sad, false",
+        "1, 11000, Beograd, 2, 12000, Novi Sad, false"
+    })
+    public void testEquals(Long mestoID1, Long postanskiBroj1, String naziv1,
+                           Long mestoID2, Long postanskiBroj2, String naziv2, boolean tacno) {
+        Mesto m1 = new Mesto(mestoID1, postanskiBroj1, naziv1);
+        Mesto m2 = new Mesto(mestoID2, postanskiBroj2, naziv2);
+
+        assertEquals(tacno, m1.equals(m2));
     }
 
  

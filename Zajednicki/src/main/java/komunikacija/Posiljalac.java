@@ -22,13 +22,13 @@ import java.util.logging.Logger;
  */
 public class Posiljalac {
     //Kod posiljalaca se koristi za outpustStream, a kod primaoca inputStream
-            /**
+    /**
      * Socket koji koristi ova klasa za komunikaciju.
      */
     private Socket socket; 
 
 
-        /**
+    /**
      * Konstruktor koji inicijalizuje objekat {@code Posiljalac} sa datim soketom.
      *
      * @param socket Socket koji koristi ovaj pošiljalac za komunikaciju.
@@ -37,7 +37,7 @@ public class Posiljalac {
         this.socket = socket;
     }
     
-        /**
+    /**
      * Metoda koja šalje objekat.
      * <p>
      * Ova metoda koristi {@link ObjectOutputStream} za slanje objekta preko socket veze.

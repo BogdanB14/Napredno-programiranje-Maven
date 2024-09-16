@@ -21,7 +21,7 @@ import operacija.ApstraktnaGenerickaOperacija;
 public class UcitajTreningeOperacija extends ApstraktnaGenerickaOperacija{
     private List<Trening> lista;
     
-        /**
+    /**
      * Proverava preduslove za izvršenje operacije učitavanja treninga.
      * <p>
      * Ova metoda osigurava da parametar koji se prosleđuje nije {@code null}
@@ -38,7 +38,7 @@ public class UcitajTreningeOperacija extends ApstraktnaGenerickaOperacija{
             throw new Exception("Sistem ne moze da ucita treninge");
     }
 
-        /**
+    /**
      * Izvršava operaciju učitavanja svih treninga iz baze podataka.
      * <p>
      * Ova metoda koristi {@code broker} za učitavanje podataka o svim treninzima
@@ -67,7 +67,7 @@ public class UcitajTreningeOperacija extends ApstraktnaGenerickaOperacija{
         return lista;
     }
 
-        /**
+    /**
      * Postavlja listu treninga koja treba da bude korišćena ili prikazana.
      * <p>
      * Lista se koristi za prikaz svih učitanih treninga nakon izvršenja operacije.

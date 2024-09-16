@@ -22,14 +22,14 @@ import java.sql.ResultSet;
  */
 public interface ApstraktniDomenskiObjekat extends Serializable {
     
-        /**
+    /**
      * Vraća naziv baze podataka koji je povezan sa ovim objektom iz domena.
      * 
      * @return Naziv tabele
      */
     public String vratiNazivTabele();
     
-      /**
+    /**
      * Vraća listu objekata domena kreiranih iz prosledjenog {@code ResultSet}-a.
      * 
      * @param rs {@code ResultSet} koji sadrži podatke iz baze podataka.
@@ -39,28 +39,28 @@ public interface ApstraktniDomenskiObjekat extends Serializable {
     public List<ApstraktniDomenskiObjekat> vratiListu(ResultSet rs) throws Exception;
     
     
-        /**
+    /**
      * Vraća listu kolona koje će se koristiti za dodavanje novog reda u bazi podataka.
      * 
      * @return Kolone za ubacivanje kao {@code String}.
      */
     public String vratiKoloneZaUbacivanje();
     
-        /**
+    /**
      * Vraća listu vrednosti koje će se ubaciti u bazu podataka.
      * 
      * @return Vrednosti za ubacivanje kao {@code String}.
      */
     public String vratiVrednostiZaUbacivanje();
     
-        /**
+    /**
      * Vraća primarni ključ objekta domena, koji se koristi za jedinstvenu identifikaciju u bazi podataka.
      * 
      * @return Primarni ključ kao {@code String}.
      */
     public String vratiPrimarniKljuc();
     
-        /**
+    /**
      * Kreira objekat iz domena iz prosledjenog {@code ResultSet}-a.
      * 
      * @param rs {@code ResultSet} koji sadrži podatke iz baze podataka.
@@ -69,7 +69,7 @@ public interface ApstraktniDomenskiObjekat extends Serializable {
      */
     public ApstraktniDomenskiObjekat vratiObjekatIzRS(ResultSet rs) throws Exception;
     
-        /**
+    /**
      * Vraća listu vrednosti koje će se koristiti za izmenu postojećeg reda u bazi podataka.
      * 
      * @return Vrednosti za izmenu kao {@code String}.

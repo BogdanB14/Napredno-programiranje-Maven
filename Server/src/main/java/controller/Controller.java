@@ -42,19 +42,19 @@ import operacija.trening.UcitajTreningeOperacija;
  * @author Bogdan Blagojevic
  */
 public class Controller {
-        /**
+    /**
      * Singleton instanca klase {@code Controller}.
      */
     private static Controller instance;
-        /**
+    /**
      * Lista trenutnih korisnika koji su prijavljeni i čiji zahtevi se obrađuju.
      */
     private List<ObradaKlijentskihZahteva> listaTrenutnihKorisnika = new ArrayList<>();
-        /**
+    /**
      * Lista trenutno ulogovanih administratora.
      */
     private List<Administrator> ulogovaniAdministratori = new ArrayList<>();
-        /**
+    /**
      * Vraća jedinu instancu klase {@code Controller} (Singleton).
      * 
      * @return Instanca klase {@code Controller}.
@@ -65,14 +65,14 @@ public class Controller {
         return instance;
     }
     
-        /**
+    /**
      * Privatni konstruktor koji inicijalizuje objekat klase {@code Controller}.
      */
     private Controller(){
         
     }
 
-        /**
+    /**
      * Metoda za prijavu administratora.
      * <p>
      * Ova metoda koristi {@link LoginOperacija} za autentifikaciju administratora. Ako je
@@ -93,7 +93,7 @@ public class Controller {
         return a;
     }
 
-        /**
+    /**
      * Metoda za učitavanje članova.
      * <p>
      * Ova metoda koristi {@link UcitajClanoveOperacija} za ucitavanje svih članova iz baze podataka.
@@ -109,7 +109,7 @@ public class Controller {
         return operacija.getLista(); 
     }
 
-        /**
+    /**
      * Metoda za brisanje člana.
      * <p>
      * Ova metoda koristi {@link ObrisiClanaOperacija} za brisanje člana iz baze podataka.
@@ -125,7 +125,7 @@ public class Controller {
         return opo.delete;
     }
 
-        /**
+    /**
      * Metoda za dodavanje člana.
      * <p>
      * Ova metoda koristi {@link DodajClanaOperacija} za dodavanje novog člana u bazu podataka.
@@ -139,7 +139,7 @@ public class Controller {
         dco.izvrsi(clan, null);
     }
 
-        /**
+    /**
      * Metoda za dodavanje trenera.
      * <p>
      * Ova metoda koristi {@link DodajTreneraOperacija} za dodavanje novog trenera u bazu podataka.
@@ -169,7 +169,7 @@ public class Controller {
     }
 
 
-        /**
+    /**
      * Metoda za dodavanje grupe.
      * <p>
      * Ova metoda koristi {@link DodajGrupuOperacija} za dodavanje nove grupe u bazu podataka.
@@ -184,7 +184,7 @@ public class Controller {
     
     }
     
-       /**
+    /**
      * Metoda za učitavanje mesta.
      * <p>
      * Ova metoda koristi {@link UcitajMestaOperacija} za ucitavanje svih mesta iz baze podataka.
@@ -200,7 +200,7 @@ public class Controller {
         return umo.getLista();
     }
 
-        /**
+    /**
      * Metoda za ažuriranje člana.
      * <p>
      * Ova metoda koristi {@link AzurirajClanaOperacija} za ažuriranje podataka o članu u bazi podataka.
@@ -233,7 +233,7 @@ public class Controller {
         return uto.getLista();
     }
 
-        /**
+    /**
      * Metoda za učitavanje grupa.
      * <p>
      * Ova metoda koristi {@link UcitajGrupeOperacija} za ucitavanje svih grupa iz baze podataka.
@@ -265,7 +265,7 @@ public class Controller {
         return uao.getLista();
     }
 
-        /**
+    /**
      * Metoda za učitavanje kategorija.
      * <p>
      * Ova metoda koristi {@link UcitajKategorijeOperacija} za ucitavanje svih kategorija iz baze podataka.
@@ -281,7 +281,7 @@ public class Controller {
         return uko.getLista();
     }
 
-        /**
+    /**
      * Metoda za učitavanje trenera.
      * <p>
      * Ova metoda koristi {@link UcitajTrenereOperacija} za ucitavanje svih trenera iz baze podataka.
@@ -297,7 +297,7 @@ public class Controller {
         return uto.getLista();
     }
 
-        /**
+    /**
      * Metoda za učitavanje sala.
      * <p>
      * Ova metoda koristi {@link UcitajSaleOperacija} za učitavanje svih sala iz baze podataka.
@@ -313,7 +313,7 @@ public class Controller {
         return uso.getLista();
     }
 
-        /**
+    /**
      * Metoda za odjavu administratora.
      * <p>
      * Ova metoda uklanja administratora iz liste ulogovanih administratora i uklanja sve
@@ -331,7 +331,7 @@ public class Controller {
         }
     }
 
-        /**
+    /**
      * Get metoda - Vraća listu trenutnih korisnika koji su prijavljeni i čiji zahtevi se obrađuju.
      * 
      * @return Lista trenutnih korisnika.
@@ -340,7 +340,7 @@ public class Controller {
         return listaTrenutnihKorisnika;
     }
 
-        /**
+    /**
      * Set metoda - Postavlja listu trenutnih korisnika koji su prijavljeni i čiji zahtevi se obrađuju.
      * 
      * @param listaTrenutnihKorisnika Lista trenutnih korisnika.
@@ -349,7 +349,7 @@ public class Controller {
         this.listaTrenutnihKorisnika = listaTrenutnihKorisnika;
     }
 
-        /**
+    /**
      * Get metoda - Vraća listu trenutno ulogovanih administratora.
      * 
      * @return Lista ulogovanih administratora.
@@ -358,7 +358,7 @@ public class Controller {
         return ulogovaniAdministratori;
     }
 
-        /**
+    /**
      * Set metoda - Postavlja listu trenutno ulogovanih administratora.
      * 
      * @param ulogovaniAdministratori Lista ulogovanih administratora.
