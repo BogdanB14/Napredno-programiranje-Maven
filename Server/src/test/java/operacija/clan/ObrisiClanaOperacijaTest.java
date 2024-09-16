@@ -42,7 +42,7 @@ public class ObrisiClanaOperacijaTest {
     @Test
     public void testPredusloviValidClan() throws Exception {
         Clan clan = new Clan();
-        operacija.preduslovi(clan);
+       assertDoesNotThrow(() -> operacija.preduslovi(clan));
     }
 
 

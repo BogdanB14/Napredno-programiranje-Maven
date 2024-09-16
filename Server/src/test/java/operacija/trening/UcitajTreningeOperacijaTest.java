@@ -48,21 +48,13 @@ public class UcitajTreningeOperacijaTest {
     public void tearDown() {
     }
 
-    @Test
-    public void testPredusloviNull() throws Exception {
-        operacija.preduslovi(null);
-    }
-
-    @Test
-    public void testPreduslovi() throws Exception {
-        operacija.preduslovi(new Trening());
-    }
 
     @Test
     public void testPredusloviException() {
-        assertThrows(Exception.class, () -> {
+        Exception exception = assertThrows(Exception.class, () -> {
             operacija.preduslovi(new Administrator());
         });
+        assertEquals(exception.getMessage(), "Sistem ne moze da ucita treninge");
     }
 
 

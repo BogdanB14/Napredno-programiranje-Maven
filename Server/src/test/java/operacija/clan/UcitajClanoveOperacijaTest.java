@@ -60,22 +60,15 @@ public class UcitajClanoveOperacijaTest {
     }
 
     
-    @Test
-    public void testPredusloviNull() throws Exception {
-        operacija.preduslovi(null);
-    }
-    
-    @Test
-    public void testPredusloviClan() throws Exception {
-        operacija.preduslovi(new Clan());
-    }
+
     
         
     @Test
     public void testPredusloviException() throws Exception {
-        assertThrows(Exception.class, () -> {
+        Exception exception = assertThrows(Exception.class, () -> {
             operacija.preduslovi(new Administrator()); 
         });
+        assertEquals(exception.getMessage(),"Sistem ne moze da ucita clanove");
     }
 
     

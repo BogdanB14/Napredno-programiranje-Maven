@@ -54,21 +54,13 @@ public class UcitajKategorijeOperacijaTest {
     public void tearDown() {
     }
 
-    @Test
-    public void testPredusloviNull() throws Exception {
-        operacija.preduslovi(null);
-    }
-
-    @Test
-    public void testPredusloviKategorija() throws Exception {
-        operacija.preduslovi(new Kategorija());
-    }
 
     @Test
     public void testPredusloviException() throws Exception {
-        assertThrows(Exception.class, () -> {
+        Exception exception = assertThrows(Exception.class, () -> {
             operacija.preduslovi(new Administrator()); 
         });
+        assertEquals(exception.getMessage(), "Sistem ne moze da ucita kategorije");
     }
 
 

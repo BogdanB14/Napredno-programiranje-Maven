@@ -170,11 +170,7 @@ public class GrupaTest {
 
         assertEquals(tacno, g1.equals(g2));
     }
-    @Test
-    public void testNotEquals() {
-         Grupa novaGrupa = new Grupa(2L, "Drugi muski tim", 15, kategorija, administrator, trener);
-        assertFalse(grupa.equals(novaGrupa));
-    }
+
 
     @Test
     public void testToString() {

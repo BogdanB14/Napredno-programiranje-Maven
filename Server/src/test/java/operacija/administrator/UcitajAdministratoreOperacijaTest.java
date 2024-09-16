@@ -54,23 +54,21 @@ public class UcitajAdministratoreOperacijaTest {
     @AfterEach
     public void tearDown() {
     }
-
-    @Test
-    public void testPredusloviNull() throws Exception {
-        operacija.preduslovi(null);
-    }
     
     @Test
-    public void testPredusloviParam() throws Exception {
-        Administrator a = new Administrator();
-        operacija.preduslovi(a);
+    void testPredusloviNeBacaException() {
+        assertDoesNotThrow(() -> operacija.preduslovi(null));
+        assertDoesNotThrow(() -> operacija.preduslovi(new Administrator()));
     }
-    public void testPredusloviException() throws Exception {
-        
-        assertThrows(Exception.class, () -> {
-        operacija.preduslovi(new Clan());
-    });
+    
+        @Test
+    void testPredusloviDrugaKlasa() {
+        // Invalid scenario: Non-null, non-Administrator instance
+        Exception exception = assertThrows(Exception.class, () -> operacija.preduslovi(new String()));
+        assertEquals("Parametar mora biti null i mora biti Administrator", exception.getMessage());
     }
+
+    
 
     @Test
     public void testIzvrsiOperaciju() throws Exception {

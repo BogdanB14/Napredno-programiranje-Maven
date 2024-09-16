@@ -62,12 +62,14 @@ public class AzurirajClanaOperacijaTest {
 
     @Test
     public void testPredusloviDrugaKlasa() {
-        assertThrows(Exception.class, () -> operacija.preduslovi(new Administrator()));
+        Exception exception = assertThrows(Exception.class, () -> operacija.preduslovi(new Administrator()));
+        assertEquals(exception.getMessage(), "Sistem ne moze da ucita clana");
     }
 
         @Test
     public void testPredusloviNull() {
-        assertThrows(Exception.class, () -> operacija.preduslovi(null));
+        Exception exception = assertThrows(Exception.class, () -> operacija.preduslovi(null));
+        assertEquals(exception.getMessage(), "Sistem ne moze da ucita clana");
     }
     
         @Test

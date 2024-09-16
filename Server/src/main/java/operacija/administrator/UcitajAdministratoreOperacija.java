@@ -37,7 +37,7 @@ public class UcitajAdministratoreOperacija extends ApstraktnaGenerickaOperacija{
     @Override
     protected void preduslovi(Object param) throws Exception {
         if(param != null && !(param instanceof Administrator))
-            throw new Exception("");
+            throw new Exception("Parametar mora biti null i mora biti Administrator");
     }
 
     /**

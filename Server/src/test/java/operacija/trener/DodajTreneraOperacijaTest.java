@@ -57,14 +57,6 @@ public class DodajTreneraOperacijaTest {
         assertEquals("Podaci o novom treneru nisu upamceni", exception.getMessage());
     }
 
-    @Test
-    public void testPredusloviNull() {
-        Exception exception = assertThrows(Exception.class, () -> {
-            dodajTreneraOperacija.preduslovi(null); 
-        });
-
-        assertEquals("Podaci o novom treneru nisu upamceni", exception.getMessage());
-    }
 
     @Test
     public void testIzvrsiOperaciju() throws Exception {

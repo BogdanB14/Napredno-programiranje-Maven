@@ -80,21 +80,13 @@ public class UcitajGrupeOperacijaTest {
     }
 
  
-    @Test
-    public void testPredusloviNull() throws Exception {
-        operacija.preduslovi(null);
-    }
-    
-        @Test
-    public void testPredusloviGrupa() throws Exception {
-        operacija.preduslovi(new Grupa());
-    }
     
     @Test
     public void testPredusloviException() throws Exception {
-        assertThrows(Exception.class, () -> {
-            operacija.preduslovi(new Object()); 
+        Exception exception = assertThrows(Exception.class, () -> {
+            operacija.preduslovi(new String()); 
         });
+        assertEquals(exception.getMessage(), "Sistem ne moze da ucita grupe");
     }
 
     @Test

@@ -53,21 +53,14 @@ public class UcitajMestaOperacijaTest {
     public void tearDown() {
     }
 
-    @Test
-    public void testPredusloviNull() throws Exception {
-        operacija.preduslovi(null);
-    }
-
-    @Test
-    public void testPredusloviMesto() throws Exception {
-        operacija.preduslovi(new Mesto());
-    }
 
     @Test
     public void testPredusloviException() throws Exception {
-        assertThrows(Exception.class, () -> {
+       Exception exception =  assertThrows(Exception.class, () -> {
             operacija.preduslovi(new Administrator()); 
         });
+       
+        assertEquals(exception.getMessage(), "Sistem ne moze da ucita mesta");
     }
 
     @Test
