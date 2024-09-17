@@ -58,10 +58,14 @@ public class Sala implements ApstraktniDomenskiObjekat{
      * @param mesto Mesto u kojem se sala nalazi.
      */
     public Sala(Long salaID, String nazivSale, int kapacitet, Mesto mesto) {
-        this.salaID = salaID;
-        this.nazivSale = nazivSale;
-        this.kapacitet = kapacitet;
-        this.mesto = mesto;
+//        this.salaID = salaID;
+//        this.nazivSale = nazivSale;
+//        this.kapacitet = kapacitet;
+//        this.mesto = mesto;
+          this.setSalaID(salaID);
+          this.setNazivSale(nazivSale);
+          this.setKapacitet(kapacitet);
+          this.setMesto(mesto);
     }
 
     /**

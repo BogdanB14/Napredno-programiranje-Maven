@@ -59,10 +59,14 @@ public class Kategorija implements ApstraktniDomenskiObjekat{
      * @param pol Pol koji se odnosi na ovu kategoriju.
      */
     public Kategorija(Long kategorijaID, String nazivKategorije, String opisKategorije, Pol pol) {
-        this.kategorijaID = kategorijaID;
-        this.nazivKategorije = nazivKategorije;
-        this.opisKategorije = opisKategorije;
-        this.pol = pol;
+//        this.kategorijaID = kategorijaID;
+//        this.nazivKategorije = nazivKategorije;
+//        this.opisKategorije = opisKategorije;
+//        this.pol = pol;
+          this.setKategorijaID(kategorijaID);
+          this.setNazivKategorije(nazivKategorije);
+          this.setOpisKategorije(opisKategorije);
+          this.setPol(pol);
     }
 
     /**

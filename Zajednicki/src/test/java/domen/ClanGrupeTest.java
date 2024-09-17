@@ -35,6 +35,8 @@ public class ClanGrupeTest {
     private Administrator administrator;
     private Trener trener;
     private Date datumRodjenja = new Date();
+    private long milisekunde = datumRodjenja.getTime();
+    private Date datum = new Date(milisekunde - 8500000);
     
     public ClanGrupeTest() {   
         
@@ -44,7 +46,7 @@ public class ClanGrupeTest {
     @BeforeEach
     public void setUp() {
         mesto = new Mesto(1L, 17530L, "Surdulica");
-        clan = new Clan("1234567890123", "Marko", "Markovic", datumRodjenja, Pol.MUSKI, "0612345678", mesto);
+        clan = new Clan("1234567890123", "Marko", "Markovic", datum, Pol.MUSKI, "0612345678", mesto);
         kategorija = new Kategorija(1L, "Seniori", "Opis", Pol.MUSKI);
         administrator = new Administrator(1L, "BogdanB14", "Bogdan123", "Bogdan", "Blagojevic");
         trener = new Trener(3L, "Uros", "Blagojevic", mesto);

@@ -66,11 +66,16 @@ public class Administrator implements ApstraktniDomenskiObjekat{
      * @param prezimeAdmin prezime administratora
      */
     public Administrator(Long administratorID, String korisnickoIme, String sifra, String imeAdmin, String prezimeAdmin) {
-        this.administratorID = administratorID;
-        this.korisnickoIme = korisnickoIme;
-        this.sifra = sifra;
-        this.imeAdmin = imeAdmin;
-        this.prezimeAdmin = prezimeAdmin;
+//        this.administratorID = administratorID;
+//        this.korisnickoIme = korisnickoIme;
+//        this.sifra = sifra;
+//        this.imeAdmin = imeAdmin;
+//        this.prezimeAdmin = prezimeAdmin;
+          this.setAdministratorID(administratorID);
+          this.setKorisnickoIme(korisnickoIme);
+          this.setSifra(sifra);
+          this.setImeAdmin(imeAdmin);
+          this.setPrezimeAdmin(prezimeAdmin);
 
     }
     

@@ -72,12 +72,18 @@ public class Grupa implements ApstraktniDomenskiObjekat{
      * @param trener trener grupe
      */
     public Grupa(Long grupaID, String nazivGrupe, int brClanova, Kategorija kategorija, Administrator administrator, Trener trener) {
-        this.grupaID = grupaID;
-        this.nazivGrupe = nazivGrupe;
-        this.brClanova = brClanova;
-        this.kategorija = kategorija;
-        this.administrator = administrator;
-        this.trener = trener;
+//        this.grupaID = grupaID;
+//        this.nazivGrupe = nazivGrupe;
+//        this.brClanova = brClanova;
+//        this.kategorija = kategorija;
+//        this.administrator = administrator;
+//        this.trener = trener;
+          this.setGrupaID(grupaID);
+          this.setNazivGrupe(nazivGrupe);
+          this.setBrClanova(brClanova);
+          this.setKategorija(kategorija);
+          this.setAdministrator(administrator);
+          this.setTrener(trener);
     }
 
     /**

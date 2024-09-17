@@ -83,13 +83,20 @@ public class Clan implements ApstraktniDomenskiObjekat{
      * @param mesto Mesto prebivališta člana.
      */
     public Clan(String jmbg, String imeClana, String prezimeClana, Date datumRodjenja, Pol pol, String telefon, Mesto mesto) {
-        this.jmbg = jmbg;
-        this.imeClana = imeClana;
-        this.prezimeClana = prezimeClana;
-        this.datumRodjenja = datumRodjenja;
-        this.pol = pol;
-        this.telefon = telefon;
-        this.mesto = mesto;
+//        this.jmbg = jmbg;
+//        this.imeClana = imeClana;
+//        this.prezimeClana = prezimeClana;
+//        this.datumRodjenja = datumRodjenja;
+//        this.pol = pol;
+//        this.telefon = telefon;
+//        this.mesto = mesto;
+          this.setJmbg(jmbg);
+          this.setImeClana(imeClana);
+          this.setPrezimeClana(prezimeClana);
+          this.setDatumRodjenja(datumRodjenja);
+          this.setPol(pol);
+          this.setTelefon(telefon);
+          this.setMesto(mesto);
     }
 
     

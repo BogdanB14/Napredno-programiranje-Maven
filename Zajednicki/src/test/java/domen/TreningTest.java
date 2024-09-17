@@ -30,6 +30,7 @@ public class TreningTest {
     private Date trenutniDatum = new Date();
     private Long milisekunde = trenutniDatum.getTime();
     private Date datumTreninga = new Date(milisekunde + 100000000);
+    
     public TreningTest() {
     }
     
@@ -60,8 +61,10 @@ public class TreningTest {
         Date datum = new Date(milisekunde + 10000000);
         TipTreninga tip = TipTreninga.KONDICIONI;
         Sala sala = new Sala(2L, "Vuk Karadzic", 100, new Mesto(1L, 17530L, "Surdulica"));
+        kategorija = new Kategorija(1L, "Seniori", "Opis", Pol.MUSKI);
+        administrator = new Administrator(1L, "BogdanB14", "Bogdan123", "Bogdan", "Blagojevic");
         Trener trener = new Trener(1L, "Dalibor", "Rasic", new Mesto(1L, 17530L, "Surdulica"));
-        Grupa grupa = new Grupa(1L, "Drugi muski tim", 20, null, null, null);
+        Grupa grupa = new Grupa(1L, "Drugi muski tim", 20, kategorija, administrator, trener);
 
         Trening trening = new Trening(1, datum, tip, sala, trener, grupa);
 

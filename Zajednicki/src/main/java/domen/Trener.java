@@ -59,10 +59,14 @@ public class Trener implements ApstraktniDomenskiObjekat{
      * @param mesto Mesto prebivališta trenera.
      */
     public Trener(Long trenerID, String imeTrener, String prezimeTrener, Mesto mesto) {
-        this.trenerID = trenerID;
-        this.imeTrener = imeTrener;
-        this.prezimeTrener = prezimeTrener;
-        this.mesto = mesto;
+//        this.trenerID = trenerID;
+//        this.imeTrener = imeTrener;
+//        this.prezimeTrener = prezimeTrener;
+//        this.mesto = mesto;
+          this.setTrenerID(trenerID);
+          this.setImeTrener(imeTrener);
+          this.setPrezimeTrener(prezimeTrener);
+          this.setMesto(mesto);
     }
 
     /**

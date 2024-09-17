@@ -64,11 +64,16 @@ public class ClanGrupe implements ApstraktniDomenskiObjekat{
      * @param grupa Grupa kojoj član pripada
      */
     public ClanGrupe(int rbClana, String pozicija, String status, Clan clan, Grupa grupa) {
-        this.rbClana = rbClana;
-        this.pozicija = pozicija;
-        this.status = status;
-        this.clan = clan;
-        this.grupa = grupa;
+//        this.rbClana = rbClana;
+//        this.pozicija = pozicija;
+//        this.status = status;
+//        this.clan = clan;
+//        this.grupa = grupa;
+          this.setRbClana(rbClana);
+          this.setPozicija(pozicija);
+          this.setStatus(status);
+          this.setClan(clan);
+          this.setGrupa(grupa);
     }
 
     /**

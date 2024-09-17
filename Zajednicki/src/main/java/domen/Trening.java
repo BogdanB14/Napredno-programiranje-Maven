@@ -75,12 +75,18 @@ public class Trening implements ApstraktniDomenskiObjekat{
      * @param grupa Grupa koja prisustvuje treningu.
      */
     public Trening(int rbTreninga, Date datumTreninga, TipTreninga tipTreninga, Sala sala, Trener trener, Grupa grupa) {
-        this.rbTreninga = rbTreninga;
-        this.datumTreninga = datumTreninga;
-        this.tipTreninga = tipTreninga;
-        this.sala = sala;
-        this.trener = trener;
-        this.grupa = grupa;
+//        this.rbTreninga = rbTreninga;
+//        this.datumTreninga = datumTreninga;
+//        this.tipTreninga = tipTreninga;
+//        this.sala = sala;
+//        this.trener = trener;
+//        this.grupa = grupa;
+          this.setRbTreninga(rbTreninga);
+          this.setDatumTreninga(datumTreninga);
+          this.setTipTreninga(tipTreninga);
+          this.setSala(sala);
+          this.setTrener(trener);
+          this.setGrupa(grupa);
     }
 
     /**

@@ -52,9 +52,12 @@ public class Mesto implements ApstraktniDomenskiObjekat{
      * @param naziv Naziv mesta.
      */
     public Mesto(Long mestoID, Long postanskiBroj, String naziv) {
-        this.mestoID = mestoID;
-        this.postanskiBroj = postanskiBroj;
-        this.naziv = naziv;
+//        this.mestoID = mestoID;
+//        this.postanskiBroj = postanskiBroj;
+//        this.naziv = naziv;
+          this.setMestoID(mestoID);
+          this.setPostanskiBroj(postanskiBroj);
+          this.setNaziv(naziv);
     }
 
     /**
